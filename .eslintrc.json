@@ -1,3 +1,18 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "ignorePatterns": ["dist", ".eslintrc.cjs"],
+  "plugins": ["react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "quotes": ["error", "single"],
+    "eqeqeq": ["error", "always"],
+    "no-empty-function": "error",
+    "no-implicit-coercion": "error"
+  }
 }
