@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import { ArticleContainer } from "../../molecules";
-import { Button, useBoolean } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { Box } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { productsList } from "../../../jotai/atoms";
+import { useEffect, useRef, useState } from 'react';
+import { ArticleContainer } from '../../molecules';
+import { Button, useBoolean } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { Box } from '@chakra-ui/react';
+import { useAtomValue } from 'jotai';
+import { productsList } from '../../../jotai/atoms';
 
 const CardContainer = () => {
   const config = {
@@ -34,9 +34,9 @@ const CardContainer = () => {
         event?.clientY > cardBounds.top - config.proximity &&
         event?.clientY < cardBounds.top + cardBounds.height + config.proximity
       ) {
-        card.style.setProperty("--active", 1);
+        card.style.setProperty('--active', 1);
       } else {
-        card.style.setProperty("--active", config.opacity);
+        card.style.setProperty('--active', config.opacity);
       }
 
       const cardCenter = [
@@ -53,7 +53,7 @@ const CardContainer = () => {
         Math.PI;
       angle = angle < 0 ? angle + 360 : angle;
 
-      card.style.setProperty("--start", angle + 90);
+      card.style.setProperty('--start', angle + 90);
     }
   };
 
@@ -64,20 +64,20 @@ const CardContainer = () => {
   useEffect(() => {
     // Initial setup
     setCards(cardRefs.current);
-    containerRef.current.style.setProperty("--gap", config.gap);
-    containerRef.current.style.setProperty("--blur", config.blur);
-    containerRef.current.style.setProperty("--spread", config.spread);
+    containerRef.current.style.setProperty('--gap', config.gap);
+    containerRef.current.style.setProperty('--blur', config.blur);
+    containerRef.current.style.setProperty('--spread', config.spread);
     containerRef.current.style.setProperty(
-      "--direction",
-      config.vertical ? "column" : "row"
+      '--direction',
+      config.vertical ? 'column' : 'row'
     );
 
     // Event listeners
-    document.body.addEventListener("pointermove", handleMouseMove);
+    document.body.addEventListener('pointermove', handleMouseMove);
 
     // Cleanup
     return () => {
-      document.body.removeEventListener("pointermove", handleMouseMove);
+      document.body.removeEventListener('pointermove', handleMouseMove);
     };
   }, [config, cards]);
 
@@ -87,18 +87,18 @@ const CardContainer = () => {
         className="container"
         ref={containerRef}
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          flexDirection: config.vertical ? "column" : "row",
+          display: 'flex',
+          flexWrap: 'wrap',
+          flexDirection: config.vertical ? 'column' : 'row',
           gap: `${config.gap}px`,
-          margin: "0 auto",
-          justifyContent: "center",
-          placeItems: "center",
-          position: "relative",
-          padding: "2rem 0 2rem 0",
-          touchAction: "none",
-          width: "100%",
-          background: "snow",
+          margin: '0 auto',
+          justifyContent: 'center',
+          placeItems: 'center',
+          position: 'relative',
+          padding: '2rem 0 2rem 0',
+          touchAction: 'none',
+          width: '100%',
+          background: 'snow',
         }}
       >
         {showAllProducts
@@ -131,8 +131,8 @@ const CardContainer = () => {
             color="#777978"
             border="1px solid #C2CEC9"
             _hover={{
-              color: "white",
-              background: "#777978",
+              color: 'white',
+              background: '#777978',
               border: 0,
               opacity: 0.8,
             }}

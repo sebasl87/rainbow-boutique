@@ -6,6 +6,7 @@ import { useAtomValue } from 'jotai';
 import CartBottomBar from '../../components/molecules/CartBottomBar';
 
 import { CartCardTable } from '../../components';
+import { useRouter } from 'next/router';
 
 export const CartScreen = () => {
   const cart = useAtomValue(cartAtom);

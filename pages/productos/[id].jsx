@@ -1,13 +1,16 @@
-import { Box } from "@chakra-ui/react";
-import ProductSlider from "../../components/molecules/ProductSlider";
-import { ProductDetailsAddCartDescription } from "../../components/organisms";
-import ShadowRainbow from "../../components/templates/ShadowRainbow";
-import { useParams } from "react-router-dom";
-import { GET_PRODUCT } from "../../api/apollo/querys";
-import { useQuery } from "@apollo/client";
+import { Box } from '@chakra-ui/react';
+import ProductSlider from '../../components/molecules/ProductSlider';
+import { ProductDetailsAddCartDescription } from '../../components/organisms';
+import ShadowRainbow from '../../components/templates/ShadowRainbow';
+
+import { GET_PRODUCT } from '../../api/apollo/querys';
+import { useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 export const DetailProductScreen = () => {
-  const { id } = useParams();
+  const {
+    query: { id },
+  } = useRouter();
   const { data, loading } = useQuery(GET_PRODUCT, {
     variables: { id },
   });
@@ -19,10 +22,10 @@ export const DetailProductScreen = () => {
         padding={{ base: 3, md: 6, lg: 9 }}
         display="flex"
         width="100vw"
-        flexDirection={{ base: "column", md: "row" }}
+        flexDirection={{ base: 'column', md: 'row' }}
         mt={{ base: 6, md: 8, lg: 10 }}
         mb={{ base: 14, md: 50, lg: 29 }}
-        justifyContent={{ md: "space-around", lg: "space-between" }}
+        justifyContent={{ md: 'space-around', lg: 'space-between' }}
       >
         <ShadowRainbow>
           <ProductSlider
