@@ -1,8 +1,8 @@
-import { Box, Center, HStack } from "@chakra-ui/react";
-import ColorSelector from "../ColorSelector";
-import SizeSelector from "../SizeSelector";
-import { useState } from "react";
-import ProductCartButton from "../ProductCartButton";
+import { Box, Center, HStack } from '@chakra-ui/react';
+import ColorSelector from '../ColorSelector';
+import SizeSelector from '../SizeSelector';
+import { useState } from 'react';
+import ProductCartButton from '../ProductCartButton';
 
 export const HoverBox = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState(0);

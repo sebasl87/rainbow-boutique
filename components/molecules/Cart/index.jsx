@@ -1,4 +1,4 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image } from '@chakra-ui/react';
 
 export const Cart = ({ itemsCart, handleClick }) => {
   return (
@@ -22,7 +22,7 @@ export const Cart = ({ itemsCart, handleClick }) => {
           position="absolute"
           borderRadius="50%"
           background="#E53E3E"
-          fontSize={{ base: "12px", md: "14px" }}
+          fontSize={{ base: '12px', md: '14px' }}
           fontWeight="500"
           display="flex"
           justifyContent="center"

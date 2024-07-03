@@ -1,4 +1,4 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button } from '@chakra-ui/react';
 
 const ColorSelector = ({
   colors,
@@ -17,17 +17,17 @@ const ColorSelector = ({
         {colors.map((color, index) => (
           <Button
             key={color}
-            width={{ base: "15px", md: "20px" }}
-            height={{ base: "15px", md: "20px" }}
+            width={{ base: '15px', md: '20px' }}
+            height={{ base: '15px', md: '20px' }}
             minWidth="0"
             minHeight="0"
             padding="0"
             backgroundColor={color}
             borderRadius="50%"
             _hover={{ opacity: 0.5 }}
-            border={selectedColor === index ? "2px" : "none"}
+            border={selectedColor === index ? '2px' : 'none'}
             borderColor="#797B7A"
-            _focus={{ outline: "none" }}
+            _focus={{ outline: 'none' }}
             onClick={() => setSelectedColor(index)}
             margin={2}
           />

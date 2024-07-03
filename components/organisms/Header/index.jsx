@@ -34,6 +34,7 @@ export const Header = () => {
     if (!loading && data) {
       setProductsList(data.products);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const itemsInCart = useAtomValue(productsInCart);

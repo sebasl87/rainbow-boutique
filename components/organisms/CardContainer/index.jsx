@@ -79,6 +79,7 @@ const CardContainer = () => {
     return () => {
       document.body.removeEventListener('pointermove', handleMouseMove);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config, cards]);
 
   return (

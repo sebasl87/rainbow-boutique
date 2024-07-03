@@ -1,12 +1,12 @@
-import { Client } from "@/api/apollo";
-import { APPLY_COUPON_TO_CART, GET_CART } from "@/api/apollo/querys/cart";
-import { cartAtom, orderSummaryAtom } from "@/jotai/atoms";
-import { Box, Button, Input, InputGroup, useToast } from "@chakra-ui/react";
-import { useAtom, useSetAtom } from "jotai";
-import { useState } from "react";
+import { Client } from '@/api/apollo';
+import { APPLY_COUPON_TO_CART, GET_CART } from '@/api/apollo/querys/cart';
+import { cartAtom, orderSummaryAtom } from '@/jotai/atoms';
+import { Box, Button, Input, InputGroup, useToast } from '@chakra-ui/react';
+import { useAtom, useSetAtom } from 'jotai';
+import { useState } from 'react';
 
-export const CouponCard = ({ discount = "10" }) => {
-  const [coupon, setCoupon] = useState({ coupon: "" });
+export const CouponCard = ({ discount = '10' }) => {
+  const [coupon, setCoupon] = useState({ coupon: '' });
   const [cartData] = useAtom(cartAtom);
   const setOrderSummary = useSetAtom(orderSummaryAtom);
 
@@ -33,7 +33,7 @@ export const CouponCard = ({ discount = "10" }) => {
           },
           context: {
             headers: {
-              Authorization: `Bearer PONER TOKEN AQUI`,
+              Authorization: 'Bearer PONER TOKEN AQUI',
             },
           },
         });
@@ -42,7 +42,7 @@ export const CouponCard = ({ discount = "10" }) => {
           query: GET_CART,
           context: {
             headers: {
-              Authorization: `Bearer PONER TOKEN AQUI`,
+              Authorization: 'Bearer PONER TOKEN AQUI',
             },
           },
         });
@@ -52,26 +52,26 @@ export const CouponCard = ({ discount = "10" }) => {
           prices: getCartResponse.data.customerCart.prices,
         });
         toast({
-          title: "Descuento aplicado!",
+          title: 'Descuento aplicado!',
           description: `Fue aplicado un descuento del ${discount}% sobre el valor de tu compra.`,
-          status: "success",
+          status: 'success',
           duration: 5000,
           isClosable: true,
         });
       } catch (error) {
         toast({
-          title: "Descuento no aplicado",
-          description: "El cupón es inválido o no aplicable para esta compra.",
-          status: "error",
+          title: 'Descuento no aplicado',
+          description: 'El cupón es inválido o no aplicable para esta compra.',
+          status: 'error',
           duration: 5000,
           isClosable: true,
         });
       }
     } else {
       toast({
-        title: "Descuento no aplicado",
-        description: "El cupón es inválido o no aplicable para esta compra.",
-        status: "error",
+        title: 'Descuento no aplicado',
+        description: 'El cupón es inválido o no aplicable para esta compra.',
+        status: 'error',
         duration: 5000,
         isClosable: true,
       });
@@ -86,7 +86,7 @@ export const CouponCard = ({ discount = "10" }) => {
       border="1px solid  #E2E8F0"
       borderRadius={6}
       padding={{ base: 3, md: 4 }}
-      maxW={{ base: "100%", md: 349, lg: 382 }}
+      maxW={{ base: '100%', md: 349, lg: 382 }}
       height="fit-content"
       mb={{ base: 76, md: 0 }}
     >
@@ -108,7 +108,7 @@ export const CouponCard = ({ discount = "10" }) => {
               placeholder="Ingresar cupón"
               value={coupon.coupon}
               handleOnluBlur={(e) =>
-                handleInputChange("coupon", e.target.value)
+                handleInputChange('coupon', e.target.value)
               }
             />
           </InputGroup>
@@ -116,7 +116,7 @@ export const CouponCard = ({ discount = "10" }) => {
         <Box display="flex" ml={{ base: 2, md: 3 }}>
           <Button
             buttonText="Aplicar"
-            size={{ base: "sm", md: "md", lg: "lg" }}
+            size={{ base: 'sm', md: 'md', lg: 'lg' }}
             handleClick={handleSendCoupon}
           />
         </Box>

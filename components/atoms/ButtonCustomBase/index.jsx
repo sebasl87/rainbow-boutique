@@ -1,4 +1,4 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button } from '@chakra-ui/react';
 
 export const ButtonCustomBase = ({
   buttonText,
@@ -26,14 +26,14 @@ export const ButtonCustomBase = ({
           bg="danoneBlue"
           color="white"
           _disabled={{
-            bg: "#EDF2F7",
-            color: "#A0AEC0",
-            cursor: "not-allowed",
-            pointerEvents: "none",
+            bg: '#EDF2F7',
+            color: '#A0AEC0',
+            cursor: 'not-allowed',
+            pointerEvents: 'none',
           }}
-          _hover={{ background: "#3182CE" }}
-          _active={{ bg: "#002677" }}
-          size={{ base: "sm", md: "md", lg: "lg" }}
+          _hover={{ background: '#3182CE' }}
+          _active={{ bg: '#002677' }}
+          size={{ base: 'sm', md: 'md', lg: 'lg' }}
         >
           {buttonText}
         </Button>

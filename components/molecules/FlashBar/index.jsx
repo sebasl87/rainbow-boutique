@@ -4,15 +4,15 @@ import {
   Flex,
   useColorModeValue,
   Container,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 // Here we have used react-icons package for the icon
 
 const data = {
-  heading: "Rainbow",
-  subHeading: "Baby boutique",
+  heading: 'Rainbow',
+  subHeading: 'Baby boutique',
 
   image:
-    "https://imgtr.ee/images/2024/02/18/81cd170e997a22e4e8168cf472b949be.jpeg",
+    'https://imgtr.ee/images/2024/02/18/81cd170e997a22e4e8168cf472b949be.jpeg',
 };
 
 export const FlashBar = () => {
@@ -20,8 +20,8 @@ export const FlashBar = () => {
     <Container maxW="1880px" my={{ base: 5, md: 10 }} padding={0}>
       <Flex
         boxShadow={useColorModeValue(
-          "0 4px 6px rgba(160, 174, 192, 0.6)",
-          "0 4px 6px rgba(9, 17, 28, 0.9)"
+          '0 4px 6px rgba(160, 174, 192, 0.6)',
+          '0 4px 6px rgba(9, 17, 28, 0.9)'
         )}
         backgroundSize="cover"
         backgroundImage={`url(${data.image})`}

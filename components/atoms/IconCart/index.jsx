@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 export const IconCart = ({
-  width = "18px",
-  height = "18px",
-  fillColor = "white",
+  width = '18px',
+  height = '18px',
+  fillColor = 'white',
 }) => {
   return (
-    <span style={{ marginRight: "8px" }}>
+    <span style={{ marginRight: '8px' }}>
       <svg
         width={width}
         height={height}

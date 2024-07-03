@@ -1,7 +1,7 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, Image } from "@chakra-ui/react";
-import { useState } from "react";
-import DiscountChip from "../../atoms/DiscountChip";
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Box, Flex, IconButton, Image } from '@chakra-ui/react';
+import { useState } from 'react';
+import DiscountChip from '../../atoms/DiscountChip';
 
 const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,7 +20,7 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
 
   return (
     <Box
-      width={{ base: "100%", md: 312, lg: 532 }}
+      width={{ base: '100%', md: 312, lg: 532 }}
       display="flex"
       flexDirection="column"
       alignItems="center"
@@ -49,7 +49,7 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
         />
         <Flex
           position="absolute"
-          top={{ base: 16, md: "45%" }}
+          top={{ base: 16, md: '45%' }}
           left={0}
           right={0}
           justifyContent="space-between"
@@ -66,8 +66,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             variant="outline"
             border="none"
             _hover={{ padding: 0 }}
-            _active={{ background: "transparent" }}
-            _focus={{ border: "none", outline: "none", boxShadow: "none" }}
+            _active={{ background: 'transparent' }}
+            _focus={{ border: 'none', outline: 'none', boxShadow: 'none' }}
           />
           <IconButton
             aria-label="Next Image"
@@ -80,8 +80,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             onClick={handleNextImage}
             variant="outline"
             _hover={{ padding: 0 }}
-            _active={{ background: "transparent" }}
-            _focus={{ border: "none", outline: "none", boxShadow: "none" }}
+            _active={{ background: 'transparent' }}
+            _focus={{ border: 'none', outline: 'none', boxShadow: 'none' }}
             border="none"
           />
         </Flex>
@@ -97,7 +97,7 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             borderWidth={1}
             borderRadius={4}
             borderColor={
-              currentImageIndex === index ? "#777978" : "transparent"
+              currentImageIndex === index ? '#777978' : 'transparent'
             }
             cursor="pointer"
             onClick={() => setCurrentImageIndex(index)}

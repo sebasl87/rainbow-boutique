@@ -1,8 +1,8 @@
-import { ButtonCustomIcon, IconCart } from "../../atoms";
+import { ButtonCustomIcon, IconCart } from '../../atoms';
 
-import { useAtom } from "jotai";
-import { productsInCart } from "../../../jotai/atoms";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { useAtom } from 'jotai';
+import { productsInCart } from '../../../jotai/atoms';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 export const ProductCartButton = ({ productId, size, color }) => {
   const [products, setProductsInCart] = useAtom(productsInCart);

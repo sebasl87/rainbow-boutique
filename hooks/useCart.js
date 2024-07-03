@@ -2,11 +2,11 @@ import {
   ADD_ITEM,
   REMOVE_ITEM,
   SUBSTRACT_ITEM,
-} from "@/api/apollo/mutations/products";
-import { cartAtom, itemsListInCart } from "@/jotai/atoms";
-import { useMutation } from "@apollo/client";
-import { useAtom } from "jotai";
-import { useEffect } from "react";
+} from '@/api/apollo/mutations/products';
+import { cartAtom, itemsListInCart } from '@/jotai/atoms';
+import { useMutation } from '@apollo/client';
+import { useAtom } from 'jotai';
+import { useEffect } from 'react';
 
 const useCart = (sku) => {
 
@@ -19,7 +19,7 @@ const useCart = (sku) => {
     {
       context: {
         headers: {
-          Authorization: `Bearer PONER TOKEN AQUI`,
+          Authorization: 'Bearer PONER TOKEN AQUI',
         },
       },
     }
@@ -30,7 +30,7 @@ const useCart = (sku) => {
     {
       context: {
         headers: {
-          Authorization: `Bearer PONER TOKEN AQUI`,
+          Authorization: 'Bearer PONER TOKEN AQUI',
         },
       },
     }
@@ -39,7 +39,7 @@ const useCart = (sku) => {
     useMutation(REMOVE_ITEM, {
       context: {
         headers: {
-          Authorization: `Bearer PONER TOKEN AQUI`,
+          Authorization: 'Bearer PONER TOKEN AQUI',
         },
       },
     });
@@ -51,7 +51,7 @@ const useCart = (sku) => {
       setItemsL(addData.addProductsToCart.cart.items);
       setCart((prev) => ({
         ...prev,
-        id: prev?.id || "defaultId",
+        id: prev?.id || 'defaultId',
         total_quantity: addData.addProductsToCart.cart.total_quantity,
       }));
     }
@@ -62,7 +62,7 @@ const useCart = (sku) => {
       setItemsL(subsData.updateCartItems.cart.items);
       setCart((prev) => ({
         ...prev,
-        id: prev?.id || "defaultId",
+        id: prev?.id || 'defaultId',
         total_quantity: subsData.updateCartItems.cart.total_quantity,
       }));
     }
@@ -73,7 +73,7 @@ const useCart = (sku) => {
       setItemsL(removeData.removeItemFromCart.cart.items);
       setCart((prev) => ({
         ...prev,
-        id: prev?.id || "defaultId",
+        id: prev?.id || 'defaultId',
         total_quantity: removeData.removeItemFromCart.cart.total_quantity,
       }));
     }

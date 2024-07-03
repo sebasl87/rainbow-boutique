@@ -1,8 +1,8 @@
-import { AbsoluteCenter, Box, Divider } from "@chakra-ui/react";
+import { AbsoluteCenter, Box, Divider } from '@chakra-ui/react';
 
 export const DividerTitle = ({
-  lineColor = "#E2E8F0",
-  textColor = "#718096",
+  lineColor = '#E2E8F0',
+  textColor = '#718096',
   text,
   width,
 }) => {
@@ -14,7 +14,7 @@ export const DividerTitle = ({
           bg="white"
           px="0"
           width={width}
-          fontSize={{ base: "12px", lg: "14px" }}
+          fontSize={{ base: '12px', lg: '14px' }}
           color={textColor}
         >
           {text}
