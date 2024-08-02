@@ -1,5 +1,5 @@
-import { Box, Spinner } from '@chakra-ui/react';
-import { FlashBar, BannerCart } from '@/components/molecules';
+import { Box, Image, Spinner } from '@chakra-ui/react';
+import { FlashBar } from '@/components/molecules';
 import CardContainer from '../components/organisms/CardContainer';
 import SeoHome from '../Seo/seoHome';
 import { productsList } from '../jotai/atoms';
@@ -24,7 +24,7 @@ export const Home = () => {
         width="100%"
         alignItems="center"
       >
-        <BannerCart />
+        <Image src={'/banner_rainbow.png'} alt="carrito" h={478} w="100%" />
         {isLoading ? (
           <Spinner
             thickness="4px"
