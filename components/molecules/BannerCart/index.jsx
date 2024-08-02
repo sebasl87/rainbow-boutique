@@ -13,7 +13,7 @@ export const BannerCart = () => {
       rounded={6}
     >
       <Image
-        src={'/carrito.png'}
+        src={'/banner_rainbow.png'}
         alt="carrito"
         h={{ base: 64, md: 80 }}
         w="100%"

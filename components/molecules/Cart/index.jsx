@@ -1,4 +1,5 @@
-import { Box, Image } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 export const Cart = ({ itemsCart, handleClick }) => {
   return (
@@ -8,15 +9,10 @@ export const Cart = ({ itemsCart, handleClick }) => {
       cursor="pointer"
       onClick={handleClick}
       data-testid="cartIcon"
+      ml={{ base: 4, md: 6 }}
     >
-      <Image
-        width={{ base: 8, md: 9, lg: 10 }}
-        src="/cart.svg"
-        alt="cart"
-        // backgroundColor="transparent"
-        color="red"
-        fill="red"
-      />
+      <AiOutlineShoppingCart size={48} color="#797B7A" />
+
       {itemsCart && itemsCart.length > 0 && (
         <Box
           position="absolute"
@@ -30,8 +26,8 @@ export const Cart = ({ itemsCart, handleClick }) => {
           width={{ base: 5, md: 6 }}
           height={{ base: 5, md: 6 }}
           alignItems="center"
-          mt={{ base: -10, md: -46, lg: -12 }}
-          ml={{ base: 3, md: 3, lg: 4 }}
+          mt={-6}
+          ml={6}
           px={{ md: 1 }}
           pb={{ md: 0.5 }}
           flexDirection="column"

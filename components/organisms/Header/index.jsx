@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { productsInCart, productsList } from '../../../jotai/atoms';
 import { useLazyQuery } from '@apollo/client';
 import { SEARCH_PRODUCT } from '../../../api/apollo/querys/products';
+import { BsEnvelopeArrowUp } from 'react-icons/bs';
 
 export const Header = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ export const Header = () => {
     if (!loading && data) {
       setProductsList(data.products);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const itemsInCart = useAtomValue(productsInCart);
@@ -49,7 +50,6 @@ export const Header = () => {
       top="0"
       left="0"
       right="0"
-      bg="snow"
       zIndex="999"
     >
       {desktop ? (
@@ -64,13 +64,13 @@ export const Header = () => {
             data-testid="logoImage"
             src="/RainbowLogo.png"
             alt="logo"
-            w={{ lg: 20 }}
+            w={{ lg: 320 }}
             onClick={() => router.push('/')}
             cursor="pointer"
           />
-          <Box maxWidth="504px" display="flex" width="100%" ml="64px">
+          <Box maxWidth={488} display="flex" width="100%" ml="64px">
             <InputSearch
-              placeHolder="Buscar productos"
+              placeHolder="¿Qué estas buscando?"
               handleInputChange={(e) => setSearchText(e.target.value)}
               handleOnKeyDown={pressEnter}
               handleClickOnIcon={() =>
@@ -79,23 +79,18 @@ export const Header = () => {
               }
             />
           </Box>
-          <Box ml="64px" width="100%" maxW={108}>
-            <Text
-              fontSize={16}
-              cursor="pointer"
-              fontFamily="RainbowRegular"
-              _hover={{ color: '#7A7C7B' }}
-            >
-              Escribinos...
-            </Text>
-          </Box>
+          {/* <Box ml="64px" width="100%" maxW={108}>
+            <BsEnvelopeArrowUp size={48} color="#797B7A" />
+          </Box> */}
           <Box
-            maxW="72px"
+            // maxW="72px"
             display="flex"
             justifyContent="flex-end"
-            width="100%"
+            // width="100%"
           >
+            <BsEnvelopeArrowUp size={48} color="#797B7A" />
             <Cart
+              ml="64px"
               itemsCart={itemsInCart}
               handleClick={() => router.push('/carrito')}
             />
