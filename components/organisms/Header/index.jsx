@@ -51,6 +51,7 @@ export const Header = () => {
       left="0"
       right="0"
       zIndex="999"
+      bg="#fff"
     >
       {desktop ? (
         <Box

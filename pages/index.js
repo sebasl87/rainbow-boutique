@@ -1,5 +1,4 @@
 import { Box, Image, Spinner } from '@chakra-ui/react';
-import { FlashBar } from '@/components/molecules';
 import CardContainer from '../components/organisms/CardContainer';
 import SeoHome from '../Seo/seoHome';
 import { productsList } from '../jotai/atoms';
@@ -36,7 +35,6 @@ export const Home = () => {
         ) : (
           <CardContainer />
         )}
-        <FlashBar />
       </Box>
     </>
   );
