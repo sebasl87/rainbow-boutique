@@ -1,20 +1,20 @@
-import { Cart, InputSearch } from '@/components/molecules';
-import { useBreakpoints } from '@/hooks';
+import { Cart, InputSearch } from "@/components/molecules";
+import { useBreakpoints } from "@/hooks";
 
-import { Box, Image, Text } from '@chakra-ui/react';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { Box, Image, Text } from "@chakra-ui/react";
+import { useAtomValue, useSetAtom } from "jotai";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { productsInCart, productsList } from '../../../jotai/atoms';
-import { useLazyQuery } from '@apollo/client';
-import { SEARCH_PRODUCT } from '../../../api/apollo/querys/products';
-import { BsEnvelopeArrowUp } from 'react-icons/bs';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { productsInCart, productsList } from "../../../jotai/atoms";
+import { useLazyQuery } from "@apollo/client";
+import { SEARCH_PRODUCT } from "../../../api/apollo/querys/products";
+import { BsEnvelopeArrowUp } from "react-icons/bs";
 
 export const Header = () => {
   const router = useRouter();
 
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   const { desktop } = useBreakpoints();
   const [getProductsBySearch, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
@@ -22,11 +22,11 @@ export const Header = () => {
   const setProductsList = useSetAtom(productsList);
 
   const pressEnter = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       if (searchText.length > 2) {
         getProductsBySearch({ variables: { text: searchText } });
       } else {
-        getProductsBySearch({ variables: { text: '' } });
+        getProductsBySearch({ variables: { text: "" } });
       }
     }
   };
@@ -52,6 +52,7 @@ export const Header = () => {
       right="0"
       zIndex="999"
       bg="#fff"
+      boxShadow="0 4px 8px -2px rgba(0, 0, 0, 0.3)"
     >
       {desktop ? (
         <Box
@@ -65,8 +66,8 @@ export const Header = () => {
             data-testid="logoImage"
             src="/RainbowLogo.png"
             alt="logo"
-            w={{ lg: 320 }}
-            onClick={() => router.push('/')}
+            w="320px"
+            onClick={() => router.push("/")}
             cursor="pointer"
           />
           <Box maxWidth={488} display="flex" width="100%" ml="64px">
@@ -80,48 +81,39 @@ export const Header = () => {
               }
             />
           </Box>
-          {/* <Box ml="64px" width="100%" maxW={108}>
-            <BsEnvelopeArrowUp size={48} color="#797B7A" />
-          </Box> */}
-          <Box
-            // maxW="72px"
-            display="flex"
-            justifyContent="flex-end"
-            // width="100%"
-          >
+          <Box display="flex" justifyContent="flex-end" marginLeft="16px">
             <BsEnvelopeArrowUp size={48} color="#797B7A" />
             <Cart
               ml="64px"
               itemsCart={itemsInCart}
-              handleClick={() => router.push('/carrito')}
+              handleClick={() => router.push("/carrito")}
             />
           </Box>
         </Box>
       ) : (
         <Box display="flex" width="100%" flexDirection="column">
           <Box
-            height={{ base: '72px', md: '80px' }}
+            height={{ base: "70px", md: "80px" }}
             display="flex"
             justifyContent="space-between"
             px={{ base: 4, md: 6 }}
-            py={{ base: 4, md: 5 }}
             alignItems="center"
           >
             <Image
               data-testid="logoImageMobile"
               src="/RainbowLogo.png"
               alt="logoMobile"
-              w={{ base: '32px', md: '60px' }}
-              onClick={() => router.push('/')}
+              w={{ base: "150px", md: "200px" }}
+              onClick={() => router.push("/")}
               cursor="pointer"
             />
             <Cart
               itemsCart={itemsInCart}
-              handleClick={() => router.push('/e-commerce/cart')}
+              handleClick={() => router.push("/e-commerce/cart")}
             />
           </Box>
           <Box
-            height={{ base: '56px', md: '72px' }}
+            height={{ base: "68px", md: "72px" }}
             display="flex"
             justifyContent="space-between"
             px={{ base: 4, md: 6 }}

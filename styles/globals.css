@@ -7,7 +7,7 @@
 }
 
 :root {
-  width: 100%;
+  /* width: 100%; */
   --bg: hsl(246 44% 7%);
   --border: hsl(280 10% 50% / 1);
   --card: hsl(237 36% 10%);
@@ -31,7 +31,7 @@
   box-sizing: border-box;
 }
 #root {
-  width: 100%;
+  /* width: 100%; */
   padding: 0 4rem;
 }
 @property --start {
@@ -44,7 +44,7 @@ body {
   background: var(--bg);
   display: grid;
   place-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   font-family: "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons",
     "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
   font-weight: 70;

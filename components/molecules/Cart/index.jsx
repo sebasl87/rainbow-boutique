@@ -1,7 +1,9 @@
 import { Box } from '@chakra-ui/react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useBreakpoints } from '@/hooks';
 
 export const Cart = ({ itemsCart, handleClick }) => {
+  const { tablet } = useBreakpoints();
   return (
     <Box
       position="relative"
@@ -11,7 +13,7 @@ export const Cart = ({ itemsCart, handleClick }) => {
       data-testid="cartIcon"
       ml={{ base: 4, md: 6 }}
     >
-      <AiOutlineShoppingCart size={48} color="#797B7A" />
+      <AiOutlineShoppingCart size={tablet ? 48 : 32} color="#797B7A" />
 
       {itemsCart && itemsCart.length > 0 && (
         <Box

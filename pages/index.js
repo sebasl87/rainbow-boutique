@@ -1,10 +1,11 @@
-import { Box, Image, Spinner } from '@chakra-ui/react';
-import CardContainer from '../components/organisms/CardContainer';
-import SeoHome from '../Seo/seoHome';
-import { productsList } from '../jotai/atoms';
-import { useSetAtom } from 'jotai';
-import { useQuery } from '@apollo/client';
-import { GET_ALL_PRODUCTS } from '../api/apollo/querys';
+import { Box, Image, Spinner } from "@chakra-ui/react";
+import CardContainer from "../components/organisms/CardContainer";
+import SeoHome from "../Seo/seoHome";
+import { productsList } from "../jotai/atoms";
+import { useSetAtom } from "jotai";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_PRODUCTS } from "../api/apollo/querys";
+import { HomeScreen } from "@/components/Screens";
 
 export const Home = () => {
   const setProductsList = useSetAtom(productsList);
@@ -14,10 +15,12 @@ export const Home = () => {
     },
   });
 
+  console.log(productsList);
+
   return (
     <>
       <SeoHome />
-      <Box
+      {/* <Box
         display="flex"
         flexDirection="column"
         width="100%"
@@ -35,7 +38,10 @@ export const Home = () => {
         ) : (
           <CardContainer />
         )}
-      </Box>
+      </Box> */}
+      {/* <CardContainer /> */}
+
+      <HomeScreen />
     </>
   );
 };
