@@ -1,5 +1,3 @@
-import { Box, Image, Spinner } from "@chakra-ui/react";
-import CardContainer from "../components/organisms/CardContainer";
 import SeoHome from "../Seo/seoHome";
 import { productsList } from "../jotai/atoms";
 import { useSetAtom } from "jotai";
