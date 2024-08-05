@@ -3,6 +3,7 @@ import { ButtonCustomIcon, IconCart } from '../../atoms';
 import { useAtom } from 'jotai';
 import { productsInCart } from '../../../jotai/atoms';
 import { DeleteIcon } from '@chakra-ui/icons';
+import { Button } from '@chakra-ui/react';
 
 export const ProductCartButton = ({ productId, size, color }) => {
   const [products, setProductsInCart] = useAtom(productsInCart);
@@ -10,6 +11,7 @@ export const ProductCartButton = ({ productId, size, color }) => {
     const updatedProducts = [...products, { productId, size, color }];
     setProductsInCart(updatedProducts);
   };
+
   const removeFromCart = () => {
     const updatedProducts = products.filter(
       (product) =>
@@ -19,7 +21,6 @@ export const ProductCartButton = ({ productId, size, color }) => {
     );
     setProductsInCart(updatedProducts);
   };
-
 
   const isInCart = products.some(
     (product) =>
@@ -31,17 +32,35 @@ export const ProductCartButton = ({ productId, size, color }) => {
   return (
     <>
       {isInCart ? (
-        <ButtonCustomIcon
-          buttonText="Quitar"
-          iconLeft={<DeleteIcon />}
-          handleClick={removeFromCart}
-        />
+        <Button
+          backgroundColor={'rainbowGreen'}
+          onClick={removeFromCart}
+          size="md"
+          height="48px"
+          width="216px"
+          color="rainbowGray"
+          border={'0'}
+          _active={{ border: '0' }}
+          _focus={{ outline: 'none' }}
+          _hover={{ border: '0' }}
+        >
+          Quitar
+        </Button>
       ) : (
-        <ButtonCustomIcon
-          buttonText="Agregar"
-          iconLeft={<IconCart />}
-          handleClick={addToCart}
-        />
+        <Button
+          backgroundColor={'rainbowGreen'}
+          onClick={addToCart}
+          size="md"
+          height="48px"
+          width="216px"
+          color="rainbowGray"
+          _active={{ border: '0' }}
+          _focus={{ outline: 'none' }}
+          _hover={{ border: '0' }}
+
+        >
+          Comprar
+        </Button>
       )}
     </>
   );

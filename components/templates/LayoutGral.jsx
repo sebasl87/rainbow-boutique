@@ -20,7 +20,6 @@ export const LayoutGral = ({ children }) => {
           display="flex"
           justifyContent="center"
           maxW="1248px"
-          mb="200px"
         >
           {children}
         </Box>
