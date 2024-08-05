@@ -4,8 +4,9 @@ export const theme = extendTheme({
   colors: {
     rainbowGray: "#797B7A",
     rainbowGrayLight: "#b3b3b3",
-    rainbowGreen: "#c2cec9",
+    rainbowGreen: "#D7ECE8",
     rainbowGreenLight: "#EEF5F4",
+    rainbowPink: "#EBBEB3",
   },
   fonts: {
     body: "Inter, sans-serif", // Configura la fuente para el cuerpo del texto
