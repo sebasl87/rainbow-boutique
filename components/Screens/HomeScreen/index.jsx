@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 
 export const HomeScreen = ({ images }) => {
   const products = useAtomValue(productsList);
-  console.log(products);
   const router = useRouter();
   return (
     <>

@@ -15,31 +15,9 @@ export const Home = () => {
     },
   });
 
-  console.log(productsList);
-
   return (
     <>
       <SeoHome />
-      {/* <Box
-        display="flex"
-        flexDirection="column"
-        width="100%"
-        alignItems="center"
-      >
-        <Image src={'/banner_rainbow.png'} alt="carrito" h={478} w="100%" />
-        {isLoading ? (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
-          />
-        ) : (
-          <CardContainer />
-        )}
-      </Box> */}
-      {/* <CardContainer /> */}
 
       <HomeScreen />
     </>

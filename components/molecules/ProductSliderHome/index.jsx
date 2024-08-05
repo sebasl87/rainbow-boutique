@@ -1,7 +1,13 @@
-import { Box, Flex, IconButton, Image, Button } from "@chakra-ui/react";
+import { Box, Flex, Image, Button } from "@chakra-ui/react";
 import { useState } from "react";
 
-const ProductSliderHome = ({ images, nameProduct, product, price, handleClick }) => {
+const ProductSliderHome = ({
+  images,
+  nameProduct,
+  product,
+  price,
+  handleClick,
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrevImage = () => {
@@ -16,8 +22,8 @@ const ProductSliderHome = ({ images, nameProduct, product, price, handleClick })
     );
   };
 
-  const { stock } = product;  
-  const colors = stock.map(item => item.color.hex);
+  const { stock } = product;
+  const colors = stock.map((item) => item.color.hex);
 
   return (
     <Box>
@@ -26,7 +32,7 @@ const ProductSliderHome = ({ images, nameProduct, product, price, handleClick })
         width="295px"
         justifyContent="center"
         display="flex"
-        cursor="pointer"        
+        cursor="pointer"
       >
         <Image
           src={images[currentImageIndex].url}
@@ -118,28 +124,48 @@ const ProductSliderHome = ({ images, nameProduct, product, price, handleClick })
           </Button>
         </Flex>
       </Box>
-      <Box display="flex" flexDirection="column" pl={8} pt={1} onClick={handleClick} cursor="pointer">
-        <Box color="#797B7A" fontFamily="Nunito" fontSize="20px" fontWeight="500">
+      <Box
+        display="flex"
+        flexDirection="column"
+        pl={8}
+        pt={1}
+        onClick={handleClick}
+        cursor="pointer"
+      >
+        <Box
+          color="#797B7A"
+          fontFamily="Nunito"
+          fontSize="20px"
+          fontWeight="500"
+        >
           {nameProduct}
         </Box>
         <Box color="#797B7A" fontFamily="Nunito" fontSize="14px">
           Del ... al ....
         </Box>
-        <div style={{ display: 'flex', gap: '10px', marginTop: '12px' }}>
+        <div style={{ display: "flex", gap: "10px", marginTop: "12px" }}>
           {colors?.map((color, index) => (
             <div
               key={index}
               style={{
-                width: '20px',
-                height: '20px',
+                width: "20px",
+                height: "20px",
                 backgroundColor: color,
-                borderRadius: '50%',
-                border: '0px'
+                borderRadius: "50%",
+                border: "0px",
               }}
             ></div>
           ))}
         </div>
-        <Box color="#797B7A" fontFamily="Nunito" fontWeight="700" fontSize="20px" mt={2}>{price}</Box>
+        <Box
+          color="#797B7A"
+          fontFamily="Nunito"
+          fontWeight="700"
+          fontSize="20px"
+          mt={2}
+        >
+          {price}
+        </Box>
       </Box>
     </Box>
   );
