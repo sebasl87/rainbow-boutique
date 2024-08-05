@@ -1,14 +1,15 @@
-import ProductSliderHome from "@/components/molecules/ProductSliderHome";
-import { HomeCategories } from "@/components/organisms";
-import { Image, Box } from "@chakra-ui/react";
+import { CategoriesHeader } from "@/components/organisms";
+import { Box, Image } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { useAtomValue } from "jotai";
 import { productsList } from "../../../jotai/atoms";
 import { formatNumberToCurrencyWithoutDecimals } from "../../../styles/utils/formatNumberToCurrencyWithoutDecimals";
-import { useRouter } from "next/router";
+import ProductSliderHome from "../../molecules/ProductSliderHome";
 
-export const HomeScreen = ({ images }) => {
-  const products = useAtomValue(productsList);
+export const Categories = () => {
   const router = useRouter();
+  const products = useAtomValue(productsList);
+  console.log(products);
   return (
     <>
       <Box
@@ -18,14 +19,18 @@ export const HomeScreen = ({ images }) => {
         flexDirection="column"
         alignItems="center"
       >
-        <HomeCategories />
-        <Box w="100%" mt={8} display="flex" justifyContent="center">
-          <Image
-            src={"/banner_rainbow.png"}
-            alt="carrito"
-            w="100%"
-            maxW="1200px"
-          />
+        <CategoriesHeader />
+        <Box
+          cursor="pointer"
+          onClick={() => router.push("/")}
+          color="#797B7A"
+          _hover={{ textDecoration: "underline" }}
+          mt={6}
+          display="flex"
+          width="100%"
+          pl={{ base: 0, md: 2 }}
+        >
+          {"< Volver"}
         </Box>
         <Box
           display="flex"
@@ -34,27 +39,17 @@ export const HomeScreen = ({ images }) => {
           justifyContent="center"
           pt={8}
         >
-          <Image
-            data-testid="logoImage"
-            src="/ArcoLogo.png"
-            alt="logo"
-            w={{ base: "40px", md: "60px" }}
-          />
+          <Image src="/star.png" alt="logo" w="40px" />
           <Box
             color="#797B7A"
             fontFamily="Nunito"
-            fontSize={{ base: "20px", md: "24px" }}
+            fontSize="24px"
             fontWeight="600"
             px={4}
           >
             Destacados
           </Box>
-          <Image
-            data-testid="logoImage"
-            src="/ArcoLogo.png"
-            alt="logo"
-            w={{ base: "40px", md: "60px" }}
-          />
+          <Image src="/star.png" alt="logo" w="40px" />
         </Box>
         <>
           <Box
@@ -93,4 +88,4 @@ export const HomeScreen = ({ images }) => {
   );
 };
 
-export default HomeScreen;
+export default Categories;

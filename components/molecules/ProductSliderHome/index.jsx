@@ -29,7 +29,7 @@ const ProductSliderHome = ({
     <Box>
       <Box
         position="relative"
-        width="295px"
+        width="290px"
         justifyContent="center"
         display="flex"
         cursor="pointer"

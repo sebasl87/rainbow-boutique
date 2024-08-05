@@ -16,7 +16,6 @@ export const Home = () => {
   return (
     <>
       <SeoHome />
-
       <HomeScreen />
     </>
   );

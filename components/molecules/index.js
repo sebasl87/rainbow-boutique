@@ -13,3 +13,4 @@ export * from "./ResumeCartItems";
 export * from "./CartBottomBar";
 export * from "./CategoryCard";
 export * from "./ProductSliderHome";
+export * from "./CategoryCardSmall";
