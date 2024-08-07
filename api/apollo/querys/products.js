@@ -36,7 +36,7 @@ export const GET_ALL_PRODUCTS = gql`
         subtotal
         total
       }
-      photos(first: 1) {
+      photos {
         fileName
         url
       }
