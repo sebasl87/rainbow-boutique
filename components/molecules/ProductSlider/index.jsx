@@ -2,6 +2,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Box, Flex, IconButton, Image } from '@chakra-ui/react';
 import { useState } from 'react';
 import DiscountChip from '../../atoms/DiscountChip';
+import {
+  IoChevronBackCircleOutline,
+  IoChevronForwardCircleOutline,
+} from 'react-icons/io5';
 
 const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -25,13 +29,14 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
       flexDirection="column"
       alignItems="center"
       bg="#fff"
+      p={4}
     >
       <Box
         position="relative"
         width="100%"
         justifyContent="center"
         display="flex"
-        height={{ base: 168, md: 367, lg: 548 }}
+        p={4}
       >
         {isDiscount && (
           <Box position="absolute" width="100%" left={0}>
@@ -42,47 +47,40 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
           src={images[currentImageIndex].url}
           alt={`Product Image ${currentImageIndex}`}
           width="100%"
-          maxW={{ base: 200, md: 250, lg: 460 }}
           objectFit="contain"
-          height={{ base: 168, md: 367, lg: 548 }}
           bg="#fff"
+          borderRadius={16}
         />
         <Flex
           position="absolute"
-          top={{ base: 16, md: '45%' }}
+          top="45%"
           left={0}
           right={0}
           justifyContent="space-between"
         >
           <IconButton
             aria-label="Previous Image"
-            icon={
-              <ChevronLeftIcon
-                viewBox=" 0 0 18 18"
-                color="rgba(0, 38, 119, 1)"
-              />
-            }
+            icon={<IoChevronBackCircleOutline size={48} color="#EBBEB3" />}
             onClick={handlePrevImage}
             variant="outline"
             border="none"
-            _hover={{ padding: 0 }}
+            backgroundColor="#fff"
+            borderRadius="50%"
+            height="auto"
             _active={{ background: 'transparent' }}
             _focus={{ border: 'none', outline: 'none', boxShadow: 'none' }}
           />
           <IconButton
             aria-label="Next Image"
-            icon={
-              <ChevronRightIcon
-                viewBox=" 0 0 18 18"
-                color="rgba(0, 38, 119, 1)"
-              />
-            }
+            icon={<IoChevronForwardCircleOutline size={48} color="#EBBEB3" />}
             onClick={handleNextImage}
             variant="outline"
-            _hover={{ padding: 0 }}
+            border="none"
+            backgroundColor="#fff"
+            borderRadius="50%"
+            height="auto"
             _active={{ background: 'transparent' }}
             _focus={{ border: 'none', outline: 'none', boxShadow: 'none' }}
-            border="none"
           />
         </Flex>
       </Box>
@@ -90,8 +88,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
         {images.map((image, index) => (
           <Box
             key={image.url}
-            w={{ base: 10, md: 12, lg: 16 }}
-            h={{ base: 10, md: 12, lg: 16 }}
+            w={{ base: 24, md: 48, lg: 120 }}
+            h={{ base: 32, md: 52, lg: 132 }}
             bg="#fff"
             mx={2}
             borderWidth={1}

@@ -1,4 +1,4 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 
 const ColorSelector = ({
   colors,
@@ -9,24 +9,27 @@ const ColorSelector = ({
   return (
     <>
       {showTitle && (
-        <Box mt={4} color="#718096" fontSize={{ base: 12, md: 14 }}>
+        <Text
+          fontFamily="rainbowRegular"
+          fontSize={{ base: 16, md: 24, lg: 28 }}
+        >
           Colores disponibles:
-        </Box>
+        </Text>
       )}
       <Box ml={-2}>
         {colors.map((color, index) => (
           <Button
             key={color}
-            width={{ base: '15px', md: '20px' }}
-            height={{ base: '15px', md: '20px' }}
+            width={{ base: '24px', md: '48px' }}
+            height={{ base: '24px', md: '48px' }}
             minWidth="0"
             minHeight="0"
             padding="0"
             backgroundColor={color}
-            borderRadius="50%"
+            borderRadius={8}
             _hover={{ opacity: 0.5 }}
             border={selectedColor === index ? '2px' : 'none'}
-            borderColor="#797B7A"
+            borderColor="rainbowGray"
             _focus={{ outline: 'none' }}
             onClick={() => setSelectedColor(index)}
             margin={2}
