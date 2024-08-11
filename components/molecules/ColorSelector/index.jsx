@@ -10,8 +10,9 @@ const ColorSelector = ({
     <>
       {showTitle && (
         <Text
-          fontFamily="rainbowRegular"
-          fontSize={{ base: 16, md: 24, lg: 28 }}
+          fontFamily="Nunito"
+          fontSize={{ base: 14, md: 16, lg: 20 }}
+          fontWeight={600}
         >
           Colores disponibles:
         </Text>

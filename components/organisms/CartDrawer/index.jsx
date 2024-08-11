@@ -6,11 +6,73 @@ import {
   DrawerBody,
   Box,
   Image,
+  Button,
+  DrawerFooter,
+  Flex,
 } from "@chakra-ui/react";
-import {CartSliderProduct} from "@/components/organisms";
-
+import { CartSliderProduct } from "@/components/organisms";
 
 export const CartDrawer = ({ isOpen, onClose }) => {
+
+  const productsSlice = [
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
+      productPrice: 19000,
+      productImage: "/04.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "#fff",
+      productPrice: 19001,
+      productImage: "/03.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
+      productPrice: 19000,
+      productImage: "/02.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
+      productPrice: 19000,
+      productImage: "/01.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "blue",
+      productPrice: 19000,
+      productImage: "/04.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "green",
+      productPrice: 19001,
+      productImage: "/03.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "orange",
+      productPrice: 19000,
+      productImage: "/02.jpg",
+    },
+     {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "yellow",
+      productPrice: 19000,
+      productImage: "/01.jpg",
+    },
+  ];
+
   return (
     <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
@@ -43,9 +105,34 @@ export const CartDrawer = ({ isOpen, onClose }) => {
           </Box>
         </DrawerHeader>
         <DrawerBody>
-
-          <CartSliderProduct />
+          {productsSlice?.map((product, index) => (
+            <CartSliderProduct
+              productName={product.productName}
+              productTail={product.productTail}
+              productColor={product.productColor}
+              productPrice={product.productPrice} 
+              productImage={product.productImage}
+              key={index}
+            />
+          ))}
         </DrawerBody>
+        <DrawerFooter borderTopWidth="1px">
+          <Flex direction="column" width="full">
+            <Button width="full" mb={4} background="#D7ECE8" color="#797B7A">
+              FINALIZAR COMPRA
+            </Button>
+            <Button
+              width="full"
+              variant="outline"
+              borderColor="#EBBEB3"
+              color="#EBBEB3"
+              fontWeight={400}
+              onClick={onClose}
+            >
+              SEGUIR COMPRANDO
+            </Button>
+          </Flex>
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

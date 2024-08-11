@@ -5,11 +5,12 @@ import { useAtomValue } from "jotai";
 import { productsList } from "../../../jotai/atoms";
 import { formatNumberToCurrencyWithoutDecimals } from "../../../styles/utils/formatNumberToCurrencyWithoutDecimals";
 import ProductSliderHome from "../../molecules/ProductSliderHome";
+import {BreadcrumbRainbow} from "../../molecules/BreadcrumbRainbow";
 
 export const Categories = () => {
   const router = useRouter();
   const products = useAtomValue(productsList);
-  console.log(products);
+  
   return (
     <>
       <Box
@@ -20,18 +21,7 @@ export const Categories = () => {
         alignItems="center"
       >
         <CategoriesHeader />
-        <Box
-          cursor="pointer"
-          onClick={() => router.push("/")}
-          color="#797B7A"
-          _hover={{ textDecoration: "underline" }}
-          mt={6}
-          display="flex"
-          width="100%"
-          pl={{ base: 0, md: 2 }}
-        >
-          {"< Volver"}
-        </Box>
+        <BreadcrumbRainbow isCategoryPage />
         <Box
           display="flex"
           alignItems="center"

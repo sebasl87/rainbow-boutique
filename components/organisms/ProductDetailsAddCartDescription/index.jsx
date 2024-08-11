@@ -33,17 +33,17 @@ export const ProductDetailsAddCartDescription = ({
       flexDirection="column"
     >
       <Text
-        fontFamily="RainbowBold"
+        fontFamily="Nunito"
         fontSize={{ base: 24, lg: 28 }}
-        fontWeight="700"
+        fontWeight="600"
       >
         {tablet
           ? splitText(productTitle || '', 70)
           : splitText(productTitle || '', 60)}
       </Text>
       <Text
-        fontFamily="RainbowBold"
-        fontSize={{ base: 24, lg: 32 }}
+        fontFamily="Nunito"
+        fontSize={{ base: 20, lg: 28 }}
         fontWeight="700"
       >
         {sizeAvailable[selectedColor].sizes.length === 0
@@ -51,7 +51,8 @@ export const ProductDetailsAddCartDescription = ({
           : formatNumberToCurrency(currentValue)}
       </Text>
       <Box
-        mt={{ base: 2, md: 4 }}
+        mt={2}
+        mb={2}
         color="#718096"
         fontSize={{ base: 12, md: 14, lg: 16 }}
         lineHeight={{ base: 4, md: 5, lg: 6 }}

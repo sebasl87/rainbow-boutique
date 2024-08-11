@@ -47,7 +47,7 @@ export const CategoryCard = ({
           borderRadius: "8px",
           border: "4px solid transparent",
           backgroundImage:
-            "linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)",
+            "linear-gradient(90deg, #EBBEB3, #F8D588, #797B7A, #AEDBE8, #D7ECE8)",
           backgroundSize: "400% 100%",
           animation: `${borderAnimation} 3s linear infinite`,
           transition: "opacity 1s ease all",
@@ -65,7 +65,7 @@ export const CategoryCard = ({
         borderRadius: "8px",
         border: "4px solid transparent",
         backgroundImage:
-          "linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)",
+          "linear-gradient(90deg, #EBBEB3, #F8D588, #797B7A, #AEDBE8, #D7ECE8)",
         backgroundSize: "400% 100%",
         opacity: 0,
         transition: "opacity 1s ease all",
