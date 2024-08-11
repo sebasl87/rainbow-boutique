@@ -1,11 +1,8 @@
+import useCart from "@/hooks/useCart";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { Box } from "@chakra-ui/react";
 
-import useCart from '@/hooks/useCart';
-import { DeleteIcon } from '@chakra-ui/icons';
-import { Box } from '@chakra-ui/react';
-
-
-
-export const ResumeCartItems = ({ cartItem }) => {
+export const ResumeCartItemsMini = ({ cartItem }) => {
   const {
     handleSubstractItem,
     handleIncreaseItem,
@@ -17,12 +14,13 @@ export const ResumeCartItems = ({ cartItem }) => {
     <Box display="flex" alignItems="center">
       {isLoading ? (
         <Box
-          width={{ base: 6, md: 8, lg: 10 }}
-          height={{ base: 6, md: 8, lg: 10 }}
+          width={6}
+          height={6}
           display="flex"
           justifyContent="center"
           alignItems="center"
-          marginRight={'2rem'}>
+          marginRight={"2rem"}
+        >
           Cargando...
         </Box>
       ) : (
@@ -31,23 +29,23 @@ export const ResumeCartItems = ({ cartItem }) => {
             color="rgba(113, 128, 150, 0.7)"
             cursor="pointer"
             _hover={{
-              color: 'rgba(113, 128, 150, 1)',
+              color: "rgba(113, 128, 150, 1)",
             }}
-            mr={{ base: 2, lg: 4 }}
-            width={{ base: 3, md: 4 }}
+            mr={2}
+            width={3}
             onClick={() => {
               handleRemoveItem(cartItem?.product.sku);
             }}
           />
           <Box display="flex" border="2px solid #F8D588" borderRadius={24}>
             <Box
-              width={{ base: 6, md: 8, lg: 10 }}
-              height={{ base: 6, md: 8, lg: 10 }}
+              width={6}
+              height={6}
               display="flex"
               alignItems="center"
               justifyContent="center"
               cursor="pointer"
-              _hover={{ background: '#F8D588' }}
+              _hover={{ background: "#F8D588" }}
               background="#fff"
               color="#797B7A"
               borderTopLeftRadius={24}
@@ -57,30 +55,30 @@ export const ResumeCartItems = ({ cartItem }) => {
               fontWeight="500"
               opacity={1}
               fontFamily="Nunito"
-              fontSize="18px"
-              >
+              fontSize="14px"
+            >
               -
             </Box>
             <Box
-              width={{ base: 6, md: 8, lg: 10 }}
-              height={{ base: 6, md: 8, lg: 10 }}
+              width={6}
+              height={6}
               display="flex"
               alignItems="center"
               justifyContent="center"
-              fontSize={{ base: 12, md: 14, lg: 16 }}
+              fontSize={12}
               color="#797B7A"
-              fontFamily="Nunito"              
-              >
+              fontFamily="Nunito"
+            >
               {cartItem?.quantity}
             </Box>
             <Box
-              width={{ base: 6, md: 8, lg: 10 }}
-              height={{ base: 6, md: 8, lg: 10 }}
+              width={6}
+              height={6}
               display="flex"
               alignItems="center"
               justifyContent="center"
               cursor="pointer"
-              _hover={{ background: '#F8D588' }}
+              _hover={{ background: "#F8D588" }}
               background="#fff"
               color="#797B7A"
               borderTopRightRadius={24}
@@ -89,8 +87,8 @@ export const ResumeCartItems = ({ cartItem }) => {
               data-testid="plusItem"
               fontWeight="500"
               fontFamily="Nunito"
-              fontSize="18px"
-              >
+              fontSize="14px"
+            >
               +
             </Box>
           </Box>
@@ -100,4 +98,4 @@ export const ResumeCartItems = ({ cartItem }) => {
   );
 };
 
-export default ResumeCartItems;
+export default ResumeCartItemsMini;

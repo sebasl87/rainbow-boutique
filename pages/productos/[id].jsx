@@ -1,13 +1,16 @@
-import { Box } from '@chakra-ui/react';
-import ProductSlider from '../../components/molecules/ProductSlider';
-import { ProductDetailsAddCartDescription } from '../../components/organisms';
-import ShadowRainbow from '../../components/templates/ShadowRainbow';
-
-import { GET_PRODUCT } from '../../api/apollo/querys';
-import { useQuery } from '@apollo/client';
-import { useRouter } from 'next/router';
+import { Box } from "@chakra-ui/react";
+import ProductSlider from "../../components/molecules/ProductSlider";
+import { ProductDetailsAddCartDescription } from "../../components/organisms";
+import ShadowRainbow from "../../components/templates/ShadowRainbow";
+import { CartDrawer } from "../../components/organisms";
+import { GET_PRODUCT } from "../../api/apollo/querys";
+import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+import { useDisclosure, Button } from "@chakra-ui/react";
 
 export const DetailProductScreen = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const {
     query: { id },
   } = useRouter();
@@ -16,16 +19,24 @@ export const DetailProductScreen = () => {
   });
 
   if (loading) return <p>Cargando...</p>;
+
+  if (loading) return <p>Cargando...</p>;
   return (
     <>
+      <Button colorScheme="blue" onClick={onOpen}>
+        Open
+      </Button>
+
+      <CartDrawer isOpen={isOpen} onClose={onClose} />
+
       <Box
         padding={{ base: 3, md: 6, lg: 9 }}
         display="flex"
         width="100vw"
-        flexDirection={{ base: 'column', md: 'row' }}
+        flexDirection={{ base: "column", md: "row" }}
         mt={{ base: 6, md: 8, lg: 10 }}
         mb={{ base: 14, md: 50, lg: 29 }}
-        justifyContent={{ md: 'space-around', lg: 'space-between' }}
+        justifyContent={{ md: "space-around", lg: "space-between" }}
       >
         <ShadowRainbow>
           <ProductSlider
