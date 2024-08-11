@@ -5,3 +5,5 @@ export * from "./CardContainer";
 export * from "./CartCardTable";
 export * from "./HomeCategories";
 export * from "./CategoriesHeader";
+export * from "./CartDrawer";
+export * from "./CartSliderProduct";

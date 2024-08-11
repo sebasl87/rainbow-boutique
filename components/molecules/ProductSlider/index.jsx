@@ -1,11 +1,11 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Box, Flex, IconButton, Image } from '@chakra-ui/react';
-import { useState } from 'react';
-import DiscountChip from '../../atoms/DiscountChip';
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Box, Flex, IconButton, Image, Button } from "@chakra-ui/react";
+import { useState } from "react";
+import DiscountChip from "../../atoms/DiscountChip";
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
-} from 'react-icons/io5';
+} from "react-icons/io5";
 
 const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -24,7 +24,9 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
 
   return (
     <Box
-      width={{ base: '100%', md: 312, lg: 532 }}
+      width={{ base: "100%", md: 312, lg: 428 }}
+      height={{ base: "100%", md: 418, lg: 574 }}
+      objectFit="cover"
       display="flex"
       flexDirection="column"
       alignItems="center"
@@ -33,7 +35,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
     >
       <Box
         position="relative"
-        width="100%"
+        width={{ base: "100%", md: 312, lg: 428 }}
+        height={{ base: "auto", md: "418px", lg: "574px" }}
         justifyContent="center"
         display="flex"
         p={4}
@@ -47,6 +50,7 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
           src={images[currentImageIndex].url}
           alt={`Product Image ${currentImageIndex}`}
           width="100%"
+          height="100%"
           objectFit="contain"
           bg="#fff"
           borderRadius={16}
@@ -58,44 +62,94 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
           right={0}
           justifyContent="space-between"
         >
-          <IconButton
-            aria-label="Previous Image"
-            icon={<IoChevronBackCircleOutline size={48} color="#EBBEB3" />}
+          <Button
             onClick={handlePrevImage}
-            variant="outline"
+            background="transparent"
             border="none"
-            backgroundColor="#fff"
-            borderRadius="50%"
-            height="auto"
-            _active={{ background: 'transparent' }}
-            _focus={{ border: 'none', outline: 'none', boxShadow: 'none' }}
-          />
-          <IconButton
-            aria-label="Next Image"
-            icon={<IoChevronForwardCircleOutline size={48} color="#EBBEB3" />}
+            outline="none"
+            boxShadow="none"
+            padding="4px"
+            zIndex={2}
+            sx={{
+              "&:hover": {
+                background: "transparent",
+                border: "none",
+                outline: "none",
+              },
+              "&:active": {
+                background: "transparent",
+                border: "none",
+                outline: "none",
+              },
+              "&:focus": { boxShadow: "none", border: "none", outline: "none" },
+              "&:focus-visible": {
+                boxShadow: "none",
+                border: "none",
+                outline: "none",
+              },
+              "&::before": {
+                border: "none",
+                outline: "none",
+                boxShadow: "none",
+              },
+            }}
+          >
+            {" "}
+            <Image src={"/left.png"} width="40px" />
+          </Button>
+          <Button
             onClick={handleNextImage}
-            variant="outline"
+            background="transparent"
             border="none"
-            backgroundColor="#fff"
-            borderRadius="50%"
-            height="auto"
-            _active={{ background: 'transparent' }}
-            _focus={{ border: 'none', outline: 'none', boxShadow: 'none' }}
-          />
+            outline="none"
+            boxShadow="none"
+            padding="4px"
+            zIndex={2}
+            sx={{
+              "&:hover": {
+                background: "transparent",
+                border: "none",
+                outline: "none",
+              },
+              "&:active": {
+                background: "transparent",
+                border: "none",
+                outline: "none",
+              },
+              "&:focus": { boxShadow: "none", border: "none", outline: "none" },
+              "&:focus-visible": {
+                boxShadow: "none",
+                border: "none",
+                outline: "none",
+              },
+              "&::before": {
+                border: "none",
+                outline: "none",
+                boxShadow: "none",
+              },
+            }}
+          >
+            {" "}
+            <Image src={"/right.png"} width="40px" />
+          </Button>
         </Flex>
       </Box>
-      <Flex justifyContent="center" mt={{ base: 2, md: 4 }}>
+      <Flex
+        justifyContent="center"
+        mt={{ base: 2, md: 4 }}
+        width={{ base: "100%", md: 312, lg: 428 }}
+      >
         {images.map((image, index) => (
           <Box
             key={image.url}
             w={{ base: 24, md: 48, lg: 120 }}
-            h={{ base: 32, md: 52, lg: 132 }}
+            h={{ base: 32, md: "96px", lg: 132 }}
             bg="#fff"
             mx={2}
             borderWidth={1}
             borderRadius={4}
             borderColor={
-              currentImageIndex === index ? '#777978' : 'transparent'
+              currentImageIndex === index ? "#718096" : "transparent"
             }
             cursor="pointer"
             onClick={() => setCurrentImageIndex(index)}
@@ -105,7 +159,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
               alt={`Thumbnail ${index}`}
               w="100%"
               h="100%"
-              objectFit="contain"
+              objectFit="cover"
+              borderRadius={4}
             />
           </Box>
         ))}

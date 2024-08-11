@@ -5,3 +5,4 @@ export * from "./DiscountChip";
 export * from "./ButtonCustomBase";
 export * from "./DividerTitle";
 export * from "./ChevronIcons";
+export * from "./RainbowSpinner";
