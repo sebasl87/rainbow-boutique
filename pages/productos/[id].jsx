@@ -38,13 +38,11 @@ export const DetailProductScreen = () => {
         mb={{ base: 14, md: 50, lg: 29 }}
         justifyContent={{ md: "space-around", lg: "space-between" }}
       >
-        <ShadowRainbow>
-          <ProductSlider
-            images={data?.product?.photos}
-            isDiscount={false}
-            discount=""
-          />
-        </ShadowRainbow>
+        <ProductSlider
+          images={data?.product?.photos}
+          isDiscount={false}
+          discount=""
+        />
 
         <ProductDetailsAddCartDescription
           productTitle={
