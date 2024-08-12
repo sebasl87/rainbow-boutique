@@ -7,3 +7,4 @@ export * from "./HomeCategories";
 export * from "./CategoriesHeader";
 export * from "./CartDrawer";
 export * from "./CartSliderProduct";
+export * from "./CheckoutSteps/step1";
