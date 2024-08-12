@@ -9,16 +9,18 @@ export const CartEmpty = () => {
       flex-direction="column"
       flexDirection="column"
       alignItems="center"
-      mb={{ base: 200, lg: 150 }}
+      mb={{ base: "0px", lg: "100px" }}
+      mt={5}
     >
       <Image
-        src="/cartEmpty.svg"
+        src="/empty_cart.svg"
         alt="cart"
-        width={{ base: 20, md: 100, lg: 150 }}
+        width={{ base: 280, md: 400 }}
       />
       <Box
-        fontFamily="danoneBold"
-        color="#718096"
+        fontFamily="Nunito"
+        fontWeight={600}
+        color="#797B7A"
         fontSize={{ base: 18, md: 18, lg: 24 }}
         mt={{ base: 1, md: 1, lg: 2 }}
       >

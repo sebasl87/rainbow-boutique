@@ -86,7 +86,7 @@ export const Header = () => {
             <Cart
               ml="64px"
               itemsCart={itemsInCart}
-              handleClick={() => router.push("/carrito")}
+              handleClick={() => router.push("/checkout")}
             />
           </Box>
         </Box>
@@ -109,7 +109,7 @@ export const Header = () => {
             />
             <Cart
               itemsCart={itemsInCart}
-              handleClick={() => router.push("/e-commerce/cart")}
+              handleClick={() => router.push("/checkout")}
             />
           </Box>
           <Box

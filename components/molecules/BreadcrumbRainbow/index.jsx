@@ -14,13 +14,14 @@ export const BreadcrumbRainbow = ({
   linkCategoria = "/",
   isProductPage,
   isCategoryPage,
+  isCheckout
 }) => {
   return (
     <Box
       display="flex"
       justifyContent="flex-start"
       width="100%"
-      mt={6}
+      mt={isCheckout ? 0 : 6}
       pl={{ lg: "16px" }}
     >
       {isProductPage && (
@@ -56,6 +57,7 @@ export const BreadcrumbRainbow = ({
           fontWeight={500}
           color="#797b7a"
           separator={<ChevronRightIcon color="#797b7a" />}
+           suppressHydrationWarning
         >
           <BreadcrumbItem>
             <Link href="/" passHref>
@@ -64,6 +66,26 @@ export const BreadcrumbRainbow = ({
           </BreadcrumbItem>
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink>{categorieName}</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      )}
+      {isCheckout && (
+        <Breadcrumb
+          fontFamily="Nunito"
+          spacing="8px"
+          fontSize={{ base: 14, md: 16, lg: 20 }}
+          fontWeight={500}
+          color="#797b7a"
+          separator={<ChevronRightIcon color="#797b7a" />}
+           suppressHydrationWarning
+        >
+          <BreadcrumbItem>
+            <Link href="/" passHref>
+              <BreadcrumbLink>Home</BreadcrumbLink>
+            </Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink>Checkout</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumb>
       )}
