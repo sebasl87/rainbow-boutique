@@ -1,5 +1,5 @@
-import { Box, Flex, Image, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Flex, Image, Button } from '@chakra-ui/react';
+import { useState } from 'react';
 
 const ProductSliderHome = ({
   images,
@@ -61,31 +61,31 @@ const ProductSliderHome = ({
             padding="4px"
             zIndex={2}
             sx={{
-              "&:hover": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:hover': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:active": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:active': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:focus": { boxShadow: "none", border: "none", outline: "none" },
-              "&:focus-visible": {
-                boxShadow: "none",
-                border: "none",
-                outline: "none",
+              '&:focus': { boxShadow: 'none', border: 'none', outline: 'none' },
+              '&:focus-visible': {
+                boxShadow: 'none',
+                border: 'none',
+                outline: 'none',
               },
-              "&::before": {
-                border: "none",
-                outline: "none",
-                boxShadow: "none",
+              '&::before': {
+                border: 'none',
+                outline: 'none',
+                boxShadow: 'none',
               },
             }}
           >
-            {" "}
-            <Image src={"/left.png"} width="30px" />
+            {' '}
+            <Image src={'/left.png'} width="30px" alt=''/>
           </Button>
           <Button
             onClick={handleNextImage}
@@ -96,31 +96,31 @@ const ProductSliderHome = ({
             padding="4px"
             zIndex={2}
             sx={{
-              "&:hover": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:hover': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:active": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:active': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:focus": { boxShadow: "none", border: "none", outline: "none" },
-              "&:focus-visible": {
-                boxShadow: "none",
-                border: "none",
-                outline: "none",
+              '&:focus': { boxShadow: 'none', border: 'none', outline: 'none' },
+              '&:focus-visible': {
+                boxShadow: 'none',
+                border: 'none',
+                outline: 'none',
               },
-              "&::before": {
-                border: "none",
-                outline: "none",
-                boxShadow: "none",
+              '&::before': {
+                border: 'none',
+                outline: 'none',
+                boxShadow: 'none',
               },
             }}
           >
-            {" "}
-            <Image src={"/right.png"} width="30px" />
+            {' '}
+            <Image src={'/right.png'} width="30px" alt='' />
           </Button>
         </Flex>
       </Box>
@@ -143,16 +143,16 @@ const ProductSliderHome = ({
         <Box color="#797B7A" fontFamily="Nunito" fontSize="14px">
           Del ... al ....
         </Box>
-        <div style={{ display: "flex", gap: "10px", marginTop: "12px" }}>
+        <div style={{ display: 'flex', gap: '10px', marginTop: '12px' }}>
           {colors?.map((color, index) => (
             <div
               key={index}
               style={{
-                width: "20px",
-                height: "20px",
+                width: '20px',
+                height: '20px',
                 backgroundColor: color,
-                borderRadius: "50%",
-                border: "0px",
+                borderRadius: '50%',
+                border: '0px',
               }}
             ></div>
           ))}

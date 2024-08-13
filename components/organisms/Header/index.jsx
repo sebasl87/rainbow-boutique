@@ -1,20 +1,20 @@
-import { Cart, InputSearch } from "@/components/molecules";
-import { useBreakpoints } from "@/hooks";
+import { Cart, InputSearch } from '@/components/molecules';
+import { useBreakpoints } from '@/hooks';
 
-import { Box, Image, Text } from "@chakra-ui/react";
-import { useAtomValue, useSetAtom } from "jotai";
+import { Box, Image, Text } from '@chakra-ui/react';
+import { useAtomValue, useSetAtom } from 'jotai';
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { productsInCart, productsList } from "../../../jotai/atoms";
-import { useLazyQuery } from "@apollo/client";
-import { SEARCH_PRODUCT } from "../../../api/apollo/querys/products";
-import { BsEnvelopeArrowUp } from "react-icons/bs";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { productsInCart, productsList } from '../../../jotai/atoms';
+import { useLazyQuery } from '@apollo/client';
+import { SEARCH_PRODUCT } from '../../../api/apollo/querys/products';
+import { BsEnvelopeArrowUp } from 'react-icons/bs';
 
 export const Header = () => {
   const router = useRouter();
 
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
 
   const { desktop } = useBreakpoints();
   const [getProductsBySearch, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
@@ -22,11 +22,11 @@ export const Header = () => {
   const setProductsList = useSetAtom(productsList);
 
   const pressEnter = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       if (searchText.length > 2) {
         getProductsBySearch({ variables: { text: searchText } });
       } else {
-        getProductsBySearch({ variables: { text: "" } });
+        getProductsBySearch({ variables: { text: '' } });
       }
     }
   };
@@ -67,7 +67,7 @@ export const Header = () => {
             src="/RainbowLogo.png"
             alt="logo"
             w="320px"
-            onClick={() => router.push("/")}
+            onClick={() => router.push('/')}
             cursor="pointer"
           />
           <Box maxWidth={488} display="flex" width="100%" ml="64px">
@@ -86,14 +86,14 @@ export const Header = () => {
             <Cart
               ml="64px"
               itemsCart={itemsInCart}
-              handleClick={() => router.push("/checkout")}
+              handleClick={() => router.push('/checkout')}
             />
           </Box>
         </Box>
       ) : (
         <Box display="flex" width="100%" flexDirection="column">
           <Box
-            height={{ base: "70px", md: "80px" }}
+            height={{ base: '70px', md: '80px' }}
             display="flex"
             justifyContent="space-between"
             px={{ base: 4, md: 6 }}
@@ -103,17 +103,17 @@ export const Header = () => {
               data-testid="logoImageMobile"
               src="/RainbowLogo.png"
               alt="logoMobile"
-              w={{ base: "150px", md: "200px" }}
-              onClick={() => router.push("/")}
+              w={{ base: '150px', md: '200px' }}
+              onClick={() => router.push('/')}
               cursor="pointer"
             />
             <Cart
               itemsCart={itemsInCart}
-              handleClick={() => router.push("/checkout")}
+              handleClick={() => router.push('/checkout')}
             />
           </Box>
           <Box
-            height={{ base: "68px", md: "72px" }}
+            height={{ base: '68px', md: '72px' }}
             display="flex"
             justifyContent="space-between"
             px={{ base: 4, md: 6 }}

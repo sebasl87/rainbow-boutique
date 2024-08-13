@@ -1,6 +1,6 @@
-import useCart from "@/hooks/useCart";
-import { DeleteIcon } from "@chakra-ui/icons";
-import { Box } from "@chakra-ui/react";
+import useCart from '@/hooks/useCart';
+import { DeleteIcon } from '@chakra-ui/icons';
+import { Box } from '@chakra-ui/react';
 
 export const ResumeCartItemsMini = ({ cartItem }) => {
   const {
@@ -19,7 +19,7 @@ export const ResumeCartItemsMini = ({ cartItem }) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          marginRight={"2rem"}
+          marginRight={'2rem'}
         >
           Cargando...
         </Box>
@@ -29,7 +29,7 @@ export const ResumeCartItemsMini = ({ cartItem }) => {
             color="rgba(113, 128, 150, 0.7)"
             cursor="pointer"
             _hover={{
-              color: "rgba(113, 128, 150, 1)",
+              color: 'rgba(113, 128, 150, 1)',
             }}
             mr={2}
             width={3}
@@ -45,7 +45,7 @@ export const ResumeCartItemsMini = ({ cartItem }) => {
               alignItems="center"
               justifyContent="center"
               cursor="pointer"
-              _hover={{ background: "#F8D588" }}
+              _hover={{ background: '#F8D588' }}
               background="#fff"
               color="#797B7A"
               borderTopLeftRadius={24}
@@ -78,7 +78,7 @@ export const ResumeCartItemsMini = ({ cartItem }) => {
               alignItems="center"
               justifyContent="center"
               cursor="pointer"
-              _hover={{ background: "#F8D588" }}
+              _hover={{ background: '#F8D588' }}
               background="#fff"
               color="#797B7A"
               borderTopRightRadius={24}

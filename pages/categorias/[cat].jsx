@@ -1,9 +1,9 @@
-import { Categories } from "@/components/Screens";
+import { Categories } from '@/components/Screens';
 
-import { productsList } from "../../jotai/atoms";
-import { useSetAtom } from "jotai";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_PRODUCTS } from "../../api/apollo/querys";
+import { productsList } from '../../jotai/atoms';
+import { useSetAtom } from 'jotai';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_PRODUCTS } from '../../api/apollo/querys';
 
 
 export const CategoriesPage = () => {

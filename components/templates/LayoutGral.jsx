@@ -1,5 +1,5 @@
-import { Footer, Header } from "@/components/organisms";
-import { Box } from "@chakra-ui/react";
+import { Footer, Header } from '@/components/organisms';
+import { Box } from '@chakra-ui/react';
 
 export const LayoutGral = ({ children }) => {
   return (
@@ -10,8 +10,8 @@ export const LayoutGral = ({ children }) => {
         display="flex"
         m="auto"
         mt={{
-          base: "134px",
-          md: "154px",
+          base: '134px',
+          md: '154px',
           lg: 32,
         }}
         flexDirection="column"

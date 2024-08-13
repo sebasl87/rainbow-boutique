@@ -1,5 +1,3 @@
-import { ButtonCustomIcon, IconCart } from '../../atoms';
-
 import { useAtom } from 'jotai';
 import { productsInCart } from '../../../jotai/atoms';
 import { DeleteIcon } from '@chakra-ui/icons';
@@ -57,7 +55,6 @@ export const ProductCartButton = ({ productId, size, color }) => {
           _active={{ border: '0' }}
           _focus={{ outline: 'none' }}
           _hover={{ border: '0' }}
-
         >
           Comprar
         </Button>

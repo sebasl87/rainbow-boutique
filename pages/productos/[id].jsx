@@ -1,14 +1,14 @@
-import { CategoriesHeader } from "@/components/organisms";
-import { Box } from "@chakra-ui/react";
-import ProductSlider from "../../components/molecules/ProductSlider";
-import { ProductDetailsAddCartDescription } from "../../components/organisms";
-import { CartDrawer } from "../../components/organisms";
-import { GET_PRODUCT } from "../../api/apollo/querys";
-import { useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
-import { useDisclosure, Button } from "@chakra-ui/react";
-import { BreadcrumbRainbow } from "@/components/molecules";
-import { RainbowSpinner } from "@/components/atoms";
+import { CategoriesHeader } from '@/components/organisms';
+import { Box } from '@chakra-ui/react';
+import ProductSlider from '../../components/molecules/ProductSlider';
+import { ProductDetailsAddCartDescription } from '../../components/organisms';
+import { CartDrawer } from '../../components/organisms';
+import { GET_PRODUCT } from '../../api/apollo/querys';
+import { useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
+import { useDisclosure, Button } from '@chakra-ui/react';
+import { BreadcrumbRainbow } from '@/components/molecules';
+import { RainbowSpinner } from '@/components/atoms';
 
 export const DetailProductScreen = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,11 +36,11 @@ export const DetailProductScreen = () => {
         <BreadcrumbRainbow isProductPage />
         <Box
           display="flex"
-          width={{ base: "100%", lg: "1200px" }}
-          flexDirection={{ base: "column", md: "row" }}
+          width={{ base: '100%', lg: '1200px' }}
+          flexDirection={{ base: 'column', md: 'row' }}
           mt={{ base: 0, md: 6 }}
           mb={{ base: 14, md: 50, lg: 29 }}
-          justifyContent={{ md: "space-around", lg: "space-between" }}
+          justifyContent={{ md: 'space-around', lg: 'space-between' }}
         >
           <ProductSlider
             images={data?.product?.photos}

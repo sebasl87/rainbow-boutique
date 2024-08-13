@@ -3,15 +3,15 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Box,
-} from "@chakra-ui/react";
-import Link from "next/link";
+} from '@chakra-ui/react';
+import Link from 'next/link';
 
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { ChevronRightIcon } from '@chakra-ui/icons';
 
 export const BreadcrumbRainbow = ({
-  categorieName = "Categoria",
-  productName = "Producto",
-  linkCategoria = "/",
+  categorieName = 'Categoria',
+  productName = 'Producto',
+  linkCategoria = '/',
   isProductPage,
   isCategoryPage,
   isCheckout
@@ -22,7 +22,7 @@ export const BreadcrumbRainbow = ({
       justifyContent="flex-start"
       width="100%"
       mt={isCheckout ? 0 : 6}
-      pl={{ lg: "16px" }}
+      pl={{ lg: '16px' }}
     >
       {isProductPage && (
         <Breadcrumb

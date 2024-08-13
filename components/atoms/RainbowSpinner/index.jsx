@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from '@chakra-ui/react';
 
 export const RainbowSpinner = () => {
   return (
@@ -9,8 +9,8 @@ export const RainbowSpinner = () => {
         flexDirection="column"
         alignItems="center"
         position="relative"
-        mt={{ base: 40, md: "250px" }}
-        mb={{ md: "200px" }}
+        mt={{ base: 40, md: '250px' }}
+        mb={{ md: '200px' }}
       >
         <div class="container">
           <div class="rainbow-color rainbow-color-1"></div>

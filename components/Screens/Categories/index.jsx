@@ -1,11 +1,11 @@
-import { CategoriesHeader } from "@/components/organisms";
-import { Box, Image } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { useAtomValue } from "jotai";
-import { productsList } from "../../../jotai/atoms";
-import { formatNumberToCurrencyWithoutDecimals } from "../../../styles/utils/formatNumberToCurrencyWithoutDecimals";
-import ProductSliderHome from "../../molecules/ProductSliderHome";
-import {BreadcrumbRainbow} from "../../molecules/BreadcrumbRainbow";
+import { CategoriesHeader } from '@/components/organisms';
+import { Box, Image } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { useAtomValue } from 'jotai';
+import { productsList } from '../../../jotai/atoms';
+import { formatNumberToCurrencyWithoutDecimals } from '../../../styles/utils/formatNumberToCurrencyWithoutDecimals';
+import ProductSliderHome from '../../molecules/ProductSliderHome';
+import {BreadcrumbRainbow} from '../../molecules/BreadcrumbRainbow';
 
 export const Categories = () => {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import { FormLabel, Input, FormHelperText, Box } from "@chakra-ui/react";
+import { FormLabel, Input, FormHelperText, Box } from '@chakra-ui/react';
 
 export const InputForm = ({
   label,
@@ -25,21 +25,20 @@ export const InputForm = ({
         value={value}
         name={name}
         onChange={onChange}
-        type={typeForm}
         _focus={{
-          borderColor: "#797B7A",
-          boxShadow: "none",
+          borderColor: '#797B7A',
+          boxShadow: 'none',
         }}
         _active={{
-          borderColor: "#797B7A",
-          boxShadow: "none",
+          borderColor: '#797B7A',
+          boxShadow: 'none',
         }}
         _placeholder={{
-          color: "gray.400",
-          backgroundColor: "white",
+          color: 'gray.400',
+          backgroundColor: 'white',
           fontSize: { base: 14, md: 16, lg: 18 },
         }}
-        size={{ base: "sm", md: "md", lg: "lg" }}
+        size={{ base: 'sm', md: 'md', lg: 'lg' }}
         placeholder={placeHolder}
       />
       {!showError ? (

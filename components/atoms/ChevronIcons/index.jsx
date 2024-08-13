@@ -26,7 +26,7 @@ export const IconLeft = ({ handleClick, width, height }) => {
   );
 };
 
-export const IconRight = ({ handleClick, width= "30px", height= "30px" }) => {
+export const IconRight = ({ handleClick, width= '30px', height= '30px' }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleClick}>
 <circle cx="15" cy="15" r="14" fill="white" stroke="#EBBEB3" stroke-width="2"/>

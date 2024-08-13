@@ -1,15 +1,16 @@
-import { useEffect } from "react";
-import { BreadcrumbRainbow, CartEmpty } from "../../molecules";
-import { Box } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { productsInCart } from "../../../jotai/atoms";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Step1 } from "@/components/organisms";
+import { useEffect } from 'react';
+import { BreadcrumbRainbow, CartEmpty } from '../../molecules';
+import { Box } from '@chakra-ui/react';
+import { useAtomValue } from 'jotai';
+import { productsInCart } from '../../../jotai/atoms';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { Step1 } from '@/components/organisms';
 
 export const Checkout = () => {
   const productsCart = useAtomValue(productsInCart);
   useEffect(() => {
     console.log(productsCart.length);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -28,16 +29,16 @@ export const Checkout = () => {
           display="flex"
           width="100%"
           mt={8}
-          flexDirection={{ base: "column", md: "row" }}
+          flexDirection={{ base: 'column', md: 'row' }}
         >
           <Box display="flex" width="100%" order={{ base: 2, md: 1 }}>
             <Tabs width="100%">
               <TabList display="flex" width="100%">
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -49,9 +50,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -63,9 +64,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"

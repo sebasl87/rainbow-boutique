@@ -1,11 +1,11 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Flex, IconButton, Image, Button } from "@chakra-ui/react";
-import { useState } from "react";
-import DiscountChip from "../../atoms/DiscountChip";
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Box, Flex, IconButton, Image, Button } from '@chakra-ui/react';
+import { useState } from 'react';
+import DiscountChip from '../../atoms/DiscountChip';
 import {
   IoChevronBackCircleOutline,
   IoChevronForwardCircleOutline,
-} from "react-icons/io5";
+} from 'react-icons/io5';
 
 const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -24,8 +24,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
 
   return (
     <Box
-      width={{ base: "100%", md: 312, lg: 428 }}
-      height={{ base: "100%", md: 418, lg: 574 }}
+      width={{ base: '100%', md: 312, lg: 428 }}
+      height={{ base: '100%', md: 418, lg: 574 }}
       objectFit="cover"
       display="flex"
       flexDirection="column"
@@ -35,8 +35,8 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
     >
       <Box
         position="relative"
-        width={{ base: "100%", md: 312, lg: 428 }}
-        height={{ base: "auto", md: "418px", lg: "574px" }}
+        width={{ base: '100%', md: 312, lg: 428 }}
+        height={{ base: 'auto', md: '418px', lg: '574px' }}
         justifyContent="center"
         display="flex"
         p={4}
@@ -71,31 +71,31 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             padding="4px"
             zIndex={2}
             sx={{
-              "&:hover": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:hover': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:active": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:active': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:focus": { boxShadow: "none", border: "none", outline: "none" },
-              "&:focus-visible": {
-                boxShadow: "none",
-                border: "none",
-                outline: "none",
+              '&:focus': { boxShadow: 'none', border: 'none', outline: 'none' },
+              '&:focus-visible': {
+                boxShadow: 'none',
+                border: 'none',
+                outline: 'none',
               },
-              "&::before": {
-                border: "none",
-                outline: "none",
-                boxShadow: "none",
+              '&::before': {
+                border: 'none',
+                outline: 'none',
+                boxShadow: 'none',
               },
             }}
           >
-            {" "}
-            <Image src={"/left.png"} width="40px" />
+            {' '}
+            <Image src={'/left.png'} width="40px" alt=''/>
           </Button>
           <Button
             onClick={handleNextImage}
@@ -106,50 +106,50 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             padding="4px"
             zIndex={2}
             sx={{
-              "&:hover": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:hover': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:active": {
-                background: "transparent",
-                border: "none",
-                outline: "none",
+              '&:active': {
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
               },
-              "&:focus": { boxShadow: "none", border: "none", outline: "none" },
-              "&:focus-visible": {
-                boxShadow: "none",
-                border: "none",
-                outline: "none",
+              '&:focus': { boxShadow: 'none', border: 'none', outline: 'none' },
+              '&:focus-visible': {
+                boxShadow: 'none',
+                border: 'none',
+                outline: 'none',
               },
-              "&::before": {
-                border: "none",
-                outline: "none",
-                boxShadow: "none",
+              '&::before': {
+                border: 'none',
+                outline: 'none',
+                boxShadow: 'none',
               },
             }}
           >
-            {" "}
-            <Image src={"/right.png"} width="40px" />
+            {' '}
+            <Image src={'/right.png'} width="40px" alt=''/>
           </Button>
         </Flex>
       </Box>
       <Flex
         justifyContent="center"
         mt={{ base: 2, md: 4 }}
-        width={{ base: "100%", md: 312, lg: 428 }}
+        width={{ base: '100%', md: 312, lg: 428 }}
       >
         {images.map((image, index) => (
           <Box
             key={image.url}
             w={{ base: 24, md: 48, lg: 120 }}
-            h={{ base: 32, md: "96px", lg: 132 }}
+            h={{ base: 32, md: '96px', lg: 132 }}
             bg="#fff"
             mx={2}
             borderWidth={1}
             borderRadius={4}
             borderColor={
-              currentImageIndex === index ? "#718096" : "transparent"
+              currentImageIndex === index ? '#718096' : 'transparent'
             }
             cursor="pointer"
             onClick={() => setCurrentImageIndex(index)}

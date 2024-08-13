@@ -1,4 +1,4 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text } from '@chakra-ui/react';
 
 const SizeSelector = ({
   sizes,
@@ -21,12 +21,12 @@ const SizeSelector = ({
             color="#718096"
             fontSize={{ base: 10, md: 14 }}
             cursor="pointer"
-            pt={{ md: "2px" }}
+            pt={{ md: '2px' }}
             ml={2}
-            _hover={{ textDecoration: "underline" }}
-            onClick={() => console.log("ver tabla de talles")}
+            _hover={{ textDecoration: 'underline' }}
+            onClick={() => console.log('ver tabla de talles')}
           >
-            {"(Ver tabla de talles)"}
+            {'(Ver tabla de talles)'}
           </Box>
         </Box>
       )}
@@ -35,12 +35,12 @@ const SizeSelector = ({
         {sizes.map((size) => (
           <Button
             key={size}
-            width={{ base: "24px", md: "48px" }}
-            height={{ base: "24px", md: "48px" }}
-            variant={selectedSize === size ? "solid" : "outline"}
+            width={{ base: '24px', md: '48px' }}
+            height={{ base: '24px', md: '48px' }}
+            variant={selectedSize === size ? 'solid' : 'outline'}
             onClick={() => setSelectedSize(size)}
-            _focus={{ outline: "none" }}
-            _hover={{ borderColor: "#777978" }}
+            _focus={{ outline: 'none' }}
+            _hover={{ borderColor: '#777978' }}
             margin={2}
             color="#777978"
             fontWeight={600}

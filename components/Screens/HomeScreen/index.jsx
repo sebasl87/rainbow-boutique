@@ -1,10 +1,10 @@
-import ProductSliderHome from "@/components/molecules/ProductSliderHome";
-import { HomeCategories } from "@/components/organisms";
-import { Image, Box } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { productsList } from "../../../jotai/atoms";
-import { formatNumberToCurrencyWithoutDecimals } from "../../../styles/utils/formatNumberToCurrencyWithoutDecimals";
-import { useRouter } from "next/router";
+import ProductSliderHome from '@/components/molecules/ProductSliderHome';
+import { HomeCategories } from '@/components/organisms';
+import { Image, Box } from '@chakra-ui/react';
+import { useAtomValue } from 'jotai';
+import { productsList } from '../../../jotai/atoms';
+import { formatNumberToCurrencyWithoutDecimals } from '../../../styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { useRouter } from 'next/router';
 
 export const HomeScreen = ({ images }) => {
   const products = useAtomValue(productsList);
@@ -21,7 +21,7 @@ export const HomeScreen = ({ images }) => {
         <HomeCategories />
         <Box w="100%" mt={8} display="flex" justifyContent="center">
           <Image
-            src={"/banner_rainbow.png"}
+            src={'/banner_rainbow.png'}
             alt="carrito"
             w="100%"
             maxW="1200px"
@@ -38,12 +38,12 @@ export const HomeScreen = ({ images }) => {
             data-testid="logoImage"
             src="/ArcoLogo.png"
             alt="logo"
-            w={{ base: "40px", md: "60px" }}
+            w={{ base: '40px', md: '60px' }}
           />
           <Box
             color="#797B7A"
             fontFamily="Nunito"
-            fontSize={{ base: "20px", md: "24px" }}
+            fontSize={{ base: '20px', md: '24px' }}
             fontWeight="600"
             px={4}
           >
@@ -53,7 +53,7 @@ export const HomeScreen = ({ images }) => {
             data-testid="logoImage"
             src="/ArcoLogo.png"
             alt="logo"
-            w={{ base: "40px", md: "60px" }}
+            w={{ base: '40px', md: '60px' }}
           />
         </Box>
         <>

@@ -1,27 +1,27 @@
-import { CategoryCardSmall } from "@/components/molecules";
-import { Box } from "@chakra-ui/react";
+import { CategoryCardSmall } from '@/components/molecules';
+import { Box } from '@chakra-ui/react';
 
 export const CategoriesHeader = () => {
   const categories = [
     {
-      cat: "Newborn",
-      bg: "#F8D588",
-      sColor: "#fff",
+      cat: 'Newborn',
+      bg: '#F8D588',
+      sColor: '#fff',
     },
     {
-      cat: "Baby Girl",
-      bg: "#EBBEB3",
-      sColor: "#fff",
+      cat: 'Baby Girl',
+      bg: '#EBBEB3',
+      sColor: '#fff',
     },
     {
-      cat: "Baby Boy",
-      bg: "#AEDBE8",
-      sColor: "#fff",
+      cat: 'Baby Boy',
+      bg: '#AEDBE8',
+      sColor: '#fff',
     },
     {
-      cat: "Sale",
-      bg: "#D7ECE8",
-      sColor: "#D7ECE8",
+      cat: 'Sale',
+      bg: '#D7ECE8',
+      sColor: '#D7ECE8',
     },
   ];
   return (

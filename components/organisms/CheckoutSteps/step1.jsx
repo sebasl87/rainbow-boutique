@@ -1,11 +1,11 @@
-import { Box, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
-import { useState } from "react";
-import { InputForm } from "@/components/atoms";
+import { Box, Stack, Radio, RadioGroup, Button } from '@chakra-ui/react';
+import { useState } from 'react';
+import { InputForm } from '@/components/atoms';
 
 export const Step1 = () => {
   const [input, setInput] = useState({
-    email: "",
-    phone: "",
+    email: '',
+    phone: '',
   });
 
   const [errors, setErrors] = useState({
@@ -20,7 +20,7 @@ export const Step1 = () => {
       [name]: value,
     }));
 
-    if (name === "email") {
+    if (name === 'email') {
       validateEmail(value);
     }
   };
@@ -33,7 +33,7 @@ export const Step1 = () => {
     }));
   };
 
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
   console.log(selectedValue);
 
   return (
@@ -81,22 +81,22 @@ export const Step1 = () => {
               value="domicilio"
               _before={{
                 content: '""',
-                display: "inline-block",
-                borderRadius: "50%",
-                width: "100%",
-                height: "100%",
-                border: "none",
+                display: 'inline-block',
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                border: 'none',
               }}
               _checked={{
-                bg: "#797B7A",
-                borderColor: "none",
+                bg: '#797B7A',
+                borderColor: 'none',
                 _before: {
-                  bg: "#797B7A",
-                  border: "none",
+                  bg: '#797B7A',
+                  border: 'none',
                 },
               }}
               _hover={{
-                borderColor: "#797B7A",
+                borderColor: '#797B7A',
               }}
             >
               <Box
@@ -114,7 +114,7 @@ export const Step1 = () => {
                 >
                   Envio a domicilio
                 </Box>
-                {selectedValue === "domicilio" && (
+                {selectedValue === 'domicilio' && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -135,22 +135,22 @@ export const Step1 = () => {
               value="rainbow"
               _before={{
                 content: '""',
-                display: "inline-block",
-                borderRadius: "50%",
-                width: "100%",
-                height: "100%",
-                border: "none",
+                display: 'inline-block',
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                border: 'none',
               }}
               _checked={{
-                bg: "#797B7A",
-                borderColor: "none",
+                bg: '#797B7A',
+                borderColor: 'none',
                 _before: {
-                  bg: "#797B7A",
-                  border: "none",
+                  bg: '#797B7A',
+                  border: 'none',
                 },
               }}
               _hover={{
-                borderColor: "#797B7A",
+                borderColor: '#797B7A',
               }}
             >
               <Box
@@ -168,7 +168,7 @@ export const Step1 = () => {
                 >
                   Retirar por Showroom gratis
                 </Box>
-                {selectedValue === "rainbow" && (
+                {selectedValue === 'rainbow' && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -183,7 +183,7 @@ export const Step1 = () => {
             </Radio>
           </Stack>
         </RadioGroup>
-        {selectedValue === "rainbow" && (
+        {selectedValue === 'rainbow' && (
           <>
             <Box
               fontSize="16px"

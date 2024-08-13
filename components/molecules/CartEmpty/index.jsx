@@ -9,7 +9,7 @@ export const CartEmpty = () => {
       flex-direction="column"
       flexDirection="column"
       alignItems="center"
-      mb={{ base: "0px", lg: "100px" }}
+      mb={{ base: '0px', lg: '100px' }}
       mt={5}
     >
       <Image
