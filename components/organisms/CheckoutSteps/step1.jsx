@@ -1,31 +1,74 @@
-import { Box, Stack, Radio, RadioGroup, Button } from '@chakra-ui/react';
-import { useState } from 'react';
-import { InputForm } from '@/components/atoms';
+import { Box, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
+import { useState } from "react";
+import { InputForm } from "@/components/atoms";
 
 export const Step1 = () => {
   const [input, setInput] = useState({
-    email: '',
-    phone: '',
+    email: "",
+    phone: "",
+    pickUpMethod: "",
+    pickingUpPersonName: "",
+    pickingUpPersonLastName: "",
+    pickingUpPersonDni: "",
+    pickingUpPersonPhone: "",
   });
 
   const [errors, setErrors] = useState({
     email: false,
+    phone: false,
+    pickingUpPersonName: false,
+    pickingUpPersonLastName: false,
+    pickingUpPersonDni: false,
+    pickingUpPersonPhone: false,
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setInput((prevInput) => ({
-      ...prevInput,
-      [name]: value,
-    }));
-
-    if (name === 'email') {
-      validateEmail(value);
+   const handleInputChange = (e) => {
+    const { name, value } = e.target;    
+    switch (name) {
+      case "email":        
+        setInput((prevInput) => ({
+          ...prevInput,
+          email: value,
+        }));
+        validateEmail(value);
+        break;
+      case "phone":
+      case "pickingUpPersonPhone":
+        const phoneValue = value.replace(/[^\d]/g, ""); 
+        setInput((prevInput) => ({
+          ...prevInput,
+          [name]: phoneValue,
+        }));
+        validatePhone(name, phoneValue);
+        break;
+      case "pickingUpPersonName":
+      case "pickingUpPersonLastName":
+        const nameValue = value.replace(/[^A-Za-z\s]/g, ""); 
+        setInput((prevInput) => ({
+          ...prevInput,
+          [name]: nameValue,
+        }));
+        validateName(name, nameValue);
+        break;
+      case "pickingUpPersonDni":
+        const dniValue = value.replace(/[^\d]/g, ""); 
+        setInput((prevInput) => ({
+          ...prevInput,
+          [name]: dniValue,
+        }));
+        validateDni(dniValue);
+        break;
+      default:
+        setInput((prevInput) => ({
+          ...prevInput,
+          [name]: value,
+        }));
+        break;
     }
   };
 
-  const validateEmail = (email) => {
+
+   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setErrors((prevErrors) => ({
       ...prevErrors,
@@ -33,8 +76,67 @@ export const Step1 = () => {
     }));
   };
 
-  const [selectedValue, setSelectedValue] = useState('');
-  console.log(selectedValue);
+  const validatePhone = (name, phone) => {
+    const phoneRegex = /^\d{10,}$/;
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: !phoneRegex.test(phone),
+    }));
+  };
+
+  const validateName = (name, value) => {
+    const nameRegex = /^[A-Za-z\s]{2,}$/; 
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: !nameRegex.test(value),
+    }));
+  };
+
+  const validateDni = (dni) => {
+    const dniRegex = /^\d{7,}$/; 
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      pickingUpPersonDni: !dniRegex.test(dni),
+    }));
+  };
+
+  const handleRadioChange = (value) => {
+    setSelectedValue(value);
+    setInput((prevInput) => ({
+      ...prevInput,
+      pickUpMethod: value,
+    }));
+  };
+
+  const [selectedValue, setSelectedValue] = useState("");
+  console.log(input);
+
+  const isFormValid = () => {
+    const isEmailValid = !errors.email && input.email !== "";
+    const isPhoneValid = !errors.phone && input.phone !== "";
+    const isNameValid =
+      !errors.pickingUpPersonName && input.pickingUpPersonName !== "";
+    const isLastNameValid =
+      !errors.pickingUpPersonLastName && input.pickingUpPersonLastName !== "";
+    const isDniValid = !errors.pickingUpPersonDni && input.pickingUpPersonDni !== "";
+    const isPickingUpPersonPhoneValid =
+      !errors.pickingUpPersonPhone && input.pickingUpPersonPhone !== "";
+
+    if (selectedValue === "domicilio") {
+      return isEmailValid && isPhoneValid;
+    } else if (selectedValue === "rainbow") {
+      return (
+        isEmailValid &&
+        isPhoneValid &&
+        isNameValid &&
+        isLastNameValid &&
+        isDniValid &&
+        isPickingUpPersonPhoneValid
+      );
+    }
+
+    return false;
+  };
 
   return (
     <Box display="flex" width="100%" flexDirection="column">
@@ -68,11 +170,13 @@ export const Step1 = () => {
         value={input.phone}
         onChange={handleInputChange}
         activeHelperText
-        labelError="Email invalido"
+        labelError="Teléfono inválido (mínimo 10 dígitos)"
         typeForm="number"
+        hasError={errors.phone}
+        showError={errors.phone}
       />
       <Box mt={6} width="100%" display="flex" flexDirection="column">
-        <RadioGroup onChange={setSelectedValue} value={selectedValue}>
+        <RadioGroup onChange={handleRadioChange} value={selectedValue}>
           <Stack>
             <Radio
               display="flex"
@@ -81,22 +185,22 @@ export const Step1 = () => {
               value="domicilio"
               _before={{
                 content: '""',
-                display: 'inline-block',
-                borderRadius: '50%',
-                width: '100%',
-                height: '100%',
-                border: 'none',
+                display: "inline-block",
+                borderRadius: "50%",
+                width: "100%",
+                height: "100%",
+                border: "none",
               }}
               _checked={{
-                bg: '#797B7A',
-                borderColor: 'none',
+                bg: "#797B7A",
+                borderColor: "none",
                 _before: {
-                  bg: '#797B7A',
-                  border: 'none',
+                  bg: "#797B7A",
+                  border: "none",
                 },
               }}
               _hover={{
-                borderColor: '#797B7A',
+                borderColor: "#797B7A",
               }}
             >
               <Box
@@ -114,7 +218,7 @@ export const Step1 = () => {
                 >
                   Envio a domicilio
                 </Box>
-                {selectedValue === 'domicilio' && (
+                {selectedValue === "domicilio" && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -135,22 +239,22 @@ export const Step1 = () => {
               value="rainbow"
               _before={{
                 content: '""',
-                display: 'inline-block',
-                borderRadius: '50%',
-                width: '100%',
-                height: '100%',
-                border: 'none',
+                display: "inline-block",
+                borderRadius: "50%",
+                width: "100%",
+                height: "100%",
+                border: "none",
               }}
               _checked={{
-                bg: '#797B7A',
-                borderColor: 'none',
+                bg: "#797B7A",
+                borderColor: "none",
                 _before: {
-                  bg: '#797B7A',
-                  border: 'none',
+                  bg: "#797B7A",
+                  border: "none",
                 },
               }}
               _hover={{
-                borderColor: '#797B7A',
+                borderColor: "#797B7A",
               }}
             >
               <Box
@@ -168,7 +272,7 @@ export const Step1 = () => {
                 >
                   Retirar por Showroom gratis
                 </Box>
-                {selectedValue === 'rainbow' && (
+                {selectedValue === "rainbow" && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -183,7 +287,7 @@ export const Step1 = () => {
             </Radio>
           </Stack>
         </RadioGroup>
-        {selectedValue === 'rainbow' && (
+        {selectedValue === "rainbow" && (
           <>
             <Box
               fontSize="16px"
@@ -208,23 +312,64 @@ export const Step1 = () => {
                 justifyContent="space-between"
                 pr={6}
               >
-                <InputForm label="Nombre" margin="0 16px 0 0" />
-                <InputForm label="Apellido" />
+                <InputForm
+                  label="Nombre"
+                  margin="0 16px 0 0"
+                  name="pickingUpPersonName"
+                  value={input.pickingUpPersonName}
+                  onChange={handleInputChange}
+                  activeHelperText
+                  labelError="Nombre inválido (mínimo 2 letras)"
+                  hasError={errors.pickingUpPersonName}
+                  showError={errors.pickingUpPersonName}
+                />
+                <InputForm
+                  label="Apellido"
+                  name="pickingUpPersonLastName"
+                  value={input.pickingUpPersonLastName}
+                  onChange={handleInputChange}
+                  activeHelperText
+                  labelError="Apellido inválido (mínimo 2 letras)"
+                  hasError={errors.pickingUpPersonLastName}
+                  showError={errors.pickingUpPersonLastName}
+                />
               </Box>
               <Box
                 display="flex"
                 width="100%"
                 justifyContent="space-between"
-                mt={4}
-                pr={6}
+                pr={6}         
+                mt={2}       
               >
-                <InputForm label="DNI" margin="0 16px 0 0" />
-                <InputForm label="Teléfono" />
+                <InputForm
+                  label="DNI"
+                  margin="0 16px 0 0"
+                  name="pickingUpPersonDni"
+                  value={input.pickingUpPersonDni}
+                  onChange={handleInputChange}
+                  activeHelperText
+                  labelError="DNI inválido (mínimo 7 dígitos)"
+                  typeForm="number"
+                  hasError={errors.pickingUpPersonDni}
+                  showError={errors.pickingUpPersonDni}
+                />
+                <InputForm
+                  label="Teléfono"
+                  name="pickingUpPersonPhone"
+                  value={input.pickingUpPersonPhone}
+                  onChange={handleInputChange}
+                  activeHelperText
+                  labelError="Teléfono inválido (mínimo 10 dígitos)"
+                  typeForm="number"
+                  hasError={errors.pickingUpPersonPhone}
+                  showError={errors.pickingUpPersonPhone}
+                />
               </Box>
             </Box>
           </>
         )}
-        <Box display="flex" width="100%" justifyContent="flex-end">
+      </Box>
+         <Box display="flex" width="100%" justifyContent="flex-end">
           <Button
             background="#D7ECE8"
             color="#4A4A4A"
@@ -235,13 +380,11 @@ export const Step1 = () => {
             fontFamily="Nunito"
             fontWeight={600}
             mt={6}
+            isDisabled={!isFormValid()}
           >
             Siguiente
           </Button>
         </Box>
-      </Box>
     </Box>
   );
 };
-
-export default Step1;
