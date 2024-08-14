@@ -1,8 +1,10 @@
 import { Box, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { InputForm } from "@/components/atoms";
+import { useAtom } from "jotai";
+import { step1Atom } from "@/jotai/atoms";
 
-export const Step1 = () => {
+export const Step1 = ({ onComplete }) => {
   const [input, setInput] = useState({
     email: "",
     phone: "",
@@ -13,6 +15,8 @@ export const Step1 = () => {
     pickingUpPersonPhone: "",
   });
 
+  const [step1, setStep1] = useAtom(step1Atom);
+
   const [errors, setErrors] = useState({
     email: false,
     phone: false,
@@ -22,10 +26,10 @@ export const Step1 = () => {
     pickingUpPersonPhone: false,
   });
 
-   const handleInputChange = (e) => {
-    const { name, value } = e.target;    
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     switch (name) {
-      case "email":        
+      case "email":
         setInput((prevInput) => ({
           ...prevInput,
           email: value,
@@ -34,7 +38,7 @@ export const Step1 = () => {
         break;
       case "phone":
       case "pickingUpPersonPhone":
-        const phoneValue = value.replace(/[^\d]/g, ""); 
+        const phoneValue = value.replace(/[^\d]/g, "");
         setInput((prevInput) => ({
           ...prevInput,
           [name]: phoneValue,
@@ -43,7 +47,7 @@ export const Step1 = () => {
         break;
       case "pickingUpPersonName":
       case "pickingUpPersonLastName":
-        const nameValue = value.replace(/[^A-Za-z\s]/g, ""); 
+        const nameValue = value.replace(/[^A-Za-z\s]/g, "");
         setInput((prevInput) => ({
           ...prevInput,
           [name]: nameValue,
@@ -51,7 +55,7 @@ export const Step1 = () => {
         validateName(name, nameValue);
         break;
       case "pickingUpPersonDni":
-        const dniValue = value.replace(/[^\d]/g, ""); 
+        const dniValue = value.replace(/[^\d]/g, "");
         setInput((prevInput) => ({
           ...prevInput,
           [name]: dniValue,
@@ -67,8 +71,7 @@ export const Step1 = () => {
     }
   };
 
-
-   const validateEmail = (email) => {
+  const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setErrors((prevErrors) => ({
       ...prevErrors,
@@ -85,7 +88,7 @@ export const Step1 = () => {
   };
 
   const validateName = (name, value) => {
-    const nameRegex = /^[A-Za-z\s]{2,}$/; 
+    const nameRegex = /^[A-Za-z\s]{2,}$/;
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: !nameRegex.test(value),
@@ -93,7 +96,7 @@ export const Step1 = () => {
   };
 
   const validateDni = (dni) => {
-    const dniRegex = /^\d{7,}$/; 
+    const dniRegex = /^\d{7,}$/;
     setErrors((prevErrors) => ({
       ...prevErrors,
       pickingUpPersonDni: !dniRegex.test(dni),
@@ -102,10 +105,21 @@ export const Step1 = () => {
 
   const handleRadioChange = (value) => {
     setSelectedValue(value);
-    setInput((prevInput) => ({
-      ...prevInput,
-      pickUpMethod: value,
-    }));
+    if (value === "domicilio") {
+      setInput((prevInput) => ({
+        ...prevInput,
+        pickUpMethod: value,
+        pickingUpPersonName: "",
+        pickingUpPersonLastName: "",
+        pickingUpPersonDni: "",
+        pickingUpPersonPhone: "",
+      }));
+    } else {
+      setInput((prevInput) => ({
+        ...prevInput,
+        pickUpMethod: value,
+      }));
+    }
   };
 
   const [selectedValue, setSelectedValue] = useState("");
@@ -118,13 +132,14 @@ export const Step1 = () => {
       !errors.pickingUpPersonName && input.pickingUpPersonName !== "";
     const isLastNameValid =
       !errors.pickingUpPersonLastName && input.pickingUpPersonLastName !== "";
-    const isDniValid = !errors.pickingUpPersonDni && input.pickingUpPersonDni !== "";
+    const isDniValid =
+      !errors.pickingUpPersonDni && input.pickingUpPersonDni !== "";
     const isPickingUpPersonPhoneValid =
       !errors.pickingUpPersonPhone && input.pickingUpPersonPhone !== "";
 
     if (selectedValue === "domicilio") {
       return isEmailValid && isPhoneValid;
-    } else if (selectedValue === "rainbow") {
+    } else if (selectedValue === "pickUp") {
       return (
         isEmailValid &&
         isPhoneValid &&
@@ -136,6 +151,11 @@ export const Step1 = () => {
     }
 
     return false;
+  };
+
+  const handleClick = () => {
+    setStep1(input);
+    onComplete();
   };
 
   return (
@@ -236,7 +256,7 @@ export const Step1 = () => {
               display="flex"
               alignItems="flex-start"
               size="md"
-              value="rainbow"
+              value="pickUp"
               _before={{
                 content: '""',
                 display: "inline-block",
@@ -272,7 +292,7 @@ export const Step1 = () => {
                 >
                   Retirar por Showroom gratis
                 </Box>
-                {selectedValue === "rainbow" && (
+                {selectedValue === "pickUp" && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -287,7 +307,7 @@ export const Step1 = () => {
             </Radio>
           </Stack>
         </RadioGroup>
-        {selectedValue === "rainbow" && (
+        {selectedValue === "pickUp" && (
           <>
             <Box
               fontSize="16px"
@@ -338,8 +358,8 @@ export const Step1 = () => {
                 display="flex"
                 width="100%"
                 justifyContent="space-between"
-                pr={6}         
-                mt={2}       
+                pr={6}
+                mt={2}
               >
                 <InputForm
                   label="DNI"
@@ -369,22 +389,23 @@ export const Step1 = () => {
           </>
         )}
       </Box>
-         <Box display="flex" width="100%" justifyContent="flex-end">
-          <Button
-            background="#D7ECE8"
-            color="#4A4A4A"
-            py={6}
-            px={8}
-            borderRadius="50px"
-            fontSize="14px"
-            fontFamily="Nunito"
-            fontWeight={600}
-            mt={6}
-            isDisabled={!isFormValid()}
-          >
-            Siguiente
-          </Button>
-        </Box>
+      <Box display="flex" width="100%" justifyContent="flex-end">
+        <Button
+          background="#D7ECE8"
+          color="#4A4A4A"
+          py={6}
+          px={8}
+          borderRadius="50px"
+          fontSize="14px"
+          fontFamily="Nunito"
+          fontWeight={600}
+          mt={6}
+          isDisabled={!isFormValid()}
+          onClick={handleClick}
+        >
+          Siguiente
+        </Button>
+      </Box>
     </Box>
   );
 };
