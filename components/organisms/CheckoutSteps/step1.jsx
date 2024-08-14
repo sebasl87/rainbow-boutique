@@ -1,5 +1,5 @@
 import { Box, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { InputForm } from "@/components/atoms";
 import { useAtom } from "jotai";
 import { step1Atom } from "@/jotai/atoms";
@@ -25,6 +25,13 @@ export const Step1 = ({ onComplete }) => {
     pickingUpPersonDni: false,
     pickingUpPersonPhone: false,
   });
+
+  useEffect(() => {
+    if (step1) {
+      setInput(step1);
+      setSelectedValue(step1.pickUpMethod || "");
+    }
+  }, [step1]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
