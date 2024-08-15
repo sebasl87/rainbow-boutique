@@ -4,11 +4,13 @@ import { Box } from "@chakra-ui/react";
 import { useAtomValue } from "jotai";
 import { productsInCart } from "../../../jotai/atoms";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Step1 } from "@/components/organisms";
+import { Step1, Step2, Step3 } from "@/components/organisms";
+import { useRouter } from "next/router";
 
 export const Checkout = () => {
   const productsCart = useAtomValue(productsInCart);
   const [step1Complete, setStep1Complete] = useState(false);
+  const [step2Complete, setStep2Complete] = useState(false);
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
@@ -20,6 +22,13 @@ export const Checkout = () => {
     setStep1Complete(true);
     setTabIndex(1);
   };
+
+  const handleStep2Complete = () => {
+    setStep2Complete(true);
+    setTabIndex(2);
+  };
+
+  const router = useRouter();
 
   return (
     <Box
@@ -57,6 +66,7 @@ export const Checkout = () => {
                   color="#797B7A"
                   fontWeight={500}
                   flexGrow={1}
+                  isDisabled={tabIndex !== 0}
                 >
                   1. Envío
                 </Tab>
@@ -71,7 +81,7 @@ export const Checkout = () => {
                   color="#797B7A"
                   fontWeight={500}
                   flexGrow={1}
-                  isDisabled={!step1Complete}
+                  isDisabled={tabIndex !== 1}
                 >
                   2. Pago
                 </Tab>
@@ -86,6 +96,7 @@ export const Checkout = () => {
                   color="#797B7A"
                   fontWeight={500}
                   flexGrow={1}
+                  isDisabled={tabIndex !== 2}
                 >
                   3. Revisión
                 </Tab>
@@ -95,10 +106,18 @@ export const Checkout = () => {
                   <Step1 onComplete={handleStep1Complete} />
                 </TabPanel>
                 <TabPanel>
-                  <p>two!</p>
+                  <Step2
+                    onComplete={handleStep2Complete}
+                    handleClickBack={() => setTabIndex(0)}
+                  />
                 </TabPanel>
                 <TabPanel>
-                  <p>three!</p>
+                  <Step3
+                    onComplete={() => router.push("/checkout-success")}
+                    handleClickBack={() => setTabIndex(1)}
+                    goStepOne={() => setTabIndex(0)}
+                    goStepTwo={() => setTabIndex(1)}
+                  />
                 </TabPanel>
               </TabPanels>
             </Tabs>

@@ -29,3 +29,18 @@ export const step1Atom = atomWithStorage("step1Atom", {
   pickingUpPersonPhone: "",
 });
 step1Atom.debugLabel = "step1Atom";
+
+export const step2Atom = atomWithStorage("step2Atom", {
+  paymentMethod: "",
+  facturationName: "",
+  facturationLastName: "",
+  facturationDni: "",
+  facturationPhone: "",
+  facturationStreet: "",
+  facturationPostalCode: "",
+  facturationPiso: "",
+  facturationDpto: "",
+  facturationCity: "",
+  facturationProv: "",
+});
+step2Atom.debugLabel = "step2Atom";
