@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { BreadcrumbRainbow, CartEmpty } from "../../molecules";
-import { Box } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { productsInCart } from "../../../jotai/atoms";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Step1, Step2, Step3 } from "@/components/organisms";
-import { useRouter } from "next/router";
-import { CartSliderCheckout } from "../../organisms/CartSliderCheckout";
-import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
-import { css } from "@emotion/react";
+import { useEffect, useState } from 'react';
+import { BreadcrumbRainbow, CartEmpty } from '../../molecules';
+import { Box } from '@chakra-ui/react';
+import { useAtomValue } from 'jotai';
+import { productsInCart } from '../../../jotai/atoms';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { Step1, Step2, Step3 } from '@/components/organisms';
+import { useRouter } from 'next/router';
+import { CartSliderCheckout } from '../../organisms/CartSliderCheckout';
+import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { css } from '@emotion/react';
 
 export const Checkout = () => {
   const productsCart = useAtomValue(productsInCart);
@@ -56,60 +56,60 @@ export const Checkout = () => {
 
   const productsSlice = [
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "red",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'red',
       productPrice: 19000,
-      productImage: "/04.jpg",
+      productImage: '/04.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "#fff",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: '#fff',
       productPrice: 19001,
-      productImage: "/03.jpg",
+      productImage: '/03.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "red",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'red',
       productPrice: 19000,
-      productImage: "/02.jpg",
+      productImage: '/02.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "red",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'red',
       productPrice: 19000,
-      productImage: "/01.jpg",
+      productImage: '/01.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "blue",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'blue',
       productPrice: 19000,
-      productImage: "/04.jpg",
+      productImage: '/04.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "green",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'green',
       productPrice: 19001,
-      productImage: "/03.jpg",
+      productImage: '/03.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "orange",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'orange',
       productPrice: 19000,
-      productImage: "/02.jpg",
+      productImage: '/02.jpg',
     },
     {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "yellow",
+      productName: 'Body Osito',
+      productTail: 'T1',
+      productColor: 'yellow',
       productPrice: 19000,
-      productImage: "/01.jpg",
+      productImage: '/01.jpg',
     },
   ];
 
@@ -129,7 +129,7 @@ export const Checkout = () => {
           display="flex"
           width="100%"
           mt={8}
-          flexDirection={{ base: "column", md: "row" }}
+          flexDirection={{ base: 'column', md: 'row' }}
         >
           <Box display="flex" width="100%" order={{ base: 2, md: 1 }}>
             <Tabs
@@ -140,9 +140,9 @@ export const Checkout = () => {
               <TabList display="flex" width="100%">
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -155,9 +155,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -170,9 +170,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -196,7 +196,7 @@ export const Checkout = () => {
                 </TabPanel>
                 <TabPanel>
                   <Step3
-                    onComplete={() => router.push("/checkout-success")}
+                    onComplete={() => router.push('/checkout-success')}
                     handleClickBack={() => setTabIndex(1)}
                     goStepOne={() => setTabIndex(0)}
                     goStepTwo={() => setTabIndex(1)}
@@ -208,7 +208,7 @@ export const Checkout = () => {
           <Box
             width="300px"
             height="100%"
-            display={{ base: "none", md: "flex" }}
+            display={{ base: 'none', md: 'flex' }}
             flexDirection="column"
             alignItems="center"
             ml={4}
@@ -271,7 +271,7 @@ export const Checkout = () => {
                   fontWeight={600}
                 >
                   Total:
-                </Box>{" "}
+                </Box>{' '}
                 <Box
                   fontFamily="Nunito"
                   color="#797b7a"

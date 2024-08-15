@@ -1,4 +1,4 @@
-import { CheckoutSuccess } from "../components/Screens";
+import { CheckoutSuccess } from '../components/Screens';
 
 export const CheckoutPage = () => {
   return (

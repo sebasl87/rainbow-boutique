@@ -1,22 +1,22 @@
-import { Box, Stack, Radio, RadioGroup, Button, Image } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import { InputForm } from "@/components/atoms";
-import { useAtom } from "jotai";
-import { step2Atom } from "@/jotai/atoms";
+import { Box, Stack, Radio, RadioGroup, Button, Image } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { InputForm } from '@/components/atoms';
+import { useAtom } from 'jotai';
+import { step2Atom } from '@/jotai/atoms';
 
 export const Step2 = ({ onComplete, handleClickBack }) => {
   const [input, setInput] = useState({
-    paymentMethod: "",
-    facturationName: "",
-    facturationLastName: "",
-    facturationDni: "",
-    facturationPhone: "",
-    facturationStreet: "",
-    facturationPostalCode: "",
-    facturationPiso: "",
-    facturationDpto: "",
-    facturationCity: "",
-    facturationProv: "",
+    paymentMethod: '',
+    facturationName: '',
+    facturationLastName: '',
+    facturationDni: '',
+    facturationPhone: '',
+    facturationStreet: '',
+    facturationPostalCode: '',
+    facturationPiso: '',
+    facturationDpto: '',
+    facturationCity: '',
+    facturationProv: '',
   });
 
   const [step2, setStep2] = useAtom(step2Atom);
@@ -37,55 +37,55 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
   useEffect(() => {
     if (step2) {
       setInput(step2);
-      setSelectedValue(step2.paymentMethod || "");
+      setSelectedValue(step2.paymentMethod || '');
     }
   }, [step2]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case "facturationPhone":
-        const phoneValue = value.replace(/[^\d]/g, "");
+      case 'facturationPhone':
+        const phoneValue = value.replace(/[^\d]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: phoneValue,
         }));
         validatePhone(name, phoneValue);
         break;
-      case "facturationName":
-      case "facturationLastName":
-        const nameValue = value.replace(/[^A-Za-z\s]/g, "");
+      case 'facturationName':
+      case 'facturationLastName':
+        const nameValue = value.replace(/[^A-Za-z\s]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: nameValue,
         }));
         validateName(name, nameValue);
         break;
-      case "facturationDni":
-        const dniValue = value.replace(/[^\d]/g, "");
+      case 'facturationDni':
+        const dniValue = value.replace(/[^\d]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: dniValue,
         }));
         validateDni(name, dniValue);
         break;
-      case "facturationStreet":
-      case "facturationPostalCode":
+      case 'facturationStreet':
+      case 'facturationPostalCode':
         setInput((prevInput) => ({
           ...prevInput,
           [name]: value,
         }));
         validateAlphanumeric(name, value, 4);
         break;
-      case "facturationPiso":
-        const pisoValue = value.replace(/[^\d]/g, "");
+      case 'facturationPiso':
+        const pisoValue = value.replace(/[^\d]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: pisoValue,
         }));
         break;
-      case "facturationCity":
-      case "facturationProv":
+      case 'facturationCity':
+      case 'facturationProv':
         setInput((prevInput) => ({
           ...prevInput,
           [name]: value,
@@ -141,27 +141,27 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
     }));
   };
 
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
 
   const isFormValid = () => {
     return (
       input.paymentMethod &&
       !errors.facturationName &&
-      input.facturationName !== "" &&
+      input.facturationName !== '' &&
       !errors.facturationLastName &&
-      input.facturationLastName !== "" &&
+      input.facturationLastName !== '' &&
       !errors.facturationDni &&
-      input.facturationDni !== "" &&
+      input.facturationDni !== '' &&
       !errors.facturationPhone &&
-      input.facturationPhone !== "" &&
+      input.facturationPhone !== '' &&
       !errors.facturationStreet &&
-      input.facturationStreet !== "" &&
+      input.facturationStreet !== '' &&
       !errors.facturationPostalCode &&
-      input.facturationPostalCode !== "" &&
+      input.facturationPostalCode !== '' &&
       !errors.facturationCity &&
-      input.facturationCity !== "" &&
+      input.facturationCity !== '' &&
       !errors.facturationProv &&
-      input.facturationProv !== ""
+      input.facturationProv !== ''
     );
   };
 
@@ -196,22 +196,22 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
               value="transfer"
               _before={{
                 content: '""',
-                display: "inline-block",
-                borderRadius: "50%",
-                width: "100%",
-                height: "100%",
-                border: "none",
+                display: 'inline-block',
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                border: 'none',
               }}
               _checked={{
-                bg: "#797B7A",
-                borderColor: "none",
+                bg: '#797B7A',
+                borderColor: 'none',
                 _before: {
-                  bg: "#797B7A",
-                  border: "none",
+                  bg: '#797B7A',
+                  border: 'none',
                 },
               }}
               _hover={{
-                borderColor: "#797B7A",
+                borderColor: '#797B7A',
               }}
             >
               <Box
@@ -239,22 +239,22 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
               value="accordarMetodoPago"
               _before={{
                 content: '""',
-                display: "inline-block",
-                borderRadius: "50%",
-                width: "100%",
-                height: "100%",
-                border: "none",
+                display: 'inline-block',
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                border: 'none',
               }}
               _checked={{
-                bg: "#797B7A",
-                borderColor: "none",
+                bg: '#797B7A',
+                borderColor: 'none',
                 _before: {
-                  bg: "#797B7A",
-                  border: "none",
+                  bg: '#797B7A',
+                  border: 'none',
                 },
               }}
               _hover={{
-                borderColor: "#797B7A",
+                borderColor: '#797B7A',
               }}
             >
               <Box
@@ -463,7 +463,7 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
             cursor="pointer"
             fontWeight={600}
             _hover={{
-              textDecoration: "underline",
+              textDecoration: 'underline',
             }}
             onClick={handleClickBack}
           >

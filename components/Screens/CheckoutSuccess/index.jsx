@@ -1,5 +1,5 @@
-import { Box, Image, Button } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Box, Image, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 export const CheckoutSuccess = () => {
   const router = useRouter();
@@ -15,15 +15,15 @@ export const CheckoutSuccess = () => {
       <Image
         src="/logoRain.png"
         alt="logo"
-        w={{ base: "200px", md: "400px" }}
+        w={{ base: '200px', md: '400px' }}
         mt={6}
       />
       <Box
         fontFamily="Nunito"
         fontWeight={700}
         color="#797B7A"
-        fontSize={{ base: "28px", md: "56px" }}
-        mt={{ base: "-35px", md: "-80px" }}
+        fontSize={{ base: '28px', md: '56px' }}
+        mt={{ base: '-35px', md: '-80px' }}
       >
         ¡Gracias por tu compra!
       </Box>
@@ -31,7 +31,7 @@ export const CheckoutSuccess = () => {
         fontFamily="Nunito"
         fontWeight={600}
         color="#797B7A"
-        fontSize={{ base: "16px", md: "28px" }}
+        fontSize={{ base: '16px', md: '28px' }}
       >
         En breve nos pondremos en contacto.
       </Box>
@@ -46,7 +46,7 @@ export const CheckoutSuccess = () => {
           fontFamily="Nunito"
           fontWeight={600}
           mt={6}
-          onClick={() => router.push("/")}
+          onClick={() => router.push('/')}
         >
           Seguir comprando
         </Button>

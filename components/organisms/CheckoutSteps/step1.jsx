@@ -1,18 +1,18 @@
-import { Box, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import { InputForm } from "@/components/atoms";
-import { useAtom } from "jotai";
-import { step1Atom } from "@/jotai/atoms";
+import { Box, Stack, Radio, RadioGroup, Button } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { InputForm } from '@/components/atoms';
+import { useAtom } from 'jotai';
+import { step1Atom } from '@/jotai/atoms';
 
 export const Step1 = ({ onComplete }) => {
   const [input, setInput] = useState({
-    email: "",
-    phone: "",
-    pickUpMethod: "",
-    pickingUpPersonName: "",
-    pickingUpPersonLastName: "",
-    pickingUpPersonDni: "",
-    pickingUpPersonPhone: "",
+    email: '',
+    phone: '',
+    pickUpMethod: '',
+    pickingUpPersonName: '',
+    pickingUpPersonLastName: '',
+    pickingUpPersonDni: '',
+    pickingUpPersonPhone: '',
   });
 
   const [step1, setStep1] = useAtom(step1Atom);
@@ -29,40 +29,40 @@ export const Step1 = ({ onComplete }) => {
   useEffect(() => {
     if (step1) {
       setInput(step1);
-      setSelectedValue(step1.pickUpMethod || "");
+      setSelectedValue(step1.pickUpMethod || '');
     }
   }, [step1]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case "email":
+      case 'email':
         setInput((prevInput) => ({
           ...prevInput,
           email: value,
         }));
         validateEmail(value);
         break;
-      case "phone":
-      case "pickingUpPersonPhone":
-        const phoneValue = value.replace(/[^\d]/g, "");
+      case 'phone':
+      case 'pickingUpPersonPhone':
+        const phoneValue = value.replace(/[^\d]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: phoneValue,
         }));
         validatePhone(name, phoneValue);
         break;
-      case "pickingUpPersonName":
-      case "pickingUpPersonLastName":
-        const nameValue = value.replace(/[^A-Za-z\s]/g, "");
+      case 'pickingUpPersonName':
+      case 'pickingUpPersonLastName':
+        const nameValue = value.replace(/[^A-Za-z\s]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: nameValue,
         }));
         validateName(name, nameValue);
         break;
-      case "pickingUpPersonDni":
-        const dniValue = value.replace(/[^\d]/g, "");
+      case 'pickingUpPersonDni':
+        const dniValue = value.replace(/[^\d]/g, '');
         setInput((prevInput) => ({
           ...prevInput,
           [name]: dniValue,
@@ -112,14 +112,14 @@ export const Step1 = ({ onComplete }) => {
 
   const handleRadioChange = (value) => {
     setSelectedValue(value);
-    if (value === "domicilio") {
+    if (value === 'domicilio') {
       setInput((prevInput) => ({
         ...prevInput,
         pickUpMethod: value,
-        pickingUpPersonName: "",
-        pickingUpPersonLastName: "",
-        pickingUpPersonDni: "",
-        pickingUpPersonPhone: "",
+        pickingUpPersonName: '',
+        pickingUpPersonLastName: '',
+        pickingUpPersonDni: '',
+        pickingUpPersonPhone: '',
       }));
     } else {
       setInput((prevInput) => ({
@@ -129,24 +129,24 @@ export const Step1 = ({ onComplete }) => {
     }
   };
 
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
   console.log(input);
 
   const isFormValid = () => {
-    const isEmailValid = !errors.email && input.email !== "";
-    const isPhoneValid = !errors.phone && input.phone !== "";
+    const isEmailValid = !errors.email && input.email !== '';
+    const isPhoneValid = !errors.phone && input.phone !== '';
     const isNameValid =
-      !errors.pickingUpPersonName && input.pickingUpPersonName !== "";
+      !errors.pickingUpPersonName && input.pickingUpPersonName !== '';
     const isLastNameValid =
-      !errors.pickingUpPersonLastName && input.pickingUpPersonLastName !== "";
+      !errors.pickingUpPersonLastName && input.pickingUpPersonLastName !== '';
     const isDniValid =
-      !errors.pickingUpPersonDni && input.pickingUpPersonDni !== "";
+      !errors.pickingUpPersonDni && input.pickingUpPersonDni !== '';
     const isPickingUpPersonPhoneValid =
-      !errors.pickingUpPersonPhone && input.pickingUpPersonPhone !== "";
+      !errors.pickingUpPersonPhone && input.pickingUpPersonPhone !== '';
 
-    if (selectedValue === "domicilio") {
+    if (selectedValue === 'domicilio') {
       return isEmailValid && isPhoneValid;
-    } else if (selectedValue === "pickUp") {
+    } else if (selectedValue === 'pickUp') {
       return (
         isEmailValid &&
         isPhoneValid &&
@@ -212,22 +212,22 @@ export const Step1 = ({ onComplete }) => {
               value="domicilio"
               _before={{
                 content: '""',
-                display: "inline-block",
-                borderRadius: "50%",
-                width: "100%",
-                height: "100%",
-                border: "none",
+                display: 'inline-block',
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                border: 'none',
               }}
               _checked={{
-                bg: "#797B7A",
-                borderColor: "none",
+                bg: '#797B7A',
+                borderColor: 'none',
                 _before: {
-                  bg: "#797B7A",
-                  border: "none",
+                  bg: '#797B7A',
+                  border: 'none',
                 },
               }}
               _hover={{
-                borderColor: "#797B7A",
+                borderColor: '#797B7A',
               }}
             >
               <Box
@@ -245,7 +245,7 @@ export const Step1 = ({ onComplete }) => {
                 >
                   Envio a domicilio
                 </Box>
-                {selectedValue === "domicilio" && (
+                {selectedValue === 'domicilio' && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -266,22 +266,22 @@ export const Step1 = ({ onComplete }) => {
               value="pickUp"
               _before={{
                 content: '""',
-                display: "inline-block",
-                borderRadius: "50%",
-                width: "100%",
-                height: "100%",
-                border: "none",
+                display: 'inline-block',
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                border: 'none',
               }}
               _checked={{
-                bg: "#797B7A",
-                borderColor: "none",
+                bg: '#797B7A',
+                borderColor: 'none',
                 _before: {
-                  bg: "#797B7A",
-                  border: "none",
+                  bg: '#797B7A',
+                  border: 'none',
                 },
               }}
               _hover={{
-                borderColor: "#797B7A",
+                borderColor: '#797B7A',
               }}
             >
               <Box
@@ -299,7 +299,7 @@ export const Step1 = ({ onComplete }) => {
                 >
                   Retirar por Showroom gratis
                 </Box>
-                {selectedValue === "pickUp" && (
+                {selectedValue === 'pickUp' && (
                   <Box
                     fontSize="14px"
                     fontFamily="Nunito"
@@ -314,7 +314,7 @@ export const Step1 = ({ onComplete }) => {
             </Radio>
           </Stack>
         </RadioGroup>
-        {selectedValue === "pickUp" && (
+        {selectedValue === 'pickUp' && (
           <>
             <Box
               fontSize="16px"
