@@ -10,3 +10,4 @@ export * from "./CartSliderProduct";
 export * from "./CheckoutSteps/step1";
 export * from "./CheckoutSteps/step2";
 export * from "./CheckoutSteps/step3";
+export * from "./CartSliderCheckout";

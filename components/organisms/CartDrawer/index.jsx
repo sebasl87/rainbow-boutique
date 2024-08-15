@@ -9,67 +9,67 @@ import {
   Button,
   DrawerFooter,
   Flex,
-} from '@chakra-ui/react';
-import { CartSliderProduct } from '@/components/organisms';
+} from "@chakra-ui/react";
+import { CartSliderProduct } from "@/components/organisms";
+import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
 
 export const CartDrawer = ({ isOpen, onClose }) => {
-
   const productsSlice = [
     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'red',
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
       productPrice: 19000,
-      productImage: '/04.jpg',
+      productImage: "/04.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: '#fff',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "#fff",
       productPrice: 19001,
-      productImage: '/03.jpg',
+      productImage: "/03.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'red',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
       productPrice: 19000,
-      productImage: '/02.jpg',
+      productImage: "/02.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'red',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
       productPrice: 19000,
-      productImage: '/01.jpg',
+      productImage: "/01.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'blue',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "blue",
       productPrice: 19000,
-      productImage: '/04.jpg',
+      productImage: "/04.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'green',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "green",
       productPrice: 19001,
-      productImage: '/03.jpg',
+      productImage: "/03.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'orange',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "orange",
       productPrice: 19000,
-      productImage: '/02.jpg',
+      productImage: "/02.jpg",
     },
-     {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'yellow',
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "yellow",
       productPrice: 19000,
-      productImage: '/01.jpg',
+      productImage: "/01.jpg",
     },
   ];
 
@@ -110,7 +110,7 @@ export const CartDrawer = ({ isOpen, onClose }) => {
               productName={product.productName}
               productTail={product.productTail}
               productColor={product.productColor}
-              productPrice={product.productPrice} 
+              productPrice={product.productPrice}
               productImage={product.productImage}
               key={index}
             />
@@ -118,6 +118,15 @@ export const CartDrawer = ({ isOpen, onClose }) => {
         </DrawerBody>
         <DrawerFooter borderTopWidth="1px">
           <Flex direction="column" width="full">
+            <Box
+              fontFamily="Nunito"
+              color="#797b7a"
+              fontWeight={600}
+              fontSize="20px"
+              mb={2}
+            >
+              Total: {formatNumberToCurrencyWithoutDecimals(30000)}
+            </Box>
             <Button width="full" mb={4} background="#D7ECE8" color="#797B7A">
               FINALIZAR COMPRA
             </Button>
