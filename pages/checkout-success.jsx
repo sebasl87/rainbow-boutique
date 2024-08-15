@@ -1,9 +1,9 @@
-import { Checkout } from "../components/Screens";
+import { CheckoutSuccess } from "../components/Screens";
 
 export const CheckoutPage = () => {
   return (
     <>
-      <Checkout />
+      <CheckoutSuccess />
     </>
   );
 };

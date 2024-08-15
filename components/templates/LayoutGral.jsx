@@ -10,7 +10,7 @@ export const LayoutGral = ({ children }) => {
         display="flex"
         m="auto"
         mt={{
-          base: '134px',
+          base: '164px',
           md: '154px',
           lg: 32,
         }}
