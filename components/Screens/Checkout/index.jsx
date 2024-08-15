@@ -6,12 +6,36 @@ import { productsInCart } from "../../../jotai/atoms";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Step1, Step2, Step3 } from "@/components/organisms";
 import { useRouter } from "next/router";
+import { CartSliderCheckout } from "../../organisms/CartSliderCheckout";
+import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
+import { css } from "@emotion/react";
 
 export const Checkout = () => {
   const productsCart = useAtomValue(productsInCart);
   const [step1Complete, setStep1Complete] = useState(false);
   const [step2Complete, setStep2Complete] = useState(false);
   const [tabIndex, setTabIndex] = useState(0);
+
+  const customScrollbar = css`
+    &::-webkit-scrollbar {
+      width: 8px; /* Ancho del scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Fondo del track del scrollbar */
+      border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1; /* Color del thumb del scrollbar */
+      border-radius: 8px;
+      border: 2px solid #f1f1f1; /* Espacio alrededor del thumb */
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #a1a1a1; /* Color del thumb al pasar el mouse */
+    }
+  `;
 
   useEffect(() => {
     console.log(productsCart.length);
@@ -29,6 +53,65 @@ export const Checkout = () => {
   };
 
   const router = useRouter();
+
+  const productsSlice = [
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
+      productPrice: 19000,
+      productImage: "/04.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "#fff",
+      productPrice: 19001,
+      productImage: "/03.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
+      productPrice: 19000,
+      productImage: "/02.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "red",
+      productPrice: 19000,
+      productImage: "/01.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "blue",
+      productPrice: 19000,
+      productImage: "/04.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "green",
+      productPrice: 19001,
+      productImage: "/03.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "orange",
+      productPrice: 19000,
+      productImage: "/02.jpg",
+    },
+    {
+      productName: "Body Osito",
+      productTail: "T1",
+      productColor: "yellow",
+      productPrice: 19000,
+      productImage: "/01.jpg",
+    },
+  ];
 
   return (
     <Box
@@ -125,7 +208,7 @@ export const Checkout = () => {
           <Box
             width="300px"
             height="100%"
-            display="flex"
+            display={{ base: "none", md: "flex" }}
             flexDirection="column"
             alignItems="center"
             ml={4}
@@ -151,9 +234,53 @@ export const Checkout = () => {
               flexDirection="column"
               alignItems="center"
               background="#FBFBFB"
-              height="100%"
+              flexGrow={1}
             >
-              lalal
+              <Box
+                display="flex"
+                flexDirection="column"
+                width="100%"
+                px={3}
+                overflowY="auto"
+                maxHeight="400px"
+                css={customScrollbar}
+              >
+                {productsSlice?.map((product, index) => (
+                  <CartSliderCheckout
+                    productName={product.productName}
+                    productTail={product.productTail}
+                    productColor={product.productColor}
+                    productPrice={product.productPrice}
+                    productImage={product.productImage}
+                    key={index}
+                  />
+                ))}
+              </Box>
+              <Box
+                display="flex"
+                width="100%"
+                justifyContent="space-between"
+                px={3}
+                py={4}
+                background="#EEF5F4"
+              >
+                <Box
+                  fontFamily="Nunito"
+                  color="#797b7a"
+                  fontSize="20px"
+                  fontWeight={600}
+                >
+                  Total:
+                </Box>{" "}
+                <Box
+                  fontFamily="Nunito"
+                  color="#797b7a"
+                  fontSize="20px"
+                  fontWeight={600}
+                >
+                  {formatNumberToCurrencyWithoutDecimals(19000)}
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Box>
