@@ -6,7 +6,7 @@ import { useAtomValue, useSetAtom } from 'jotai';
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { productsInCart, productsList } from '../../../jotai/atoms';
+import { productsInCart, totalProducts } from '../../../jotai/atoms';
 import { useLazyQuery } from '@apollo/client';
 import { SEARCH_PRODUCT } from '../../../api/apollo/querys/products';
 import { BsEnvelopeArrowUp } from 'react-icons/bs';
@@ -19,7 +19,7 @@ export const Header = () => {
   const { desktop } = useBreakpoints();
   const [getProductsBySearch, { data, loading }] = useLazyQuery(SEARCH_PRODUCT);
 
-  const setProductsList = useSetAtom(productsList);
+  const setProductsList = useSetAtom(totalProducts);
 
   const pressEnter = (e) => {
     if (e.key === 'Enter') {

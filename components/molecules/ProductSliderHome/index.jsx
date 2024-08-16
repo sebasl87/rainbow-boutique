@@ -141,7 +141,7 @@ const ProductSliderHome = ({
           {nameProduct}
         </Box>
         <Box color="#797B7A" fontFamily="Nunito" fontSize="14px">
-          Del ... al ....
+          Del T0 al T6
         </Box>
         <div style={{ display: 'flex', gap: '10px', marginTop: '12px' }}>
           {colors?.map((color, index) => (

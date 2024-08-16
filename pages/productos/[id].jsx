@@ -6,12 +6,13 @@ import { CartDrawer } from '../../components/organisms';
 import { GET_PRODUCT } from '../../api/apollo/querys';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
-import { useDisclosure, Button } from '@chakra-ui/react';
+import {  Button } from '@chakra-ui/react';
 import { BreadcrumbRainbow } from '@/components/molecules';
 import { RainbowSpinner } from '@/components/atoms';
+import useModalCart from '@/hooks/useModalCart';
 
 export const DetailProductScreen = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useModalCart()
 
   const {
     query: { id },

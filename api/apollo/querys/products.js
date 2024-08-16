@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_PRODUCT = gql`
   query getProduct($id: ID) {
@@ -31,6 +31,7 @@ export const GET_ALL_PRODUCTS = gql`
       id
       cod
       name
+      gender
       price {
         hasDiscount
         subtotal
@@ -48,6 +49,7 @@ export const GET_ALL_PRODUCTS = gql`
         }
         sizes
       }
+      sale
     }
   }
 `;

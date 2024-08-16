@@ -4,7 +4,7 @@ import { Button, useBoolean } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
 import { useAtomValue } from 'jotai';
-import { productsList } from '../../../jotai/atoms';
+import { totalProducts } from '../../../jotai/atoms';
 
 const CardContainer = () => {
   const config = {
@@ -22,7 +22,7 @@ const CardContainer = () => {
   const cardRefs = useRef([]);
   const [showAllProducts, setShowAllProducts] = useBoolean(false);
 
-  const products = useAtomValue(productsList);
+  const products = useAtomValue(totalProducts);
   const updateCards = (event) => {
     for (const card of cards) {
       const cardBounds = card.getBoundingClientRect();

@@ -1,14 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ProductSliderHome from '@/components/molecules/ProductSliderHome';
 import { HomeCategories } from '@/components/organisms';
-import { Image, Box } from '@chakra-ui/react';
-import { useAtomValue } from 'jotai';
-import { productsList } from '../../../jotai/atoms';
-import { formatNumberToCurrencyWithoutDecimals } from '../../../styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { Box, Image } from '@chakra-ui/react';
+import { useAtom, useAtomValue } from 'jotai';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { productsFiltered, totalProducts } from '../../../jotai/atoms';
+import { formatNumberToCurrencyWithoutDecimals } from '../../../styles/utils/formatNumberToCurrencyWithoutDecimals';
 
-export const HomeScreen = ({ images }) => {
-  const products = useAtomValue(productsList);
+export const HomeScreen = () => {
+  const products = useAtomValue(totalProducts);
+  const [filteredProds, setfilteredProds] = useAtom(productsFiltered);
   const router = useRouter();
+  const [cat, setcat] = useState('');
+
+  useEffect(() => {
+    if (['nb', 'bb', 'bg'].includes(cat))
+      setfilteredProds(products?.filter((p) => p.gender === cat));
+    if (cat === 'sale') setfilteredProds(products?.filter((p) => p.sale));
+  }, [cat]);
+
   return (
     <>
       <Box
@@ -18,7 +29,7 @@ export const HomeScreen = ({ images }) => {
         flexDirection="column"
         alignItems="center"
       >
-        <HomeCategories />
+        <HomeCategories handleOnClick={setcat} />
         <Box w="100%" mt={8} display="flex" justifyContent="center">
           <Image
             src={'/banner_rainbow.png'}
@@ -33,6 +44,8 @@ export const HomeScreen = ({ images }) => {
           w="100%"
           justifyContent="center"
           pt={8}
+          onClick={() => setfilteredProds(undefined)}
+          cursor="pointer"
         >
           <Image
             data-testid="logoImage"
@@ -66,26 +79,51 @@ export const HomeScreen = ({ images }) => {
             justifyContent="center"
             mt={10}
           >
-            {products?.map((product, index) => (
-              <Box
-                display="flex"
-                width="100%"
-                justifyContent="center"
-                key={product.name}
-              >
-                <ProductSliderHome
-                  key={index}
-                  images={product.photos}
-                  isDiscount={false}
-                  nameProduct={product.name}
-                  product={product}
-                  price={formatNumberToCurrencyWithoutDecimals(
-                    product.price.total
-                  )}
-                  handleClick={() => router.push(`/productos/${product.id}`)}
-                />
-              </Box>
-            ))}
+            {filteredProds
+              ? filteredProds?.map((product, index) => (
+                  <Box
+                    display="flex"
+                    width="100%"
+                    justifyContent="center"
+                    key={product.name}
+                  >
+                    <ProductSliderHome
+                      key={index}
+                      images={product.photos}
+                      isDiscount={false}
+                      nameProduct={product.name}
+                      product={product}
+                      price={formatNumberToCurrencyWithoutDecimals(
+                        product.price.total
+                      )}
+                      handleClick={() =>
+                        router.push(`/productos/${product.id}`)
+                      }
+                    />
+                  </Box>
+                ))
+              : products?.map((product, index) => (
+                  <Box
+                    display="flex"
+                    width="100%"
+                    justifyContent="center"
+                    key={product.name}
+                  >
+                    <ProductSliderHome
+                      key={index}
+                      images={product.photos}
+                      isDiscount={false}
+                      nameProduct={product.name}
+                      product={product}
+                      price={formatNumberToCurrencyWithoutDecimals(
+                        product.price.total
+                      )}
+                      handleClick={() =>
+                        router.push(`/productos/${product.id}`)
+                      }
+                    />
+                  </Box>
+                ))}
           </Box>
         </>
       </Box>
