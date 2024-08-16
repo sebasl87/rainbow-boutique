@@ -1,77 +1,24 @@
-import {
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  Box,
-  Image,
-  Button,
-  DrawerFooter,
-  Flex,
-} from '@chakra-ui/react';
 import { CartSliderProduct } from '@/components/organisms';
+import { productsInCart } from '@/jotai/atoms';
 import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
+import {
+  Box,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  Image,
+} from '@chakra-ui/react';
+import { useAtomValue } from 'jotai';
+import { useRouter } from 'next/router';
 
 export const CartDrawer = ({ isOpen, onClose }) => {
-  const productsSlice = [
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'red',
-      productPrice: 19000,
-      productImage: '/04.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: '#fff',
-      productPrice: 19001,
-      productImage: '/03.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'red',
-      productPrice: 19000,
-      productImage: '/02.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'red',
-      productPrice: 19000,
-      productImage: '/01.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'blue',
-      productPrice: 19000,
-      productImage: '/04.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'green',
-      productPrice: 19001,
-      productImage: '/03.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'orange',
-      productPrice: 19000,
-      productImage: '/02.jpg',
-    },
-    {
-      productName: 'Body Osito',
-      productTail: 'T1',
-      productColor: 'yellow',
-      productPrice: 19000,
-      productImage: '/01.jpg',
-    },
-  ];
+  const productsWaitInCart = useAtomValue(productsInCart);
+  const router = useRouter();
 
   return (
     <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
@@ -105,14 +52,14 @@ export const CartDrawer = ({ isOpen, onClose }) => {
           </Box>
         </DrawerHeader>
         <DrawerBody>
-          {productsSlice?.map((product, index) => (
+          {productsWaitInCart?.map((product, index) => (
             <CartSliderProduct
               productName={product.productName}
-              productTail={product.productTail}
-              productColor={product.productColor}
+              size={product.size}
+              color={product.color}
               productPrice={product.productPrice}
               productImage={product.productImage}
-              key={index}
+              key={product.productId + index}
             />
           ))}
         </DrawerBody>
@@ -127,7 +74,13 @@ export const CartDrawer = ({ isOpen, onClose }) => {
             >
               Total: {formatNumberToCurrencyWithoutDecimals(30000)}
             </Box>
-            <Button width="full" mb={4} background="#D7ECE8" color="#797B7A">
+            <Button
+              width="full"
+              mb={4}
+              background="#D7ECE8"
+              color="#797B7A"
+              onClick={(() => router.push('/checkout').then(onClose))}
+            >
               FINALIZAR COMPRA
             </Button>
             <Button

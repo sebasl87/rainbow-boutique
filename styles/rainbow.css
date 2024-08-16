@@ -46,7 +46,7 @@
 .rainbow-color-1 {
   height: 5.625em; /* 50% de 11.25em */
   width: 11.25em; /* 50% de 22.5em */
-  border: 0.625em solid #fd004c; /* 50% de 1.25em */
+  border: 0.625em solid #ebbeb4; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 2.81em); /* 50% de 5.62em */
   border-radius: 0 0 5.625em 5.625em; /* 50% de 11.25em */
@@ -56,7 +56,7 @@
 .rainbow-color-2 {
   height: 5em; /* 50% de 10em */
   width: 10em; /* 50% de 20em */
-  border: 0.625em solid #fe9000; /* 50% de 1.25em */
+  border: 0.625em solid #f9d588; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 2.5em); /* 50% de 5em */
   border-radius: 0 0 5em 5em; /* 50% de 10em */
@@ -66,7 +66,7 @@
 .rainbow-color-3 {
   height: 4.375em; /* 50% de 8.75em */
   width: 8.75em; /* 50% de 17.5em */
-  border: 0.625em solid #fff020; /* 50% de 1.25em */
+  border: 0.625em solid #d7ece8; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 2.19em); /* 50% de 4.37em */
   border-radius: 0 0 4.375em 4.375em; /* 50% de 8.75em */
@@ -76,7 +76,7 @@
 .rainbow-color-4 {
   height: 3.75em; /* 50% de 7.5em */
   width: 7.5em; /* 50% de 15em */
-  border: 0.625em solid #3edf4b; /* 50% de 1.25em */
+  border: 0.625em solid #aedbe8; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 1.875em); /* 50% de 3.75em */
   border-radius: 0 0 3.75em 3.75em; /* 50% de 7.5em */
@@ -86,7 +86,7 @@
 .rainbow-color-5 {
   height: 3.125em; /* 50% de 6.25em */
   width: 6.25em; /* 50% de 12.5em */
-  border: 0.625em solid #33adff; /* 50% de 1.25em */
+  border: 0.625em solid #ebbeb4; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 1.56em); /* 50% de 3.12em */
   border-radius: 0 0 3.125em 3.125em; /* 50% de 6.25em */
@@ -96,7 +96,7 @@
 .rainbow-color-6 {
   height: 2.5em; /* 50% de 5em */
   width: 5em; /* 50% de 10em */
-  border: 0.625em solid #2041ff; /* 50% de 1.25em */
+  border: 0.625em solid #f9d588; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 1.265em); /* 50% de 2.53em */
   border-radius: 0 0 2.5em 2.5em; /* 50% de 5em */
@@ -106,7 +106,7 @@
 .rainbow-color-7 {
   height: 1.935em; /* 50% de 3.87em */
   width: 3.75em; /* 50% de 7.5em */
-  border: 0.625em solid #9320ff; /* 50% de 1.25em */
+  border: 0.625em solid #d7ece8; /* 50% de 1.25em */
   border-top: none;
   top: calc(50% + 0.96em); /* 50% de 1.92em */
   border-radius: 0 0 1.875em 1.875em; /* 50% de 3.75em */

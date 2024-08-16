@@ -1,15 +1,17 @@
 import { Cart, InputSearch } from '@/components/molecules';
 import { useBreakpoints } from '@/hooks';
 
-import { Box, Image, Text } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 import { useAtomValue, useSetAtom } from 'jotai';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { productsInCart, totalProducts } from '../../../jotai/atoms';
+import useModalCart from '@/hooks/useModalCart';
 import { useLazyQuery } from '@apollo/client';
-import { SEARCH_PRODUCT } from '../../../api/apollo/querys/products';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { BsEnvelopeArrowUp } from 'react-icons/bs';
+import { CartDrawer } from '..';
+import { SEARCH_PRODUCT } from '../../../api/apollo/querys/products';
+import { productsInCart, totalProducts } from '../../../jotai/atoms';
 
 export const Header = () => {
   const router = useRouter();
@@ -39,6 +41,8 @@ export const Header = () => {
   }, [data]);
 
   const itemsInCart = useAtomValue(productsInCart);
+  const { onOpen } = useModalCart();
+  const { isOpen, onClose } = useModalCart();
 
   return (
     <Box
@@ -54,6 +58,8 @@ export const Header = () => {
       bg="#fff"
       boxShadow="0 4px 8px -2px rgba(0, 0, 0, 0.3)"
     >
+      <CartDrawer isOpen={isOpen} onClose={onClose} />
+
       {desktop ? (
         <Box
           display="flex"
@@ -83,11 +89,7 @@ export const Header = () => {
           </Box>
           <Box display="flex" justifyContent="flex-end" marginLeft="16px">
             <BsEnvelopeArrowUp size={48} color="#797B7A" />
-            <Cart
-              ml="64px"
-              itemsCart={itemsInCart}
-              handleClick={() => router.push('/checkout')}
-            />
+            <Cart ml="64px" itemsCart={itemsInCart} handleClick={onOpen} />
           </Box>
         </Box>
       ) : (

@@ -1,9 +1,10 @@
-import SeoHome from '../Seo/seoHome';
-import { totalProducts } from '../jotai/atoms';
-import { useSetAtom } from 'jotai';
-import { useQuery } from '@apollo/client';
-import { GET_ALL_PRODUCTS } from '../api/apollo/querys';
+import { RainbowSpinner } from '@/components';
 import { HomeScreen } from '@/components/Screens';
+import { useQuery } from '@apollo/client';
+import { useSetAtom } from 'jotai';
+import SeoHome from '../Seo/seoHome';
+import { GET_ALL_PRODUCTS } from '../api/apollo/querys';
+import { totalProducts } from '../jotai/atoms';
 
 export const Home = () => {
   const setProductsList = useSetAtom(totalProducts);
@@ -12,6 +13,8 @@ export const Home = () => {
       setProductsList(data.products);
     },
   });
+
+  if (isLoading) return <RainbowSpinner />;
 
   return (
     <>

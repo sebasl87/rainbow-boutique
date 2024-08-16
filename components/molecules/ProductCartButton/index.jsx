@@ -1,13 +1,30 @@
-import { useAtom } from 'jotai';
-import { productsInCart } from '../../../jotai/atoms';
-import { DeleteIcon } from '@chakra-ui/icons';
+import { useAtom, useAtomValue } from 'jotai';
+import { productsInCart, totalProducts } from '../../../jotai/atoms';
+
+import useModalCart from '@/hooks/useModalCart';
 import { Button } from '@chakra-ui/react';
+
 
 export const ProductCartButton = ({ productId, size, color }) => {
   const [products, setProductsInCart] = useAtom(productsInCart);
+  const totalProd = useAtomValue(totalProducts);
+  const { onOpen } = useModalCart();
+
   const addToCart = () => {
-    const updatedProducts = [...products, { productId, size, color }];
+    const productFinded = totalProd.find((product) => product.id === productId);
+    
+    const newProduct = {
+      productId,
+      size,
+      color,
+      productPrice: productFinded.price.total,
+      productName: productFinded.name,
+      productImage: productFinded.photos[0].url,
+    };
+
+    const updatedProducts = [...products, newProduct];
     setProductsInCart(updatedProducts);
+    onOpen();
   };
 
   const removeFromCart = () => {
@@ -18,11 +35,12 @@ export const ProductCartButton = ({ productId, size, color }) => {
         product.color !== color
     );
     setProductsInCart(updatedProducts);
+    onOpen();
   };
 
   const isInCart = products.some(
     (product) =>
-      product.productId === productId &&
+      product.id === productId &&
       product.size === size &&
       product.color === color
   );

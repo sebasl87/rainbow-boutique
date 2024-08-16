@@ -1,18 +1,16 @@
 import { CategoriesHeader } from '@/components/organisms';
-import { Box } from '@chakra-ui/react';
-import ProductSlider from '../../components/molecules/ProductSlider';
-import { ProductDetailsAddCartDescription } from '../../components/organisms';
-import { CartDrawer } from '../../components/organisms';
-import { GET_PRODUCT } from '../../api/apollo/querys';
 import { useQuery } from '@apollo/client';
+import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import {  Button } from '@chakra-ui/react';
-import { BreadcrumbRainbow } from '@/components/molecules';
+import { GET_PRODUCT } from '../../api/apollo/querys';
+import ProductSlider from '../../components/molecules/ProductSlider';
+import { CartDrawer, ProductDetailsAddCartDescription } from '../../components/organisms';
+
 import { RainbowSpinner } from '@/components/atoms';
+import { BreadcrumbRainbow } from '@/components/molecules';
 import useModalCart from '@/hooks/useModalCart';
 
 export const DetailProductScreen = () => {
-  const { isOpen, onOpen, onClose } = useModalCart()
 
   const {
     query: { id },
@@ -25,7 +23,6 @@ export const DetailProductScreen = () => {
 
   return (
     <>
-      <CartDrawer isOpen={isOpen} onClose={onClose} />
       <Box
         px={4}
         width="100%"
@@ -62,9 +59,7 @@ export const DetailProductScreen = () => {
             productId={id}
           />
         </Box>
-        <Button colorScheme="blue" onClick={onOpen}>
-          Open
-        </Button>
+
       </Box>
     </>
   );

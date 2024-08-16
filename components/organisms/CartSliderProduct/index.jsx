@@ -1,11 +1,10 @@
-import { ResumeCartItemsMini } from '@/components/molecules';
-import { Box, Image } from '@chakra-ui/react';
 import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { Box, Image } from '@chakra-ui/react';
 
 export const CartSliderProduct = ({
   productName,
-  productTail,
-  productColor,
+  size,
+  color,
   productPrice,
   productImage,
 }) => {
@@ -21,7 +20,7 @@ export const CartSliderProduct = ({
   ];
 
   
-  const isWhite = whiteColors.includes(productColor.toLowerCase());
+  const isWhite = whiteColors.includes(color.toLowerCase());
 
   return (
     <>
@@ -30,14 +29,15 @@ export const CartSliderProduct = ({
         width="100%"
         mb={2}
         mt={2}
+        py={2}
         borderBottom="1px solid #c8c8c8"
       >
         <Box>
           <Image
             src={productImage}
             alt="image"
-            w="80px"
-            h="108px"
+            w="60px"
+            h="72px"
             borderRadius={12}
             mb={2}
           />
@@ -58,9 +58,9 @@ export const CartSliderProduct = ({
             display="flex"
             alignItems="center"
           >
-            <span>{productTail} -</span>
+            <span>{size} -</span>
             <Box
-              background={productColor}
+              background={color}
               w={4}
               h={4}
               borderRadius={3}
@@ -71,7 +71,7 @@ export const CartSliderProduct = ({
           <Box color="#797B7A" fontFamily="Nunito" fontWeight={600} mb={1}>
             {formatNumberToCurrencyWithoutDecimals(productPrice)}
           </Box>
-          <ResumeCartItemsMini />
+          {/* <ResumeCartItemsMini /> ---> POR EL MOMENTO LO QUITAMOS POR EL MANEJO DE STOCK */}
         </Box>
       </Box>
     </>

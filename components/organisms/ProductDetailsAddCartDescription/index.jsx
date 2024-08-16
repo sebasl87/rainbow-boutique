@@ -69,7 +69,7 @@ export const ProductDetailsAddCartDescription = ({
         colors={colorAvailable.map((color) => color.hex)}
       />
       <SizeSelector
-        sizes={sizeAvailable[selectedColor].sizes}
+        availableSizes={sizeAvailable[selectedColor].sizes}
         selectedSize={selectedSize}
         setSelectedSize={setSelectedSize}
       />
