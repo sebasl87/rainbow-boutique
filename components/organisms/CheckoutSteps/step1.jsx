@@ -130,7 +130,7 @@ export const Step1 = ({ onComplete }) => {
   };
 
   const [selectedValue, setSelectedValue] = useState('');
-  console.log(input);
+
 
   const isFormValid = () => {
     const isEmailValid = !errors.email && input.email !== '';

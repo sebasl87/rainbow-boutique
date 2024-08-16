@@ -170,7 +170,7 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
     onComplete();
   };
 
-  console.log(input);
+
 
   return (
     <Box display="flex" width="100%" flexDirection="column">

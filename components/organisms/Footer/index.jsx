@@ -1,18 +1,16 @@
 import {
-  Stack,
-  HStack,
-  Link,
-  Image,
-  IconButton,
-  Text,
   Box,
+  HStack,
+  IconButton,
+  Image,
+  Link,
+  Stack,
+  Text,
 } from '@chakra-ui/react';
 
 import { useRouter } from 'next/router';
 import { BsTelephone } from 'react-icons/bs';
-import { FaTiktok } from 'react-icons/fa6';
-import { FaInstagram } from 'react-icons/fa6';
-import { FaRegEnvelope } from 'react-icons/fa6';
+import { FaInstagram, FaRegEnvelope, FaTiktok } from 'react-icons/fa6';
 import { LuArrowRightToLine } from 'react-icons/lu';
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 
@@ -123,7 +121,7 @@ export const Footer = () => {
             fontSize={16}
             fontFamily="RainbowRegular"
             color="rainbowGray"
-            bold
+            bold="true"
           >
             Vistiendo momentos
           </Text>

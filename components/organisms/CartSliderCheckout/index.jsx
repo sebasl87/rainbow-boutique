@@ -1,10 +1,10 @@
-import { Box, Image } from '@chakra-ui/react';
 import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { Box, Image } from '@chakra-ui/react';
 
 export const CartSliderCheckout = ({
   productName,
-  productTail,
-  productColor,
+  size,
+  color,
   productPrice,
   productImage,
 }) => {
@@ -20,7 +20,7 @@ export const CartSliderCheckout = ({
   ];
 
   
-  const isWhite = whiteColors.includes(productColor.toLowerCase());
+  const isWhite = whiteColors.includes(color.toLowerCase());
 
   return (
     <>
@@ -58,9 +58,9 @@ export const CartSliderCheckout = ({
             alignItems="center"
             fontSize="14px"
           >
-            <span>{productTail} -</span>
+            <span>{size} -</span>
             <Box
-              background={productColor}
+              background={color}
               w={3}
               h={3}
               borderRadius={3}

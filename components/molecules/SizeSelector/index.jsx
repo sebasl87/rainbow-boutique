@@ -8,7 +8,7 @@ const SizeSelector = ({
   setSelectedSize,
   showTitle = true,
 }) => {
-  console.log(availableSizes);
+
   return (
     <>
       {showTitle && (

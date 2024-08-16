@@ -19,7 +19,9 @@ import { useRouter } from 'next/router';
 export const CartDrawer = ({ isOpen, onClose }) => {
   const productsWaitInCart = useAtomValue(productsInCart);
   const router = useRouter();
-
+  const totalAmount = productsWaitInCart.reduce((acc, product) => {
+    return acc + product.productPrice;
+  }, 0);
   return (
     <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
@@ -72,14 +74,14 @@ export const CartDrawer = ({ isOpen, onClose }) => {
               fontSize="20px"
               mb={2}
             >
-              Total: {formatNumberToCurrencyWithoutDecimals(30000)}
+              Total: {formatNumberToCurrencyWithoutDecimals(totalAmount)}
             </Box>
             <Button
               width="full"
               mb={4}
               background="#D7ECE8"
               color="#797B7A"
-              onClick={(() => router.push('/checkout').then(onClose))}
+              onClick={() => router.push('/checkout').then(onClose)}
             >
               FINALIZAR COMPRA
             </Button>

@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-import { BreadcrumbRainbow, CartEmpty } from "../../molecules";
-import { Box } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { productsInCart } from "../../../jotai/atoms";
+import { Step1, Step2, Step3 } from '@/components/organisms';
+import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
 import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   Accordion,
-  AccordionItem,
   AccordionButton,
   AccordionIcon,
+  AccordionItem,
   AccordionPanel,
-} from "@chakra-ui/react";
-import { Step1, Step2, Step3 } from "@/components/organisms";
-import { useRouter } from "next/router";
-import { CartSliderCheckout } from "../../organisms/CartSliderCheckout";
-import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
-import { css } from "@emotion/react";
+  Box,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from '@chakra-ui/react';
+import { css } from '@emotion/react';
+import { useAtomValue } from 'jotai';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { productsInCart } from '../../../jotai/atoms';
+import { BreadcrumbRainbow, CartEmpty } from '../../molecules';
+import { CartSliderCheckout } from '../../organisms/CartSliderCheckout';
 
 export const Checkout = () => {
   const productsCart = useAtomValue(productsInCart);
@@ -48,10 +48,7 @@ export const Checkout = () => {
     }
   `;
 
-  useEffect(() => {
-    console.log(productsCart.length);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
 
   const handleStep1Complete = () => {
     setStep1Complete(true);
@@ -65,64 +62,10 @@ export const Checkout = () => {
 
   const router = useRouter();
 
-  const productsSlice = [
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "red",
-      productPrice: 19000,
-      productImage: "/04.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "#fff",
-      productPrice: 19001,
-      productImage: "/03.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "red",
-      productPrice: 19000,
-      productImage: "/02.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "red",
-      productPrice: 19000,
-      productImage: "/01.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "blue",
-      productPrice: 19000,
-      productImage: "/04.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "green",
-      productPrice: 19001,
-      productImage: "/03.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "orange",
-      productPrice: 19000,
-      productImage: "/02.jpg",
-    },
-    {
-      productName: "Body Osito",
-      productTail: "T1",
-      productColor: "yellow",
-      productPrice: 19000,
-      productImage: "/01.jpg",
-    },
-  ];
+  const productsWaitInCart = useAtomValue(productsInCart);
+  const totalAmount = productsWaitInCart.reduce((acc, product) => {
+    return acc + product.productPrice;
+  }, 0);
 
   return (
     <Box
@@ -140,35 +83,44 @@ export const Checkout = () => {
           display="flex"
           width="100%"
           mt={8}
-          flexDirection={{ base: "column", md: "row" }}
+          flexDirection={{ base: 'column', md: 'row' }}
         >
-          <Box display={{base: "block", md: "none"}} width="100%" mb={6}>
-          <Accordion allowMultiple>
-            <AccordionItem>
-              <h2>
-                <AccordionButton bg="#EEF5F4">
-                  <Box as="span" flex="1" textAlign="left" fontFamily="Nunito" color="#797b7a" fontSize="20px">
-                    <b>Carrito</b> - Total: {formatNumberToCurrencyWithoutDecimals(19000)}
+          <Box display={{ base: 'block', md: 'none' }} width="100%" mb={6}>
+            <Accordion allowMultiple>
+              <AccordionItem>
+                <h2>
+                  <AccordionButton bg="#EEF5F4">
+                    <Box
+                      as="span"
+                      flex="1"
+                      textAlign="left"
+                      fontFamily="Nunito"
+                      color="#797b7a"
+                      fontSize="20px"
+                    >
+                      <b>Carrito</b> - Total:{' '}
+                      {formatNumberToCurrencyWithoutDecimals(totalAmount)}
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Box>
+                    {productsWaitInCart?.map((product, index) => (
+                      <CartSliderCheckout
+                        productName={product.productName}
+                        size={product.size}
+                        color={product.color}
+                        productPrice={product.productPrice}
+                        productImage={product.productImage}
+                        key={product.productId + index}
+                      />
+                    ))}
                   </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                <Box>
-                  {productsSlice?.map((product, index) => (
-                    <CartSliderCheckout
-                      productName={product.productName}
-                      productTail={product.productTail}
-                      productColor={product.productColor}
-                      productPrice={product.productPrice}
-                      productImage={product.productImage}
-                      key={index}
-                    />
-                  ))}
-                </Box>
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion></Box>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+          </Box>
 
           <Box display="flex" width="100%" order={{ base: 2, md: 1 }}>
             <Tabs
@@ -179,9 +131,9 @@ export const Checkout = () => {
               <TabList display="flex" width="100%">
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -194,9 +146,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -209,9 +161,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: "#797B7A",
-                    borderBottom: "2px solid",
-                    borderColor: "#EBBEB3",
+                    color: '#797B7A',
+                    borderBottom: '2px solid',
+                    borderColor: '#EBBEB3',
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -235,7 +187,7 @@ export const Checkout = () => {
                 </TabPanel>
                 <TabPanel>
                   <Step3
-                    onComplete={() => router.push("/checkout-success")}
+                    onComplete={() => router.push('/checkout-success')}
                     handleClickBack={() => setTabIndex(1)}
                     goStepOne={() => setTabIndex(0)}
                     goStepTwo={() => setTabIndex(1)}
@@ -247,7 +199,7 @@ export const Checkout = () => {
           <Box
             width="300px"
             height="100%"
-            display={{ base: "none", md: "flex" }}
+            display={{ base: 'none', md: 'flex' }}
             flexDirection="column"
             alignItems="center"
             ml={4}
@@ -284,14 +236,14 @@ export const Checkout = () => {
                 maxHeight="400px"
                 css={customScrollbar}
               >
-                {productsSlice?.map((product, index) => (
+                {productsWaitInCart?.map((product, index) => (
                   <CartSliderCheckout
                     productName={product.productName}
-                    productTail={product.productTail}
-                    productColor={product.productColor}
+                    size={product.size}
+                    color={product.color}
                     productPrice={product.productPrice}
                     productImage={product.productImage}
-                    key={index}
+                    key={product.productId + index}
                   />
                 ))}
               </Box>
@@ -310,14 +262,14 @@ export const Checkout = () => {
                   fontWeight={600}
                 >
                   Total:
-                </Box>{" "}
+                </Box>{' '}
                 <Box
                   fontFamily="Nunito"
                   color="#797b7a"
                   fontSize="20px"
                   fontWeight={600}
                 >
-                  {formatNumberToCurrencyWithoutDecimals(19000)}
+                  {formatNumberToCurrencyWithoutDecimals(totalAmount)}
                 </Box>
               </Box>
             </Box>

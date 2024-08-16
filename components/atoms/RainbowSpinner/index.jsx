@@ -12,14 +12,14 @@ export const RainbowSpinner = () => {
         mt={{ base: 40, md: '250px' }}
         mb={{ md: '200px' }}
       >
-        <div class="container">
-          <div class="rainbow-color rainbow-color-1"></div>
-          <div class="rainbow-color rainbow-color-2"></div>
-          <div class="rainbow-color rainbow-color-3"></div>
-          <div class="rainbow-color rainbow-color-4"></div>
-          <div class="rainbow-color rainbow-color-5"></div>
-          <div class="rainbow-color rainbow-color-6"></div>
-          <div class="rainbow-color rainbow-color-7"></div>
+        <div className="container">
+          <div className="rainbow-color rainbow-color-1"></div>
+          <div className="rainbow-color rainbow-color-2"></div>
+          <div className="rainbow-color rainbow-color-3"></div>
+          <div className="rainbow-color rainbow-color-4"></div>
+          <div className="rainbow-color rainbow-color-5"></div>
+          <div className="rainbow-color rainbow-color-6"></div>
+          <div className="rainbow-color rainbow-color-7"></div>
         </div>
         <Box
           zIndex={1}

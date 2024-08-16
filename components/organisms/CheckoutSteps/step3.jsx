@@ -1,6 +1,6 @@
+import { step1Atom, step2Atom } from '@/jotai/atoms';
 import { Box, Button, Image } from '@chakra-ui/react';
 import { useAtomValue } from 'jotai';
-import { step2Atom, step1Atom } from '@/jotai/atoms';
 
 export const Step3 = ({
   onComplete,
@@ -10,8 +10,6 @@ export const Step3 = ({
 }) => {
   const step1Values = useAtomValue(step1Atom);
   const step2Values = useAtomValue(step2Atom);
-
-  console.log(step2Values);
 
   const handleClickFinish = () => {
     onComplete();
