@@ -12,14 +12,14 @@ export const InputForm = ({
   marginTop,
   name,
   hasError,
-  margin
+  margin,
 }) => {
   return (
     <Box width="100%" margin={margin}>
       <FormLabel color="#797B7A" fontSize="12px" mb={0} mt={marginTop}>
         {label}
       </FormLabel>
-      <Input      
+      <Input
         isInvalid={hasError}
         type="email"
         value={value}

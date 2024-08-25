@@ -277,7 +277,7 @@ export const Step3 = ({
           fontFamily="Nunito"
           fontWeight={600}
           mt={8}
-          onClick={handleClickFinish}
+          onClick={() => onComplete()}
         >
           Finalizar
         </Button>

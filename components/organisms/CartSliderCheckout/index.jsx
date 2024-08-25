@@ -19,7 +19,6 @@ export const CartSliderCheckout = ({
     'ffffff',
   ];
 
-  
   const isWhite = whiteColors.includes(color.toLowerCase());
 
   return (
@@ -29,7 +28,7 @@ export const CartSliderCheckout = ({
         width="100%"
         mb={2}
         mt={2}
-        borderBottom="1px solid #c8c8c8"        
+        borderBottom="1px solid #c8c8c8"
       >
         <Box>
           <Image
@@ -68,9 +67,15 @@ export const CartSliderCheckout = ({
               border={isWhite ? '1px solid #797B7A' : 'none'}
             />
           </Box>
-          <Box color="#797B7A" fontFamily="Nunito" fontWeight={600} mb={1} fontSize="14px">
+          <Box
+            color="#797B7A"
+            fontFamily="Nunito"
+            fontWeight={600}
+            mb={1}
+            fontSize="14px"
+          >
             {formatNumberToCurrencyWithoutDecimals(productPrice)}
-          </Box>          
+          </Box>
         </Box>
       </Box>
     </>

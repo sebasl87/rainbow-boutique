@@ -48,8 +48,6 @@ export const Checkout = () => {
     }
   `;
 
-
-
   const handleStep1Complete = () => {
     setStep1Complete(true);
     setTabIndex(1);

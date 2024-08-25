@@ -4,14 +4,16 @@ import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { GET_PRODUCT } from '../../api/apollo/querys';
 import ProductSlider from '../../components/molecules/ProductSlider';
-import { CartDrawer, ProductDetailsAddCartDescription } from '../../components/organisms';
+import {
+  CartDrawer,
+  ProductDetailsAddCartDescription,
+} from '../../components/organisms';
 
 import { RainbowSpinner } from '@/components/atoms';
 import { BreadcrumbRainbow } from '@/components/molecules';
 import useModalCart from '@/hooks/useModalCart';
 
 export const DetailProductScreen = () => {
-
   const {
     query: { id },
   } = useRouter();
@@ -59,7 +61,6 @@ export const DetailProductScreen = () => {
             productId={id}
           />
         </Box>
-
       </Box>
     </>
   );

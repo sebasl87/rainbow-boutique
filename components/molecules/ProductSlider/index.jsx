@@ -12,13 +12,13 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
     );
   };
 
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
@@ -95,7 +95,7 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             }}
           >
             {' '}
-            <Image src={'/left.png'} width="40px" alt=''/>
+            <Image src={'/left.png'} width="40px" alt="" />
           </Button>
           <Button
             onClick={handleNextImage}
@@ -130,7 +130,7 @@ const ProductSlider = ({ images, isDiscount = true, discount = 20 }) => {
             }}
           >
             {' '}
-            <Image src={'/right.png'} width="40px" alt=''/>
+            <Image src={'/right.png'} width="40px" alt="" />
           </Button>
         </Flex>
       </Box>

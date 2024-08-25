@@ -93,7 +93,7 @@ export const ADD_ITEM = gql`
             value
           }
         }
-        estimatedDelivery{
+        estimatedDelivery {
           deliveryMessage
         }
       }
@@ -194,7 +194,7 @@ export const SUBSTRACT_ITEM = gql`
             value
           }
         }
-        estimatedDelivery{
+        estimatedDelivery {
           deliveryMessage
         }
       }
@@ -295,7 +295,7 @@ export const INCREASE_ITEM = gql`
             value
           }
         }
-        estimatedDelivery{
+        estimatedDelivery {
           deliveryMessage
         }
       }
@@ -396,7 +396,7 @@ export const REMOVE_ITEM = gql`
             value
           }
         }
-        estimatedDelivery{
+        estimatedDelivery {
           deliveryMessage
         }
       }

@@ -170,8 +170,6 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
     onComplete();
   };
 
-
-
   return (
     <Box display="flex" width="100%" flexDirection="column">
       <Box
@@ -453,7 +451,12 @@ export const Step2 = ({ onComplete, handleClickBack }) => {
           </Box>
         </>
       </Box>
-      <Box display="flex" width="100%" justifyContent="space-between" alignItems="center">
+      <Box
+        display="flex"
+        width="100%"
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Box display="flex" alignItems="center" mt="24px">
           <Image src="/back.svg" alt="back" width="20px" />
           <Box

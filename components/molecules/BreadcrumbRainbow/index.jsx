@@ -14,7 +14,7 @@ export const BreadcrumbRainbow = ({
   linkCategoria = '/',
   isProductPage,
   isCategoryPage,
-  isCheckout
+  isCheckout,
 }) => {
   return (
     <Box
@@ -57,7 +57,7 @@ export const BreadcrumbRainbow = ({
           fontWeight={500}
           color="#797b7a"
           separator={<ChevronRightIcon color="#797b7a" />}
-           suppressHydrationWarning
+          suppressHydrationWarning
         >
           <BreadcrumbItem>
             <Link href="/" passHref>
@@ -77,7 +77,7 @@ export const BreadcrumbRainbow = ({
           fontWeight={500}
           color="#797b7a"
           separator={<ChevronRightIcon color="#797b7a" />}
-           suppressHydrationWarning
+          suppressHydrationWarning
         >
           <BreadcrumbItem>
             <Link href="/" passHref>

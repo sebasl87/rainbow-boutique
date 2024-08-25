@@ -47,7 +47,7 @@ const CardContainer = () => {
       let angle =
         (Math.atan2(
           event?.clientY - cardCenter[1],
-          event?.clientX - cardCenter[0]
+          event?.clientX - cardCenter[0],
         ) *
           180) /
         Math.PI;
@@ -69,7 +69,7 @@ const CardContainer = () => {
     containerRef.current.style.setProperty('--spread', config.spread);
     containerRef.current.style.setProperty(
       '--direction',
-      config.vertical ? 'column' : 'row'
+      config.vertical ? 'column' : 'row',
     );
 
     // Event listeners
@@ -79,7 +79,7 @@ const CardContainer = () => {
     return () => {
       document.body.removeEventListener('pointermove', handleMouseMove);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config, cards]);
 
   return (

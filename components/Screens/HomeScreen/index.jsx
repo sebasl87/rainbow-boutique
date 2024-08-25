@@ -94,7 +94,7 @@ export const HomeScreen = () => {
                       nameProduct={product.name}
                       product={product}
                       price={formatNumberToCurrencyWithoutDecimals(
-                        product.price.total
+                        product.price.total,
                       )}
                       handleClick={() =>
                         router.push(`/productos/${product.id}`)
@@ -116,7 +116,7 @@ export const HomeScreen = () => {
                       nameProduct={product.name}
                       product={product}
                       price={formatNumberToCurrencyWithoutDecimals(
-                        product.price.total
+                        product.price.total,
                       )}
                       handleClick={() =>
                         router.push(`/productos/${product.id}`)

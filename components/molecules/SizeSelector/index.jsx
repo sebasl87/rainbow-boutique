@@ -8,7 +8,6 @@ const SizeSelector = ({
   setSelectedSize,
   showTitle = true,
 }) => {
-
   return (
     <>
       {showTitle && (
@@ -47,7 +46,7 @@ const SizeSelector = ({
             margin={2}
             color="#777978"
             fontWeight={600}
-            backgroundColor={!availableSizes.includes(size) && '#F7F7F7' }
+            backgroundColor={!availableSizes.includes(size) && '#F7F7F7'}
             cursor={!availableSizes.includes(size) && 'not-allowed'}
           >
             <Text fontFamily="Nunito" fontSize={{ base: 12, md: 16 }}>

@@ -4,7 +4,6 @@ import { productsInCart, totalProducts } from '../../../jotai/atoms';
 import useModalCart from '@/hooks/useModalCart';
 import { Button } from '@chakra-ui/react';
 
-
 export const ProductCartButton = ({ productId, size, color }) => {
   const [products, setProductsInCart] = useAtom(productsInCart);
   const totalProd = useAtomValue(totalProducts);
@@ -12,7 +11,7 @@ export const ProductCartButton = ({ productId, size, color }) => {
 
   const addToCart = () => {
     const productFinded = totalProd.find((product) => product.id === productId);
-    
+
     const newProduct = {
       productId,
       size,
@@ -32,7 +31,7 @@ export const ProductCartButton = ({ productId, size, color }) => {
       (product) =>
         product.productId !== productId ||
         product.size !== size ||
-        product.color !== color
+        product.color !== color,
     );
     setProductsInCart(updatedProducts);
     onOpen();
@@ -42,7 +41,7 @@ export const ProductCartButton = ({ productId, size, color }) => {
     (product) =>
       product.id === productId &&
       product.size === size &&
-      product.color === color
+      product.color === color,
   );
 
   return (

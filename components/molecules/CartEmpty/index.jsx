@@ -12,11 +12,7 @@ export const CartEmpty = () => {
       mb={{ base: '0px', lg: '100px' }}
       mt={5}
     >
-      <Image
-        src="/empty_cart.svg"
-        alt="cart"
-        width={{ base: 280, md: 400 }}
-      />
+      <Image src="/empty_cart.svg" alt="cart" width={{ base: 280, md: 400 }} />
       <Box
         fontFamily="Nunito"
         fontWeight={600}

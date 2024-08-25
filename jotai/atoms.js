@@ -19,7 +19,7 @@ showModalCart.debugLabel = 'showModalCart';
 
 export const orderSummaryAtom = atomWithStorage(
   'orderSummaryAtom',
-  initialState
+  initialState,
 );
 orderSummaryAtom.debugLabel = 'orderSummaryAtom';
 

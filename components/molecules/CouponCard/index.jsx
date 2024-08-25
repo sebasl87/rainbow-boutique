@@ -10,7 +10,6 @@ export const CouponCard = ({ discount = '10' }) => {
   const [cartData] = useAtom(cartAtom);
   const setOrderSummary = useSetAtom(orderSummaryAtom);
 
-
   const handleInputChange = (field, value) => {
     setCoupon({
       ...coupon,

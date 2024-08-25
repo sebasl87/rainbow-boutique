@@ -63,14 +63,14 @@ export const InputSearch = ({
               border: 0,
             }}
             height="40px"
-            paddingRight="2.5rem" 
+            paddingRight="2.5rem"
           />
         </Box>
         <InputRightElement
           onClick={handleClickOnIcon}
           data-testid="left-icon-search"
-          height="100%" 
-          pointerEvents="none" 
+          height="100%"
+          pointerEvents="none"
           display="flex"
           alignItems="center"
           justifyContent="center"

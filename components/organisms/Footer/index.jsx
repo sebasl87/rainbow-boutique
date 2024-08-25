@@ -66,7 +66,7 @@ export const Footer = () => {
         width="100%"
         marginInline="auto"
         py={4}
-        px={{base: 2, lg: 0}}
+        px={{ base: 2, lg: 0 }}
         spacing={{ base: 3, md: 0 }}
         justifyContent="space-between"
         alignItems="center"
@@ -77,7 +77,7 @@ export const Footer = () => {
           pt={{ base: 4, md: 0 }}
           alignItems="center"
           gap={0}
-          order={{base: 2, md: 1}}
+          order={{ base: 2, md: 1 }}
         >
           <Text fontSize={24} fontFamily="RainbowRegular" color="rainbowGray">
             Seguinos
@@ -106,7 +106,7 @@ export const Footer = () => {
           pt={{ base: 4, md: 0 }}
           alignItems="center"
           gap={0}
-          order={{base: 1, md: 2}}
+          order={{ base: 1, md: 2 }}
         >
           <Image
             data-testid="logoImage"
@@ -127,14 +127,13 @@ export const Footer = () => {
           </Text>
         </Stack>
         <HStack
-
           alignItems="center"
           d={{ base: 'none', md: 'flex' }}
           flexDirection="column"
           order={3}
         >
           {ctcs.map((ctc, index) => (
-            <Box key={index} display="flex" alignItems="center" w='100%'>
+            <Box key={index} display="flex" alignItems="center" w="100%">
               {ctc.icon}
               <Text
                 ml={2}
@@ -152,9 +151,6 @@ export const Footer = () => {
         </HStack>
       </Stack>
     </Box>
-    
-
-
   );
 };
 

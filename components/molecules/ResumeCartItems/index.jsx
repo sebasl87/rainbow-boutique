@@ -1,9 +1,6 @@
-
 import useCart from '@/hooks/useCart';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
-
-
 
 export const ResumeCartItems = ({ cartItem }) => {
   const {
@@ -22,7 +19,8 @@ export const ResumeCartItems = ({ cartItem }) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          marginRight={'2rem'}>
+          marginRight={'2rem'}
+        >
           Cargando...
         </Box>
       ) : (
@@ -58,7 +56,7 @@ export const ResumeCartItems = ({ cartItem }) => {
               opacity={1}
               fontFamily="Nunito"
               fontSize="18px"
-              >
+            >
               -
             </Box>
             <Box
@@ -69,8 +67,8 @@ export const ResumeCartItems = ({ cartItem }) => {
               justifyContent="center"
               fontSize={{ base: 12, md: 14, lg: 16 }}
               color="#797B7A"
-              fontFamily="Nunito"              
-              >
+              fontFamily="Nunito"
+            >
               {cartItem?.quantity}
             </Box>
             <Box
@@ -90,7 +88,7 @@ export const ResumeCartItems = ({ cartItem }) => {
               fontWeight="500"
               fontFamily="Nunito"
               fontSize="18px"
-              >
+            >
               +
             </Box>
           </Box>

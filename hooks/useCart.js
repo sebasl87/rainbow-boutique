@@ -9,7 +9,6 @@ import { useAtom } from 'jotai';
 import { useEffect } from 'react';
 
 const useCart = (sku) => {
-
   const [cart, setCart] = useAtom(cartAtom);
   const [itemsL, setItemsL] = useAtom(itemsListInCart);
   const quantityInfo = itemsL?.find((item) => item.product.sku === sku);
@@ -22,7 +21,7 @@ const useCart = (sku) => {
           Authorization: 'Bearer PONER TOKEN AQUI',
         },
       },
-    }
+    },
   );
 
   const [subsItem, { data: subsData, loading: subsLoading }] = useMutation(
@@ -33,7 +32,7 @@ const useCart = (sku) => {
           Authorization: 'Bearer PONER TOKEN AQUI',
         },
       },
-    }
+    },
   );
   const [removeItem, { data: removeData, loading: removeLoading }] =
     useMutation(REMOVE_ITEM, {

@@ -1,8 +1,6 @@
 import { showModalCart } from '@/jotai/atoms';
 import { useAtom } from 'jotai';
 
-
-
 const useModalCart = () => {
   const [isOpen, setIsOpen] = useAtom(showModalCart);
   const onOpen = () => setIsOpen(true);

@@ -10,19 +10,14 @@ const borderAnimation = keyframes`
   }
 `;
 
-export const CategoryCardSmall = ({
-  category,  
-  bgColor,  
-  handleClick,
-
-}) => {
+export const CategoryCardSmall = ({ category, bgColor, handleClick }) => {
   return (
     <Box
       onClick={handleClick}
       w={{ base: '100%', md: '259px' }}
       h={{ base: '45px' }}
       background={bgColor}
-      borderRadius="8px"      
+      borderRadius="8px"
       display="flex"
       flexDirection="column"
       justifyContent="center"
@@ -45,12 +40,12 @@ export const CategoryCardSmall = ({
           borderRadius: '8px',
           border: '4px solid transparent',
           backgroundImage:
-          'linear-gradient(90deg, #EBBEB3, #F8D588, #d7ece8, #AEDBE8, #D7ECE8)',
+            'linear-gradient(90deg, #EBBEB3, #F8D588, #d7ece8, #AEDBE8, #D7ECE8)',
           backgroundSize: '400% 100%',
           animation: `${borderAnimation} 3s linear infinite`,
           transition: 'opacity 1s ease all',
           opacity: 1,
-          zIndex: 1,          
+          zIndex: 1,
         },
       }}
       _before={{
@@ -67,14 +62,14 @@ export const CategoryCardSmall = ({
         backgroundSize: '400% 100%',
         opacity: 0,
         transition: 'opacity 1s ease all',
-        zIndex: 1,        
+        zIndex: 1,
       }}
     >
       <Box
         color="#fff"
         fontFamily="Nunito"
         fontWeight="700"
-        fontSize="28px"        
+        fontSize="28px"
         zIndex={2}
       >
         {category}

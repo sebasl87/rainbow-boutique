@@ -19,7 +19,6 @@ export const CartSliderProduct = ({
     'ffffff',
   ];
 
-  
   const isWhite = whiteColors.includes(color.toLowerCase());
 
   return (

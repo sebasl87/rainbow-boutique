@@ -47,7 +47,7 @@ export const CategoryCard = ({
           borderRadius: '8px',
           border: '4px solid transparent',
           backgroundImage:
-          'linear-gradient(90deg, #EBBEB3, #F8D588, #d7ece8, #AEDBE8, #D7ECE8)',
+            'linear-gradient(90deg, #EBBEB3, #F8D588, #d7ece8, #AEDBE8, #D7ECE8)',
           backgroundSize: '400% 100%',
           animation: `${borderAnimation} 3s linear infinite`,
           transition: 'opacity 1s ease all',

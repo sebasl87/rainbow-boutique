@@ -5,12 +5,12 @@ import { useAtomValue } from 'jotai';
 import { totalProducts } from '../../../jotai/atoms';
 import { formatNumberToCurrencyWithoutDecimals } from '../../../styles/utils/formatNumberToCurrencyWithoutDecimals';
 import ProductSliderHome from '../../molecules/ProductSliderHome';
-import {BreadcrumbRainbow} from '../../molecules/BreadcrumbRainbow';
+import { BreadcrumbRainbow } from '../../molecules/BreadcrumbRainbow';
 
 export const Categories = () => {
   const router = useRouter();
   const products = useAtomValue(totalProducts);
-  
+
   return (
     <>
       <Box
@@ -65,7 +65,7 @@ export const Categories = () => {
                   nameProduct={product.name}
                   product={product}
                   price={formatNumberToCurrencyWithoutDecimals(
-                    product.price.total
+                    product.price.total,
                   )}
                   handleClick={() => router.push(`/productos/${product.id}`)}
                 />
