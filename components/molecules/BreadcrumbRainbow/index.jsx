@@ -35,14 +35,14 @@ export const BreadcrumbRainbow = ({
           suppressHydrationWarning
         >
           <BreadcrumbItem>
-            <Link href="/" passHref>
-              <BreadcrumbLink>Home</BreadcrumbLink>
-            </Link>
+            <BreadcrumbLink as={Link} href="/">
+              Home
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <Link href={linkCategoria} passHref>
-              <BreadcrumbLink>{categorieName}</BreadcrumbLink>
-            </Link>
+            <BreadcrumbLink as={Link} href={linkCategoria}>
+              {categorieName}
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink>{productName}</BreadcrumbLink>
@@ -60,9 +60,9 @@ export const BreadcrumbRainbow = ({
           suppressHydrationWarning
         >
           <BreadcrumbItem>
-            <Link href="/" passHref>
-              <BreadcrumbLink>Home</BreadcrumbLink>
-            </Link>
+            <BreadcrumbLink as={Link} href="/">
+              Home
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink>{categorieName}</BreadcrumbLink>
@@ -80,9 +80,9 @@ export const BreadcrumbRainbow = ({
           suppressHydrationWarning
         >
           <BreadcrumbItem>
-            <Link href="/" passHref>
-              <BreadcrumbLink>Home</BreadcrumbLink>
-            </Link>
+            <BreadcrumbLink as={Link} href="/">
+              Home
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink>Checkout</BreadcrumbLink>

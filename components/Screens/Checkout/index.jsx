@@ -15,17 +15,20 @@ import {
 } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { useAtomValue } from 'jotai';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { productsInCart } from '../../../jotai/atoms';
+// import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { productsInCart, step1Atom, step2Atom } from '../../../jotai/atoms';
 import { BreadcrumbRainbow, CartEmpty } from '../../molecules';
 import { CartSliderCheckout } from '../../organisms/CartSliderCheckout';
 
 export const Checkout = () => {
-  const productsCart = useAtomValue(productsInCart);
   const [step1Complete, setStep1Complete] = useState(false);
   const [step2Complete, setStep2Complete] = useState(false);
   const [tabIndex, setTabIndex] = useState(0);
+
+  const productsCart = useAtomValue(productsInCart);
+  const dataStep1 = useAtomValue(step1Atom);
+  const dataStep2 = useAtomValue(step2Atom);
 
   const customScrollbar = css`
     &::-webkit-scrollbar {
@@ -58,13 +61,19 @@ export const Checkout = () => {
     setTabIndex(2);
   };
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const productsWaitInCart = useAtomValue(productsInCart);
-  const totalAmount = productsWaitInCart.reduce((acc, product) => {
+  const totalAmount = productsCart.reduce((acc, product) => {
     return acc + product.productPrice;
   }, 0);
 
+  const confirmOrder = () => {
+    console.log('Order confirmed');
+    console.log(productsCart);
+    console.log('step1', dataStep1);
+    console.log('step2', dataStep2);
+    // router.push('/checkout-success');
+  };
   return (
     <Box
       px={4}
@@ -104,7 +113,7 @@ export const Checkout = () => {
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    {productsWaitInCart?.map((product, index) => (
+                    {productsCart?.map((product, index) => (
                       <CartSliderCheckout
                         productName={product.productName}
                         size={product.size}
@@ -185,7 +194,7 @@ export const Checkout = () => {
                 </TabPanel>
                 <TabPanel>
                   <Step3
-                    onComplete={() => router.push('/checkout-success')}
+                    onComplete={confirmOrder}
                     handleClickBack={() => setTabIndex(1)}
                     goStepOne={() => setTabIndex(0)}
                     goStepTwo={() => setTabIndex(1)}
@@ -234,7 +243,7 @@ export const Checkout = () => {
                 maxHeight="400px"
                 css={customScrollbar}
               >
-                {productsWaitInCart?.map((product, index) => (
+                {productsCart?.map((product, index) => (
                   <CartSliderCheckout
                     productName={product.productName}
                     size={product.size}

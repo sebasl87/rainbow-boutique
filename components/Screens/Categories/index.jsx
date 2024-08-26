@@ -65,7 +65,7 @@ export const Categories = () => {
                   nameProduct={product.name}
                   product={product}
                   price={formatNumberToCurrencyWithoutDecimals(
-                    product.price.total,
+                    product.price.total
                   )}
                   handleClick={() => router.push(`/productos/${product.id}`)}
                 />

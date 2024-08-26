@@ -31,7 +31,7 @@ export const ProductCartButton = ({ productId, size, color }) => {
       (product) =>
         product.productId !== productId ||
         product.size !== size ||
-        product.color !== color,
+        product.color !== color
     );
     setProductsInCart(updatedProducts);
     onOpen();
@@ -41,7 +41,7 @@ export const ProductCartButton = ({ productId, size, color }) => {
     (product) =>
       product.id === productId &&
       product.size === size &&
-      product.color === color,
+      product.color === color
   );
 
   return (

@@ -11,10 +11,6 @@ export const Step3 = ({
   const step1Values = useAtomValue(step1Atom);
   const step2Values = useAtomValue(step2Atom);
 
-  const handleClickFinish = () => {
-    onComplete();
-  };
-
   return (
     <Box display="flex" width="100%" flexDirection="column">
       <Box
