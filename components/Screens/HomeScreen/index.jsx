@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import ProductSliderHome from '@/components/molecules/ProductSliderHome';
-import { HomeCategories } from '@/components/organisms';
-import { Box, Image } from '@chakra-ui/react';
-import { useAtom, useAtomValue } from 'jotai';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { productsFiltered, totalProducts } from '../../../jotai/atoms';
-import { formatNumberToCurrencyWithoutDecimals } from '../../../styles/utils/formatNumberToCurrencyWithoutDecimals';
+import ProductSliderHome from "@/components/molecules/ProductSliderHome";
+import { HomeCategories } from "@/components/organisms";
+import { Box, Image } from "@chakra-ui/react";
+import { useAtom, useAtomValue } from "jotai";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { productsFiltered, totalProducts } from "../../../jotai/atoms";
+import { formatNumberToCurrencyWithoutDecimals } from "../../../styles/utils/formatNumberToCurrencyWithoutDecimals";
 
 export const HomeScreen = () => {
   const products = useAtomValue(totalProducts);
   const [filteredProds, setfilteredProds] = useAtom(productsFiltered);
   const router = useRouter();
-  const [cat, setcat] = useState('');
+  const [cat, setcat] = useState("");
 
   useEffect(() => {
-    if (['nb', 'bb', 'bg'].includes(cat))
+    if (["nb", "bb", "bg"].includes(cat))
       setfilteredProds(products?.filter((p) => p.gender === cat));
-    if (cat === 'sale') setfilteredProds(products?.filter((p) => p.sale));
+    if (cat === "sale") setfilteredProds(products?.filter((p) => p.sale));
   }, [cat]);
-
+  console.log("products", products);
   return (
     <>
       <Box
@@ -32,7 +32,7 @@ export const HomeScreen = () => {
         <HomeCategories handleOnClick={setcat} />
         <Box w="100%" mt={8} display="flex" justifyContent="center">
           <Image
-            src={'/banner_rainbow.png'}
+            src={"/banner_rainbow.png"}
             alt="carrito"
             w="100%"
             maxW="1200px"
@@ -51,12 +51,12 @@ export const HomeScreen = () => {
             data-testid="logoImage"
             src="/ArcoLogo.png"
             alt="logo"
-            w={{ base: '40px', md: '60px' }}
+            w={{ base: "40px", md: "60px" }}
           />
           <Box
             color="#797B7A"
             fontFamily="Nunito"
-            fontSize={{ base: '20px', md: '24px' }}
+            fontSize={{ base: "20px", md: "24px" }}
             fontWeight="600"
             px={4}
           >
@@ -66,7 +66,7 @@ export const HomeScreen = () => {
             data-testid="logoImage"
             src="/ArcoLogo.png"
             alt="logo"
-            w={{ base: '40px', md: '60px' }}
+            w={{ base: "40px", md: "60px" }}
           />
         </Box>
         <>
@@ -94,7 +94,7 @@ export const HomeScreen = () => {
                       nameProduct={product.name}
                       product={product}
                       price={formatNumberToCurrencyWithoutDecimals(
-                        product.price.total
+                        product.price.total,
                       )}
                       handleClick={() =>
                         router.push(`/productos/${product.id}`)
@@ -116,7 +116,7 @@ export const HomeScreen = () => {
                       nameProduct={product.name}
                       product={product}
                       price={formatNumberToCurrencyWithoutDecimals(
-                        product.price.total
+                        product.price.total,
                       )}
                       handleClick={() =>
                         router.push(`/productos/${product.id}`)

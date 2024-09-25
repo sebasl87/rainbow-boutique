@@ -1,6 +1,7 @@
-import { Box, Button, Text } from '@chakra-ui/react';
+import { isSizeAvailable } from "@/utils/stock";
+import { Box, Button, Text } from "@chakra-ui/react";
 
-const sizes = ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6'];
+const sizes = ["T0", "T1", "T2", "T3", "T4", "T5", "T6"];
 
 const SizeSelector = ({
   availableSizes,
@@ -23,37 +24,42 @@ const SizeSelector = ({
             color="#718096"
             fontSize={{ base: 10, md: 14 }}
             cursor="pointer"
-            pt={{ md: '2px' }}
+            pt={{ md: "2px" }}
             ml={2}
-            _hover={{ textDecoration: 'underline' }}
-            onClick={() => console.log('ver tabla de talles')}
+            _hover={{ textDecoration: "underline" }}
+            onClick={() => console.log("ver tabla de talles")}
           >
-            {'(Ver tabla de talles)'}
+            {"(Ver tabla de talles)"}
           </Box>
         </Box>
       )}
 
       <Box ml={-2}>
-        {sizes.map((size) => (
-          <Button
-            key={size}
-            width={{ base: '24px', md: '48px' }}
-            height={{ base: '24px', md: '48px' }}
-            variant={selectedSize === size ? 'solid' : 'outline'}
-            onClick={() => setSelectedSize(size)}
-            _focus={{ outline: 'none' }}
-            _hover={{ borderColor: '#777978' }}
-            margin={2}
-            color="#777978"
-            fontWeight={600}
-            backgroundColor={!availableSizes.includes(size) && '#F7F7F7'}
-            cursor={!availableSizes.includes(size) && 'not-allowed'}
-          >
-            <Text fontFamily="Nunito" fontSize={{ base: 12, md: 16 }}>
-              {size}
-            </Text>
-          </Button>
-        ))}
+        {sizes.map((size) => {
+          const available = isSizeAvailable(availableSizes, size);
+
+          return (
+            <Button
+              key={size}
+              width={{ base: "24px", md: "48px" }}
+              height={{ base: "24px", md: "48px" }}
+              variant={selectedSize === size ? "solid" : "outline"}
+              onClick={() => setSelectedSize(size)}
+              _focus={{ outline: "none" }}
+              _hover={{ borderColor: available ? "#777978" : "none" }}
+              margin={2}
+              color="#777978"
+              fontWeight={600}
+              backgroundColor={!available && "#F7F7F7"}
+              cursor={!available ? "not-allowed" : "pointer"}
+              isDisabled={!available}
+            >
+              <Text fontFamily="Nunito" fontSize={{ base: 12, md: 16 }}>
+                {size}
+              </Text>
+            </Button>
+          );
+        })}
       </Box>
     </>
   );

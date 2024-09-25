@@ -1,6 +1,6 @@
-import { step1Atom, step2Atom } from '@/jotai/atoms';
-import { Box, Button, Image } from '@chakra-ui/react';
-import { useAtomValue } from 'jotai';
+import { step1Atom, step2Atom } from "@/jotai/atoms";
+import { Box, Button, Image } from "@chakra-ui/react";
+import { useAtomValue } from "jotai";
 
 export const Step3 = ({
   onComplete,
@@ -47,7 +47,7 @@ export const Step3 = ({
                 fontWeight={600}
                 color="#797B7A"
                 display="flex"
-                width={{ base: '60px', md: '150px' }}
+                width={{ base: "60px", md: "150px" }}
               >
                 Email
               </Box>
@@ -55,7 +55,7 @@ export const Step3 = ({
                 display="flex"
                 fontFamily="Nunito"
                 fontWeight={600}
-                fontSize={{ base: '12px', md: '16px' }}
+                fontSize={{ base: "12px", md: "16px" }}
               >
                 {step1Values.email}
               </Box>
@@ -63,9 +63,9 @@ export const Step3 = ({
             <Box
               fontFamily="Nunito"
               cursor="pointer"
-              fontSize={{ base: '12px', md: '14px' }}
+              fontSize={{ base: "12px", md: "14px" }}
               fontWeight={600}
-              _hover={{ textDecoration: 'underline' }}
+              _hover={{ textDecoration: "underline" }}
               onClick={goStepOne}
             >
               Cambiar
@@ -87,7 +87,7 @@ export const Step3 = ({
                 fontSize="14px"
                 fontWeight={600}
                 color="#797B7A"
-                width={{ base: '60px', md: '150px' }}
+                width={{ base: "60px", md: "150px" }}
               >
                 Entrega
               </Box>
@@ -95,25 +95,25 @@ export const Step3 = ({
                 display="flex"
                 fontFamily="Nunito"
                 fontWeight={600}
-                fontSize={{ base: '12px', md: '16px' }}
+                fontSize={{ base: "12px", md: "16px" }}
               >
-                {step1Values.pickUpMethod === 'domicilio'
-                  ? 'Envío a Domicilio'
-                  : 'Retira en Showroom'}
+                {step1Values.pickUpMethod === "domicilio"
+                  ? "Envío a Domicilio"
+                  : "Retira en Showroom"}
               </Box>
             </Box>
             <Box
               fontFamily="Nunito"
               cursor="pointer"
-              fontSize={{ base: '12px', md: '14px' }}
+              fontSize={{ base: "12px", md: "14px" }}
               fontWeight={600}
-              _hover={{ textDecoration: 'underline' }}
+              _hover={{ textDecoration: "underline" }}
               onClick={goStepOne}
             >
               Cambiar
             </Box>
           </Box>
-          {step1Values.pickUpMethod !== 'domicilio' && (
+          {step1Values.pickUpMethod !== "domicilio" && (
             <Box
               display="flex"
               width="100%"
@@ -130,7 +130,7 @@ export const Step3 = ({
                   fontSize="14px"
                   fontWeight={600}
                   color="#797B7A"
-                  width={{ base: '60px', md: '150px' }}
+                  width={{ base: "60px", md: "150px" }}
                 >
                   Retira
                 </Box>
@@ -138,19 +138,19 @@ export const Step3 = ({
                   display="flex"
                   fontFamily="Nunito"
                   fontWeight={600}
-                  fontSize={{ base: '12px', md: '16px' }}
+                  fontSize={{ base: "12px", md: "16px" }}
                 >
-                  {step1Values.pickingUpPersonName}{' '}
-                  {step1Values.pickingUpPersonLastName} - DNI:{' '}
+                  {step1Values.pickingUpPersonName}{" "}
+                  {step1Values.pickingUpPersonLastName} - DNI:{" "}
                   {step1Values.pickingUpPersonDni}
                 </Box>
               </Box>
               <Box
                 fontFamily="Nunito"
                 cursor="pointer"
-                fontSize={{ base: '12px', md: '14px' }}
+                fontSize={{ base: "12px", md: "14px" }}
                 fontWeight={600}
-                _hover={{ textDecoration: 'underline' }}
+                _hover={{ textDecoration: "underline" }}
                 onClick={goStepOne}
               >
                 Cambiar
@@ -158,7 +158,7 @@ export const Step3 = ({
             </Box>
           )}
         </Box>
-        {step2Values.paymentMethod === 'transfer' && (
+        {step2Values.paymentMethod === "transfer" && (
           <>
             <Box
               display="flex"
@@ -198,7 +198,7 @@ export const Step3 = ({
                     fontSize="14px"
                     fontWeight={600}
                     color="#797B7A"
-                    width={{ base: '60px', md: '150px' }}
+                    width={{ base: "60px", md: "150px" }}
                   >
                     Método
                   </Box>
@@ -206,7 +206,7 @@ export const Step3 = ({
                     display="flex"
                     fontFamily="Nunito"
                     fontWeight={600}
-                    fontSize={{ base: '12px', md: '16px' }}
+                    fontSize={{ base: "12px", md: "16px" }}
                     flexDirection="column"
                   >
                     <span>Transeferencia bancaria</span>
@@ -218,9 +218,9 @@ export const Step3 = ({
                 <Box
                   fontFamily="Nunito"
                   cursor="pointer"
-                  fontSize={{ base: '12px', md: '14px' }}
+                  fontSize={{ base: "12px", md: "14px" }}
                   fontWeight={600}
-                  _hover={{ textDecoration: 'underline' }}
+                  _hover={{ textDecoration: "underline" }}
                   onClick={goStepTwo}
                 >
                   Cambiar
@@ -230,7 +230,7 @@ export const Step3 = ({
                 display="flex"
                 fontFamily="Nunito"
                 fontWeight={600}
-                fontSize={{ base: '12px', md: '16px' }}
+                fontSize={{ base: "12px", md: "16px" }}
                 flexDirection="column"
                 mt={2}
               >
@@ -256,7 +256,7 @@ export const Step3 = ({
             cursor="pointer"
             fontWeight={600}
             _hover={{
-              textDecoration: 'underline',
+              textDecoration: "underline",
             }}
             onClick={handleClickBack}
           >

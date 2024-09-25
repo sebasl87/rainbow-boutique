@@ -1,5 +1,5 @@
-import { Step1, Step2, Step3 } from '@/components/organisms';
-import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { Step1, Step2, Step3 } from "@/components/organisms";
+import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
 import {
   Accordion,
   AccordionButton,
@@ -12,14 +12,14 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-} from '@chakra-ui/react';
-import { css } from '@emotion/react';
-import { useAtomValue } from 'jotai';
+} from "@chakra-ui/react";
+import { css } from "@emotion/react";
+import { useAtomValue } from "jotai";
 // import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { productsInCart, step1Atom, step2Atom } from '../../../jotai/atoms';
-import { BreadcrumbRainbow, CartEmpty } from '../../molecules';
-import { CartSliderCheckout } from '../../organisms/CartSliderCheckout';
+import { useState } from "react";
+import { productsInCart, step1Atom, step2Atom } from "../../../jotai/atoms";
+import { BreadcrumbRainbow, CartEmpty } from "../../molecules";
+import { CartSliderCheckout } from "../../organisms/CartSliderCheckout";
 
 export const Checkout = () => {
   const [step1Complete, setStep1Complete] = useState(false);
@@ -67,13 +67,38 @@ export const Checkout = () => {
     return acc + product.productPrice;
   }, 0);
 
-  const confirmOrder = () => {
-    console.log('Order confirmed');
-    console.log(productsCart);
-    console.log('step1', dataStep1);
-    console.log('step2', dataStep2);
-    // router.push('/checkout-success');
+  const confirmOrder = async () => {
+    try {
+      console.log("Order confirmed");
+      console.log(productsCart);
+      console.log("step1", dataStep1);
+      console.log("step2", dataStep2);
+
+      // Lógica para actualizar el stock
+      const response = await fetch("/api/update-stock", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          products: productsCart, // Aquí pasamos la información de los productos
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Stock actualizado correctamente:", result);
+        // Redirigir al éxito
+        // router.push('/checkout-success');
+      } else {
+        console.error("Error al actualizar el stock:", result);
+      }
+    } catch (error) {
+      console.error("Error al confirmar la orden:", error);
+    }
   };
+
   return (
     <Box
       px={4}
@@ -90,9 +115,9 @@ export const Checkout = () => {
           display="flex"
           width="100%"
           mt={8}
-          flexDirection={{ base: 'column', md: 'row' }}
+          flexDirection={{ base: "column", md: "row" }}
         >
-          <Box display={{ base: 'block', md: 'none' }} width="100%" mb={6}>
+          <Box display={{ base: "block", md: "none" }} width="100%" mb={6}>
             <Accordion allowMultiple>
               <AccordionItem>
                 <h2>
@@ -105,7 +130,7 @@ export const Checkout = () => {
                       color="#797b7a"
                       fontSize="20px"
                     >
-                      <b>Carrito</b> - Total:{' '}
+                      <b>Carrito</b> - Total:{" "}
                       {formatNumberToCurrencyWithoutDecimals(totalAmount)}
                     </Box>
                     <AccordionIcon />
@@ -138,9 +163,9 @@ export const Checkout = () => {
               <TabList display="flex" width="100%">
                 <Tab
                   _selected={{
-                    color: '#797B7A',
-                    borderBottom: '2px solid',
-                    borderColor: '#EBBEB3',
+                    color: "#797B7A",
+                    borderBottom: "2px solid",
+                    borderColor: "#EBBEB3",
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -153,9 +178,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: '#797B7A',
-                    borderBottom: '2px solid',
-                    borderColor: '#EBBEB3',
+                    color: "#797B7A",
+                    borderBottom: "2px solid",
+                    borderColor: "#EBBEB3",
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -168,9 +193,9 @@ export const Checkout = () => {
                 </Tab>
                 <Tab
                   _selected={{
-                    color: '#797B7A',
-                    borderBottom: '2px solid',
-                    borderColor: '#EBBEB3',
+                    color: "#797B7A",
+                    borderBottom: "2px solid",
+                    borderColor: "#EBBEB3",
                     fontWeight: 700,
                   }}
                   fontFamily="Nunito"
@@ -184,7 +209,7 @@ export const Checkout = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <Step1 onComplete={handleStep1Complete} />
+                  <Step1 onComplete={confirmOrder} />
                 </TabPanel>
                 <TabPanel>
                   <Step2
@@ -206,7 +231,7 @@ export const Checkout = () => {
           <Box
             width="300px"
             height="100%"
-            display={{ base: 'none', md: 'flex' }}
+            display={{ base: "none", md: "flex" }}
             flexDirection="column"
             alignItems="center"
             ml={4}
@@ -269,7 +294,7 @@ export const Checkout = () => {
                   fontWeight={600}
                 >
                   Total:
-                </Box>{' '}
+                </Box>{" "}
                 <Box
                   fontFamily="Nunito"
                   color="#797b7a"

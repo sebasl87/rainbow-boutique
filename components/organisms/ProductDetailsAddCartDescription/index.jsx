@@ -1,18 +1,16 @@
-import { ProductCartButton } from '../../molecules';
-import { useBreakpoints } from '@/hooks';
-
-import { Box, Divider, Text } from '@chakra-ui/react';
-import ColorSelector from '../../molecules/ColorSelector';
-import SizeSelector from '../../molecules/SizeSelector';
-import { useState } from 'react';
-import { formatNumberToCurrency } from '@/styles/utils/formatNumberToCurrency';
-import { splitText } from '@/styles/utils/splitText';
+import { ProductCartButton } from "../../molecules";
+import { useBreakpoints } from "@/hooks";
+import { Box, Text } from "@chakra-ui/react";
+import ColorSelector from "../../molecules/ColorSelector";
+import SizeSelector from "../../molecules/SizeSelector";
+import { useMemo, useState } from "react";
+import { formatNumberToCurrency } from "@/styles/utils/formatNumberToCurrency";
+import { splitText } from "@/styles/utils/splitText";
+import { idProduct, isAnySizeAvailable } from "@/utils/stock";
 
 export const ProductDetailsAddCartDescription = ({
   productId,
   productTitle,
-  isDiscount,
-  discountValue,
   currentValue,
   productDescription,
   colorAvailable,
@@ -22,11 +20,26 @@ export const ProductDetailsAddCartDescription = ({
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState();
 
+  console.log("sizeAvailable", sizeAvailable);
+  console.log("SELECCIONADO: ", selectedColor, selectedSize);
+
+  const anySizeAvailable = isAnySizeAvailable(
+    sizeAvailable[selectedColor].sizesAvailable,
+  );
+
+  const memoIdProduct = useMemo(
+    () =>
+      sizeAvailable[selectedColor].sizesAvailable.find(
+        (s) => s.size === selectedSize,
+      ),
+    [sizeAvailable, selectedColor, selectedSize],
+  );
+
   return (
     <Box
       display="flex"
       width="100%"
-      maxW={{ base: '100%', md: 312, lg: 532 }}
+      maxW={{ base: "100%", md: 312, lg: 532 }}
       color="rainbowGray"
       mt={{ base: 5, md: 12 }}
       ml={{ base: 0, md: 12, lg: 17 }}
@@ -38,17 +51,17 @@ export const ProductDetailsAddCartDescription = ({
         fontWeight="600"
       >
         {tablet
-          ? splitText(productTitle || '', 70)
-          : splitText(productTitle || '', 60)}
+          ? splitText(productTitle || "", 70)
+          : splitText(productTitle || "", 60)}
       </Text>
       <Text
         fontFamily="Nunito"
         fontSize={{ base: 20, lg: 28 }}
         fontWeight="700"
       >
-        {sizeAvailable[selectedColor].sizes.length === 0
-          ? 'No disponible'
-          : formatNumberToCurrency(currentValue)}
+        {anySizeAvailable
+          ? formatNumberToCurrency(currentValue)
+          : "No disponible"}
       </Text>
       <Box
         mt={2}
@@ -69,15 +82,15 @@ export const ProductDetailsAddCartDescription = ({
         colors={colorAvailable.map((color) => color.hex)}
       />
       <SizeSelector
-        availableSizes={sizeAvailable[selectedColor].sizes}
+        availableSizes={sizeAvailable[selectedColor].sizesAvailable}
         selectedSize={selectedSize}
         setSelectedSize={setSelectedSize}
       />
 
-      {sizeAvailable[selectedColor].sizes.length > 0 && (
+      {anySizeAvailable && (
         <Box mt={{ base: 3, md: 4, lg: 5 }}>
           <ProductCartButton
-            productId={productId}
+            productId={memoIdProduct}
             size={selectedSize}
             color={colorAvailable[selectedColor].hex}
           />

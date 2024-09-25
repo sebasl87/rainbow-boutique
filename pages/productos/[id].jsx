@@ -1,17 +1,13 @@
-import { CategoriesHeader } from '@/components/organisms';
-import { useQuery } from '@apollo/client';
-import { Box } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { GET_PRODUCT } from '../../api/apollo/querys';
-import ProductSlider from '../../components/molecules/ProductSlider';
-import {
-  CartDrawer,
-  ProductDetailsAddCartDescription,
-} from '../../components/organisms';
+import { CategoriesHeader } from "@/components/organisms";
+import { useQuery } from "@apollo/client";
+import { Box } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { GET_PRODUCT } from "../../api/apollo/querys";
+import ProductSlider from "../../components/molecules/ProductSlider";
+import { ProductDetailsAddCartDescription } from "../../components/organisms";
 
-import { RainbowSpinner } from '@/components/atoms';
-import { BreadcrumbRainbow } from '@/components/molecules';
-import useModalCart from '@/hooks/useModalCart';
+import { RainbowSpinner } from "@/components/atoms";
+import { BreadcrumbRainbow } from "@/components/molecules";
 
 export const DetailProductScreen = () => {
   const {
@@ -19,10 +15,11 @@ export const DetailProductScreen = () => {
   } = useRouter();
   const { data, loading } = useQuery(GET_PRODUCT, {
     variables: { id },
+    fetchPolicy: "no-cache",
   });
 
   if (loading) return <RainbowSpinner />;
-
+  console.log("Data", data);
   return (
     <>
       <Box
@@ -36,11 +33,11 @@ export const DetailProductScreen = () => {
         <BreadcrumbRainbow isProductPage />
         <Box
           display="flex"
-          width={{ base: '100%', lg: '1200px' }}
-          flexDirection={{ base: 'column', md: 'row' }}
+          width={{ base: "100%", lg: "1200px" }}
+          flexDirection={{ base: "column", md: "row" }}
           mt={{ base: 0, md: 6 }}
           mb={{ base: 14, md: 50, lg: 29 }}
-          justifyContent={{ md: 'space-around', lg: 'space-between' }}
+          justifyContent={{ md: "space-around", lg: "space-between" }}
         >
           <ProductSlider
             images={data?.product?.photos}

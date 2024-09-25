@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_PRODUCT = gql`
   query getProduct($id: ID) {
@@ -19,7 +19,14 @@ export const GET_PRODUCT = gql`
         color {
           hex
         }
-        sizes
+        colorName
+        sizesAvailable {
+          ... on SizeAvailable {
+            id
+            size
+            available
+          }
+        }
       }
     }
   }
@@ -44,10 +51,17 @@ export const GET_ALL_PRODUCTS = gql`
       slug
       stock {
         id
+        sizesAvailable {
+          ... on SizeAvailable {
+            id
+            size
+            available
+          }
+        }
         color {
           hex
         }
-        sizes
+        colorName
       }
       sale
     }
@@ -73,7 +87,14 @@ export const SEARCH_PRODUCT = gql`
         color {
           hex
         }
-        sizes
+        colorName
+        sizesAvailable {
+          ... on SizeAvailable {
+            id
+            size
+            available
+          }
+        }
       }
     }
   }
