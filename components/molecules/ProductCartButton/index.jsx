@@ -1,40 +1,44 @@
-import { useAtom, useAtomValue } from "jotai";
-import { productsInCart, totalProducts } from "../../../jotai/atoms";
+import { useAtom } from "jotai";
+import { productsInCart } from "../../../jotai/atoms";
 
 import useModalCart from "@/hooks/useModalCart";
 import { Button } from "@chakra-ui/react";
 
-export const ProductCartButton = ({ productId }) => {
+export const ProductCartButton = ({
+  productData,
+  productPrice,
+  productImg,
+  productName,
+  productColor,
+}) => {
   const [products, setProductsInCart] = useAtom(productsInCart);
-  const totalProd = useAtomValue(totalProducts);
+
   const { onOpen } = useModalCart();
-
   const addToCart = () => {
-    const productFinded = totalProd.find((product) => product.id === productId);
-
     const newProduct = {
-      productId,
-      productPrice: productFinded.price.total,
-      productName: productFinded.name,
-      productImage: productFinded.photos[0].url,
+      productData,
+      productPrice,
+      productName,
+      productImage: productImg,
+      productColor,
     };
 
     const updatedProducts = [...products, newProduct];
     setProductsInCart(updatedProducts);
     onOpen();
   };
-
   const removeFromCart = () => {
     const updatedProducts = products.filter(
-      (product) => product.productId !== productId,
+      (product) => product.productData.id !== productData.id, // Filtrar productos que no coincidan con el id
     );
     setProductsInCart(updatedProducts);
     onOpen();
   };
 
-  const isInCart = products.some((product) => product.id === productId);
+  const isInCart = products?.some(
+    (product) => product.productData?.id === productData?.id,
+  );
 
-  console.log(productId);
   return (
     <>
       {isInCart ? (

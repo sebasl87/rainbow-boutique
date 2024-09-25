@@ -1,5 +1,5 @@
-import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
-import { Box, Image } from '@chakra-ui/react';
+import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
+import { Box, Image } from "@chakra-ui/react";
 
 export const CartSliderProduct = ({
   productName,
@@ -9,14 +9,14 @@ export const CartSliderProduct = ({
   productImage,
 }) => {
   const whiteColors = [
-    '#FFFFFF',
-    'white',
-    '#fff',
-    'rgb(255, 255, 255)',
-    'hsl(0, 0%, 100%)',
-    'hsla(0, 0%, 100%, 1)',
-    'rgba(255, 255, 255, 1)',
-    'ffffff',
+    "#FFFFFF",
+    "white",
+    "#fff",
+    "rgb(255, 255, 255)",
+    "hsl(0, 0%, 100%)",
+    "hsla(0, 0%, 100%, 1)",
+    "rgba(255, 255, 255, 1)",
+    "ffffff",
   ];
 
   const isWhite = whiteColors.includes(color.toLowerCase());
@@ -64,7 +64,7 @@ export const CartSliderProduct = ({
               h={4}
               borderRadius={3}
               ml={2}
-              border={isWhite ? '1px solid #797B7A' : 'none'}
+              border={isWhite ? "1px solid #797B7A" : "none"}
             />
           </Box>
           <Box color="#797B7A" fontFamily="Nunito" fontWeight={600} mb={1}>

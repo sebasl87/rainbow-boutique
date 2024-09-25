@@ -1,6 +1,6 @@
-import { CartSliderProduct } from '@/components/organisms';
-import { productsInCart } from '@/jotai/atoms';
-import { formatNumberToCurrencyWithoutDecimals } from '@/styles/utils/formatNumberToCurrencyWithoutDecimals';
+import { CartSliderProduct } from "@/components/organisms";
+import { productsInCart } from "@/jotai/atoms";
+import { formatNumberToCurrencyWithoutDecimals } from "@/styles/utils/formatNumberToCurrencyWithoutDecimals";
 import {
   Box,
   Button,
@@ -12,9 +12,9 @@ import {
   DrawerOverlay,
   Flex,
   Image,
-} from '@chakra-ui/react';
-import { useAtomValue } from 'jotai';
-import { useRouter } from 'next/router';
+} from "@chakra-ui/react";
+import { useAtomValue } from "jotai";
+import { useRouter } from "next/router";
 
 export const CartDrawer = ({ isOpen, onClose }) => {
   const productsWaitInCart = useAtomValue(productsInCart);
@@ -22,6 +22,7 @@ export const CartDrawer = ({ isOpen, onClose }) => {
   const totalAmount = productsWaitInCart.reduce((acc, product) => {
     return acc + product.productPrice;
   }, 0);
+  console.log("productsWaitInCart", productsWaitInCart);
   return (
     <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
@@ -57,8 +58,8 @@ export const CartDrawer = ({ isOpen, onClose }) => {
           {productsWaitInCart?.map((product, index) => (
             <CartSliderProduct
               productName={product.productName}
-              size={product.size}
-              color={product.color}
+              size={product.productData.size}
+              color={product.productColor}
               productPrice={product.productPrice}
               productImage={product.productImage}
               key={product.productId + index}
@@ -81,7 +82,7 @@ export const CartDrawer = ({ isOpen, onClose }) => {
               mb={4}
               background="#D7ECE8"
               color="#797B7A"
-              onClick={() => router.push('/checkout').then(onClose)}
+              onClick={() => router.push("/checkout").then(onClose)}
             >
               FINALIZAR COMPRA
             </Button>

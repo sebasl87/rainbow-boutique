@@ -6,22 +6,19 @@ import SizeSelector from "../../molecules/SizeSelector";
 import { useMemo, useState } from "react";
 import { formatNumberToCurrency } from "@/styles/utils/formatNumberToCurrency";
 import { splitText } from "@/styles/utils/splitText";
-import { idProduct, isAnySizeAvailable } from "@/utils/stock";
+import { isAnySizeAvailable } from "@/utils/stock";
 
 export const ProductDetailsAddCartDescription = ({
-  productId,
   productTitle,
   currentValue,
   productDescription,
   colorAvailable,
   sizeAvailable,
+  customImg,
 }) => {
   const { tablet } = useBreakpoints();
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState();
-
-  console.log("sizeAvailable", sizeAvailable);
-  console.log("SELECCIONADO: ", selectedColor, selectedSize);
 
   const anySizeAvailable = isAnySizeAvailable(
     sizeAvailable[selectedColor].sizesAvailable,
@@ -34,7 +31,7 @@ export const ProductDetailsAddCartDescription = ({
       ),
     [sizeAvailable, selectedColor, selectedSize],
   );
-
+  console.log("customImg", currentValue);
   return (
     <Box
       display="flex"
@@ -90,9 +87,11 @@ export const ProductDetailsAddCartDescription = ({
       {anySizeAvailable && (
         <Box mt={{ base: 3, md: 4, lg: 5 }}>
           <ProductCartButton
-            productId={memoIdProduct}
-            size={selectedSize}
-            color={colorAvailable[selectedColor].hex}
+            productData={memoIdProduct}
+            productPrice={currentValue}
+            productName={productTitle}
+            productImg={customImg}
+            productColor={colorAvailable[selectedColor].hex}
           />
         </Box>
       )}

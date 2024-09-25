@@ -141,8 +141,8 @@ export const Checkout = () => {
                     {productsCart?.map((product, index) => (
                       <CartSliderCheckout
                         productName={product.productName}
-                        size={product.size}
-                        color={product.color}
+                        size={product.productData.size}
+                        color={product.productColor}
                         productPrice={product.productPrice}
                         productImage={product.productImage}
                         key={product.productId + index}
@@ -271,8 +271,8 @@ export const Checkout = () => {
                 {productsCart?.map((product, index) => (
                   <CartSliderCheckout
                     productName={product.productName}
-                    size={product.size}
-                    color={product.color}
+                    size={product.productData.size}
+                    color={product.productColor}
                     productPrice={product.productPrice}
                     productImage={product.productImage}
                     key={product.productId + index}

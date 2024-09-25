@@ -56,6 +56,7 @@ export const DetailProductScreen = () => {
             sizeAvailable={data.product.stock}
             productDescription={data.product.description}
             productId={id}
+            customImg={data.product.photos[0].url}
           />
         </Box>
       </Box>
